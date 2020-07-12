@@ -10,6 +10,13 @@
 
             <div class="body">
                 <div class="table-responsive">
+                    <div class="dt-buttons">
+                        <a href="" class="btn btn-outline-success btn-border-radius">Export to
+                            Excell</a>
+                        <a href="{{ route('export_pdf.lahanmasuk') }}" target="_blank"
+                            class="btn btn-outline-danger btn-border-radius">Export to
+                            PDF</a>
+                    </div>
                     <div id="tableExport_wrapper" class="dataTables_wrapper dt-bootstrap4">
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable"
                             role="grid" aria-describedby="tableExport_info">
@@ -76,7 +83,8 @@
                     <div class="dt-buttons">
                         <a href="" class="btn btn-outline-success btn-border-radius">Export to
                             Excell</a>
-                        <a href="" class="btn btn-outline-danger btn-border-radius">Export to
+                        <a href="{{ route('export_pdf.lahanjual') }}" target="_blank"
+                            class="btn btn-outline-danger btn-border-radius">Export to
                             PDF</a>
                     </div>
                     <div id="tableExport_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -116,7 +124,7 @@
                                     <td>{{ $jual->harga_lahan }}</td>
                                     <td>{{ $jual->no_hp }}</td>
                                     <td>
-                                    <form action="{{ url('/admin/status') }}" method="get">
+                                        <form action="{{ url('/admin/status') }}" method="get">
                                             <input type="hidden" name="lahan_id" value="{{ $jual->id }}">
                                             <input type="hidden" name="status_lahan" value="0">
 
@@ -143,6 +151,13 @@
             </div>
             <div class="body">
                 <div class="table-responsive">
+                    <div class="dt-buttons">
+                        <a href="" class="btn btn-outline-success btn-border-radius">Export to
+                            Excell</a>
+                        <a href="{{ route('export_pdf.soldout') }}" target="_blank"
+                            class="btn btn-outline-danger btn-border-radius">Export to
+                            PDF</a>
+                    </div>
                     <div id="tableExport_wrapper" class="dataTables_wrapper dt-bootstrap4">
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable"
                             role="grid" aria-describedby="tableExport_info">

@@ -5,15 +5,15 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="header">
-                <h2><strong>Data Pembeli</strong></h2>
+                <h2><strong>Komentar Penjual</strong></h2>
             </div>
 
             <div class="body">
                 <div class="table-responsive">
                     <div class="dt-buttons">
-                        <a href="" target="_blank" class="btn btn-outline-success btn-border-radius">Export to
+                        <a href="/admin/koment_excell" class="btn btn-outline-success btn-border-radius">Export to
                             Excell</a>
-                        <a href="{{ route('export_pdf.pembeli') }}" target="_blank" class="btn btn-outline-danger btn-border-radius">Export to PDF</a>
+                        <a href="{{ route('export_pdf.komentpenjual') }}" target="_blank" class="btn btn-outline-danger btn-border-radius">Export to PDF</a>
                     </div>
                     <div id="tableExport_wrapper" class="dataTables_wrapper dt-bootstrap4">
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable"
@@ -23,20 +23,22 @@
                                     <th>No</th>
                                     <th>Nama</th>
                                     <th>Email</th>
-                                    <th>Terdaftar</th>
+                                    <th>Tanggal & Waktu</th>
+                                    <th>Komentar</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @php($id = 1)
-                                @foreach($pembeli as $user)
+                                @php $id = 1; @endphp
+                                @foreach($penjual as $data)
                                 <tr>
-                                    <th>{{ $id++}}</th>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->created_at }}</td>
-                                    <td>
+                                    <td>{{ $id++ }}</td>
+                                    <td>{{ $data->penjual->name }}</td>
+                                    <td>{{ $data->penjual->email }}</td>
+                                    <td>{{ $data->created_at }}</td>
+                                    <td>{{ $data->content }}</td>
+                                    <td></td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -47,5 +49,4 @@
         </div>
     </div>
 </div>
-
 @endsection

@@ -13,7 +13,7 @@
                     <div class="dt-buttons">
                         <a href="/admin/koment_excell" class="btn btn-outline-success btn-border-radius">Export to
                             Excell</a>
-                        <a href="/admin/koment_pdf" class="btn btn-outline-danger btn-border-radius">Export to PDF</a>
+                        <a href="{{ route('export_pdf.penjual') }}" target="_blank" class="btn btn-outline-danger btn-border-radius">Export to PDF</a>
                     </div>
                     <div id="tableExport_wrapper" class="dataTables_wrapper dt-bootstrap4">
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable"

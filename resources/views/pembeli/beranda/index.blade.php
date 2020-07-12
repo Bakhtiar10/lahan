@@ -67,11 +67,11 @@
 <div class="container">
     <div class="row clearfix">
         <div class="card-body">
-        <form action="" method="POST">
+        <form action="{{ route('pembeli_koment') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label>Komentar</label>
-                <input type="hidden" value="" name="id_user">
+                <input type="hidden" value="{{ Auth::user()->id }}" name="id_pembeli">
                 <textarea class="form-control" name="content" placeholder="Beri Komentar Untuk Website" rows="4"></textarea>
             </div>
             <button type="submit" class="btn btn-success">Kirim</button>

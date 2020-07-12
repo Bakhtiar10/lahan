@@ -11,13 +11,13 @@
     
     <tbody>
         @php $id = 1; @endphp
-        @foreach($koments as $koment)
+        @foreach($penjual as $data)
         <tr>
             <td>{{ $id++ }}</td>
-            <td>{{ $koment->user->name }}</td>
-            <td>{{ $koment->user->email }}</td>
-            <td>{{ $koment->created_at }}</td>
-            <td>{{ $koment->content }}</td>
+            <td>{{ $data->penjual->name }}</td>
+            <td>{{ $data->penjual->email }}</td>
+            <td>{{ $data->created_at }}</td>
+            <td>{{ $data->content }}</td>
         </tr>
         @endforeach
     </tbody>

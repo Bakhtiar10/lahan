@@ -15,7 +15,7 @@ class CreateLahanTable extends Migration
     {
         Schema::create('lahan', function (Blueprint $table) {
             $table->increments('id');
-            $table->Integer('id_penjual') -> unsigned();
+            $table->Integer('id_penjual')->unsigned();
             $table->text('judul_lahan');
             $table->text('luas_lahan');
             $table->bigInteger('harga_lahan');

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Model_Penjual\Penjual;
 use App\Model_Penjual\Lahan;
 use App\Model_Pembeli\Pembeli;
+use App\Exports\PembeliExport;
+use PDF;
+
 
 
 class DataLahanController extends Controller
@@ -32,5 +35,26 @@ class DataLahanController extends Controller
         }
   
         return redirect()->route('admin.datalahan');
+    }
+
+    public function lahanmasukPDF()
+    {
+    	$lahan_masuk = Lahan::where('status_lahan', 0)->get();
+    	$pdf = PDF::loadview('admin.datalahan.lahanmasuk_pdf',['lahan_masuk'=>$lahan_masuk]);
+    	return $pdf->stream('data_lahanmasuk_pdf');
+    }
+
+    public function lahanjualPDF()
+    {
+    	$lahan_jual = Lahan::where('status_lahan', 1)->where('status_jual',0)->get();
+    	$pdf = PDF::loadview('admin.datalahan.lahanjual_pdf',['lahan_jual'=>$lahan_jual]);
+    	return $pdf->stream('data_lahanjual_pdf');
+    }
+
+    public function soldoutPDF()
+    {
+    	$sold_out = Lahan::where('status_jual', 1)->get();
+    	$pdf = PDF::loadview('admin.datalahan.soldout_pdf',['sold_out'=>$sold_out]);
+    	return $pdf->stream('data_soldout_pdf');
     }
 }

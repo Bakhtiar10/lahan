@@ -1,7 +1,8 @@
 <!-- Plugins Js -->
-    
-    <!-- <script src="{{ asset('assets/js/app.min.js') }}"></script> -->
-    <script src="{{ asset('assets/js/chart.min.js') }}"></script>
+    <script src="assets/js/app.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <!-- Custom Js -->
+      <script src="{{ asset('assets/js/chart.min.js') }}"></script>
     <!-- Custom Js -->
     <script src="{{ asset('assets/js/pages/tables/jquery-datatable.js') }}"></script>
     <script src="{{ asset('assets/js/table.min.js') }}"></script>

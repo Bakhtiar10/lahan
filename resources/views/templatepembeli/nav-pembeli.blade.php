@@ -18,11 +18,39 @@
                             Peta
                         </a>
                     </li>
-                    <li>
-                        <a href="" class="" style="color: white">
-                            Notifikasi
+
+                    <li class="dropdown">
+                        <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
+                            role="button">
+                            <i class="far fa-bell"></i>
+                            <span class="label-count bg-orange"></span>
                         </a>
+                        <ul class="dropdown-menu pullDown">
+                            <li class="header">NOTIFICATIONS</li>
+                            <li class="body">
+                                <ul class="menu">
+                                    <li>
+                                        <a href="#" onClick="return false;">
+                                            <span class="table-img msg-user">
+                                                <img src="assets/images/user/user1.jpg" alt="">
+                                            </span>
+                                            <span class="menu-info">
+                                                <span class="menu-title">Sarah Smith</span>
+                                                <span class="menu-desc">
+                                                    <i class="material-icons">access_time</i> 14 mins ago
+                                                </span>
+                                                <span class="menu-desc">Please check your email.</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <a href="#" onClick="return false;">View All Notifications</a>
+                            </li>
+                        </ul>
                     </li>
+
                     <li>
                         <a href="" class="" style="color: white">
                             Pesan

@@ -39,6 +39,21 @@ Route::prefix('admin')->group(function() {
 
     Route::get('/datalahan', 'Admin\DataLahanController@index')->name('admin.datalahan');
     Route::get('/status', 'Admin\DataLahanController@statuslahan');
+
+    Route::get('/chart','Admin\DashboardController@chart');
+
+    Route::get('/penjual', 'Admin\KomentarWebsiteController@penjual')->name('penjual');
+    Route::get('/pembeli', 'Admin\KomentarWebsiteController@pembeli')->name('pembeli');
+
+    Route::get('/pembeli_pdf', 'Admin\DataUserController@pembeliPDF')->name('export_pdf.pembeli');
+    Route::get('/penjual_pdf', 'Admin\DataUserController@penjualPDF')->name('export_pdf.penjual');
+
+    Route::get('/lahanmasuk_pdf', 'Admin\DataLahanController@lahanmasukPDF')->name('export_pdf.lahanmasuk');
+    Route::get('/lahanjual_pdf', 'Admin\DataLahanController@lahanjualPDF')->name('export_pdf.lahanjual');
+    Route::get('/soldout_pdf', 'Admin\DataLahanController@soldoutPDF')->name('export_pdf.soldout');
+
+    Route::get('/komenpembeli_pdf', 'Admin\KomentarWebsiteController@pembeliPDF')->name('export_pdf.komentpembeli');
+    Route::get('/komenpenjual_pdf', 'Admin\KomentarWebsiteController@penjualPDF')->name('export_pdf.komentpenjual');
 });
 
 
@@ -67,6 +82,8 @@ Route::prefix('penjual')->group(function() {
     Route::patch('datalahan/update/{id}','Penjual\DataSayaController@update')->name('update');
     Route::delete('datalahan/destroy/{id}','Penjual\DataSayaController@destroy')->name('destroy');
 
+    Route::post('/penjual_koment', 'Penjual\PenjualController@store')->name('penjual_koment');
+
 
 });
 
@@ -86,6 +103,7 @@ Route::prefix('pembeli')->group(function() {
 
 
     Route::get('beranda', 'Pembeli\PembeliController@index')->name('pembeli.beranda');
+    Route::post('/pembeli_koment', 'Pembeli\PembeliController@store')->name('pembeli_koment');
 
     Route::get('/peta', 'Pembeli\PetaController@index')->name('peta');
     Route::get('/detail_lahan/{lahan}', 'Pembeli\PetaController@detail_lahan')->name('detail_lahan');

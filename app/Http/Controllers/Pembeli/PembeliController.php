@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Model_Pembeli\Pembeli;
 use App\Model_Penjual\Penjual;
 use App\Model_Penjual\Lahan;
-use App\User;
+use App\KomentarPembeli;
 
 class PembeliController extends Controller
 {
@@ -23,4 +23,14 @@ class PembeliController extends Controller
         $lahan = Lahan::where('status_lahan', 1)->where('status_jual',0)->get();
         return view('pembeli.beranda.index',compact('lahan'));
     }
+
+    public function store(Request $request) {
+        $pembeli = KomentarPembeli::create([
+            'id_pembeli' => $request->id_pembeli,
+            'content' => $request->content
+        ]);
+
+        return redirect()->route('pembeli.beranda')->with('message', 'Komentar telah dikirim');
+    }
+
 }

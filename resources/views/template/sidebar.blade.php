@@ -12,7 +12,7 @@
                 </li>
 
                 <li class="">
-                    <a href="">
+                    <a href="/admin/beranda">
                         <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
@@ -32,6 +32,7 @@
                         </li>
                     </ul>
                 </li>
+
                 <li>
                     <a href="/admin/datalahan">
                         <i class="fas fa-map"></i>
@@ -40,22 +41,24 @@
                 </li>
 
                 <li>
-                    <a href="">
-                        <i class="fas fa-flag"></i>
-                        <span>Notifikasi</span>
+                    <a href="#" onClick="return false;" class="menu-toggle">
+                        <i class="fas fa-paw"></i>
+                        <span>Komentar Website</span>
                     </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="/admin/penjual">Komentar Penjual</a>
+                        </li>
+                        <li>
+                            <a href="/admin/pembeli">Komentar Pembeli</a>
+                        </li>
+                    </ul>
                 </li>
-
+                
                 <li>
                     <a href="">
                         <i class="fas fa-flag"></i>
                         <span>Pemesanan</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="fas fa-flag"></i>
-                        <span>Report Website</span>
                     </a>
                 </li>
 
