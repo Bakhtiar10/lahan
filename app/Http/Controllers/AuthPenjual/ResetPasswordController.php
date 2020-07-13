@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Auth;
 use App\Model_Penjual\Penjual;
 
 class ResetPasswordController extends Controller

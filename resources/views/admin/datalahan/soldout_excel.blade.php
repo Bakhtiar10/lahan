@@ -1,13 +1,13 @@
-<table class='table table-bordered' style="width:100%">
+<table style="width:100%">
     <thead>
-        <tr align="center" bgcolor="yellow">
+        <tr>
             <th>No</th>
             <th>Email</th>
-            <th>Judul Lahan</th>
-            <th>Luas Lahan</th>
-            <th>Jenis Lahan</th>
+            <th>Judul</th>
+            <th>Luas</th>
+            <th>Jenis</th>
             <th>Sertifikat</th>
-            <th>Harga Lahan</th>
+            <th>Harga</th>
             <th>No Hp</th>
         </tr>
     </thead>

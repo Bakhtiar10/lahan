@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\KomentarPenjual;
 use App\KomentarPembeli;
-use App\Exports\KomentsExport;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\PembeliExport;
+
+use App\Exports\komentpenjualExport;
+use App\Exports\komentpembeliExport;
+use Excel;
 use PDF;
 
 class KomentarWebsiteController extends Controller
@@ -44,4 +45,17 @@ class KomentarWebsiteController extends Controller
     	$pdf = PDF::loadview('admin.komentarwebsite.pembeli_pdf',['pembeli'=>$pembeli]);
     	return $pdf->stream('komentar_pembeli_pdf');
     }
+
+    public function penjualExcel()
+	{
+        return Excel::download(new komentpenjualExport, 'koment_penjual.xlsx');
+        // $test = new komentpenjualExport;
+        // dd($test);
+    }
+
+    public function pembeliExcel()
+	{
+		return Excel::download(new komentpembeliExport, 'koment_pembeli.xlsx');
+    }
+    
 }

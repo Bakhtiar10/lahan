@@ -11,7 +11,7 @@
             <div class="body">
                 <div class="table-responsive">
                     <div class="dt-buttons">
-                        <a href="" target="_blank" class="btn btn-outline-success btn-border-radius">Export to
+                        <a href="/admin/pembeli_excel" class="btn btn-outline-success btn-border-radius">Export to
                             Excell</a>
                         <a href="{{ route('export_pdf.pembeli') }}" target="_blank" class="btn btn-outline-danger btn-border-radius">Export to PDF</a>
                     </div>
@@ -36,7 +36,7 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
-                                    <td>
+                                    <td></td>
                                 </tr>
                                 @endforeach
                             </tbody>

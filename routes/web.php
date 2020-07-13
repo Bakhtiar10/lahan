@@ -54,6 +54,17 @@ Route::prefix('admin')->group(function() {
 
     Route::get('/komenpembeli_pdf', 'Admin\KomentarWebsiteController@pembeliPDF')->name('export_pdf.komentpembeli');
     Route::get('/komenpenjual_pdf', 'Admin\KomentarWebsiteController@penjualPDF')->name('export_pdf.komentpenjual');
+
+    Route::get('/penjual_excel', 'Admin\DataUserController@penjualExcel');
+    Route::get('/pembeli_excel', 'Admin\DataUserController@pembeliExcel');
+
+    Route::get('/lahanmasuk_excel', 'Admin\DataLahanController@lahanmasukExcel');
+    Route::get('/lahanjual_excel', 'Admin\DataLahanController@lahanjualExcel');
+    Route::get('/soldout_excel', 'Admin\DataLahanController@soldoutExcel');
+
+    Route::get('/komentpenjual_excel', 'Admin\KomentarWebsiteController@penjualExcel');
+    Route::get('/komentpembeli_excel', 'Admin\KomentarWebsiteController@pembeliExcel');
+
 });
 
 

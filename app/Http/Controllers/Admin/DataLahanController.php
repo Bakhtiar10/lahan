@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 use App\Model_Penjual\Penjual;
 use App\Model_Penjual\Lahan;
 use App\Model_Pembeli\Pembeli;
-use App\Exports\PembeliExport;
+
+use App\Exports\lahanmasukExport;
+use App\Exports\lahanjualExport;
+use App\Exports\soldoutExport;
+use Excel;
 use PDF;
 
 
@@ -57,4 +61,20 @@ class DataLahanController extends Controller
     	$pdf = PDF::loadview('admin.datalahan.soldout_pdf',['sold_out'=>$sold_out]);
     	return $pdf->stream('data_soldout_pdf');
     }
+
+    public function lahanmasukExcel()
+	{
+		return Excel::download(new lahanmasukExport, 'lahan_masuk.xlsx');
+    }
+
+    public function lahanjualExcel()
+	{
+		return Excel::download(new lahanjualExport, 'lahan_jual.xlsx');
+    }
+
+    public function soldoutExcel()
+	{
+		return Excel::download(new soldoutExport, 'soldout.xlsx');
+    }
+
 }

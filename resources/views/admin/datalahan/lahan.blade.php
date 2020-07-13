@@ -11,7 +11,7 @@
             <div class="body">
                 <div class="table-responsive">
                     <div class="dt-buttons">
-                        <a href="" class="btn btn-outline-success btn-border-radius">Export to
+                        <a href="/admin/lahanmasuk_excel" class="btn btn-outline-success btn-border-radius">Export to
                             Excell</a>
                         <a href="{{ route('export_pdf.lahanmasuk') }}" target="_blank"
                             class="btn btn-outline-danger btn-border-radius">Export to
@@ -81,7 +81,7 @@
             <div class="body">
                 <div class="table-responsive">
                     <div class="dt-buttons">
-                        <a href="" class="btn btn-outline-success btn-border-radius">Export to
+                        <a href="/admin/lahanjual_excel" class="btn btn-outline-success btn-border-radius">Export to
                             Excell</a>
                         <a href="{{ route('export_pdf.lahanjual') }}" target="_blank"
                             class="btn btn-outline-danger btn-border-radius">Export to
@@ -152,7 +152,7 @@
             <div class="body">
                 <div class="table-responsive">
                     <div class="dt-buttons">
-                        <a href="" class="btn btn-outline-success btn-border-radius">Export to
+                        <a href="/admin/soldout_excel" class="btn btn-outline-success btn-border-radius">Export to
                             Excell</a>
                         <a href="{{ route('export_pdf.soldout') }}" target="_blank"
                             class="btn btn-outline-danger btn-border-radius">Export to

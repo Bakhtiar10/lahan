@@ -11,7 +11,7 @@
             <div class="body">
                 <div class="table-responsive">
                     <div class="dt-buttons">
-                        <a href="" class="btn btn-outline-success btn-border-radius">Export to
+                        <a href="/admin/komentpembeli_excel" class="btn btn-outline-success btn-border-radius">Export to
                             Excell</a>
                         <a href="{{ route('export_pdf.komentpembeli') }}" target="_blank" class="btn btn-outline-danger btn-border-radius">Export to PDF</a>
                     </div>

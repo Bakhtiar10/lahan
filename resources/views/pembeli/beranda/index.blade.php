@@ -46,7 +46,7 @@
                 <div class="header">
                     <ul class="right">
                         <li class="header-dropdown m-r--5">
-                            <a href="">Lihat Detail</a>
+                            <a href="/pembeli/detail_lahan/{{$data->id}}">Lihat Detail</a>
                         </li>
                     </ul>
                     <h4 class="product-title mb-2">{{$data->judul_lahan}}</h4>

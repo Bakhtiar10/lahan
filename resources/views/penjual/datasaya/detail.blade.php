@@ -66,6 +66,54 @@
     </div>
 </div>
 
+<div class="container">
+    <div class="card">
+        <div class="boxs mail_listing">
+            <div class="inbox-center table-responsive">
+                @if(Session::has('message'))
+                <div class="alert alert-success" role="alert">
+                    {{Session::get('message')}}
+                </div>
+                @endif
+                <div class="header">
+                    <h2><strong> Komentar</strong></h2>
+                </div>
+               
+                <table class="table table-hover">
+                    <tbody>
+                        <tr class="unread">
+                            <td class="hidden-xs">email</td>
+                            <td class="text-right"> tanggal </td>
+                        </tr>
+                        <tr>
+                            <td>isi</td>
+                        </tr>
+                    </tbody>
+                   
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="card-body">
+            <form action="" method="POST">
+                
+                <div class="form-group">
+                    <label>Komentar</label>
+                    <input type="hidden" value="" name="id_user">
+                    <input type="hidden" value="" name="id_lahan">
+                    <textarea class="form-control" name="content" placeholder="Beri komentar untuk postingan"
+                        rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Kirim</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 @endsection
 @section('script')
 <script src="{{ asset('assets/js/pages/ecommerce/product-detail.js') }}"></script>

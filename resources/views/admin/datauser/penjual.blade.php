@@ -11,7 +11,7 @@
             <div class="body">
                 <div class="table-responsive">
                     <div class="dt-buttons">
-                        <a href="/admin/koment_excell" class="btn btn-outline-success btn-border-radius">Export to
+                        <a href="/admin/penjual_excel" class="btn btn-outline-success btn-border-radius">Export to
                             Excell</a>
                         <a href="{{ route('export_pdf.penjual') }}" target="_blank" class="btn btn-outline-danger btn-border-radius">Export to PDF</a>
                     </div>
@@ -36,7 +36,7 @@
                                     <td>{{ $datas->name }}</td>
                                     <td>{{ $datas->email }}</td>
                                     <td>{{ $datas->created_at }}</td>
-                                    <td>
+                                    <td> </td>
                                 </tr>
                                 @endforeach
                             </tbody>
