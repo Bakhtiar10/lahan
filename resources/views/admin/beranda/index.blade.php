@@ -1,5 +1,5 @@
 @extends("template.index")
-@section('title') beranda @endsection
+@section('title') Beranda Admin @endsection
 @section("content")
 
 <div class="row">

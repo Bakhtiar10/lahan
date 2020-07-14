@@ -1,5 +1,5 @@
 @extends("templatepenjual.index")
-@section('title') Penjual @endsection
+@section('title') Beranda Penjual @endsection
 @section("content")
 
 <div class="container">
@@ -22,6 +22,5 @@
     </div>
     </div>
 </div>
-
 
 @endsection

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use App\Model_Penjual\Penjual;
-use App\Model_Pembeli\Pembeli;
+use App\Penjual;
+use App\Pembeli;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;

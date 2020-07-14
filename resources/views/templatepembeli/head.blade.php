@@ -5,9 +5,25 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <!-- Favicon-->
+
+    <link rel="apple-touch-icon" href="{{ asset('assets/landingpage/images/apple-touch-icon.png') }}">
+    <link rel="shortcut icon" type="image/ico" href="{{ asset('assets/landingpage/images/favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/landingpage/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/landingpage/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/landingpage/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/landingpage/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/landingpage/css/space.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/landingpage/css/theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/landingpage/css/overright.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/landingpage/css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/landingpage/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/landingpage/css/responsive.css') }}">
+    <script src="{{ asset('assets/landingpage/js/vendor/modernizr-2.8.3.min.js') }}"
+    type="e763a39d6fa7d0f8e02806d7-text/javascript"></script>
     <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
 
-    <link href="{{ asset('assets/user/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     
     <!-- Plugins Core Css -->
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet">

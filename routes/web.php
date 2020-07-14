@@ -15,11 +15,13 @@
 Auth::routes();
 Auth::routes(['verify' => true]);
 
-Route::get('/', function(){
-    return view('welcome');
-});
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', 'LandingPageController@index')->name('landingpage');
+
+// Route::post('/lihat', 'PostKomentController@store_lahan')->name('store.koment_lahan');
+
+
 
 
 
@@ -65,6 +67,8 @@ Route::prefix('admin')->group(function() {
     Route::get('/komentpenjual_excel', 'Admin\KomentarWebsiteController@penjualExcel');
     Route::get('/komentpembeli_excel', 'Admin\KomentarWebsiteController@pembeliExcel');
 
+    Route::get('/survei', 'Admin\SurveiLahanController@index')->name('survei');
+
 });
 
 
@@ -95,6 +99,9 @@ Route::prefix('penjual')->group(function() {
 
     Route::post('/penjual_koment', 'Penjual\PenjualController@store')->name('penjual_koment');
 
+    Route::get('/survei', 'Penjual\SurveiPenjualController@index')->name('surveipenjual');
+
+    Route::post('/comments', 'Penjual\DataSayaController@comment')->name('penjual.komentar');
 
 });
 
@@ -119,6 +126,12 @@ Route::prefix('pembeli')->group(function() {
     Route::get('/peta', 'Pembeli\PetaController@index')->name('peta');
     Route::get('/detail_lahan/{lahan}', 'Pembeli\PetaController@detail_lahan')->name('detail_lahan');
     Route::get('/show/peta', 'Pembeli\PetaController@peta');
+
+
+    Route::post('/lihat', 'Pembeli\PetaController@store_lahan')->name('store');
+    Route::get('/survei', 'Pembeli\SurveiPembeliController@index')->name('surveipembeli');
 });
+
+    
 
 

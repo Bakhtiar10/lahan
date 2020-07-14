@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Penjual;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model_Penjual\Penjual;
+use App\Penjual;
 use App\User;
 Use App\KomentarPenjual;
 

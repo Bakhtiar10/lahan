@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Exports;
-use App\Model_Pembeli\Pembeli;
+use App\Pembeli;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\Exporttable;

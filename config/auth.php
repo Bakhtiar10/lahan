@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'admin',
+        'passwords' => 'admins',
     ],
 
     /*
@@ -36,10 +36,6 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
 
         'admin' => [
             'driver' => 'session',
@@ -81,24 +77,20 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
-        ],
 
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Model_Admin\Admin::class,
+            'model' => App\Admin::class,
         ],
 
         'penjuals' => [
             'driver' => 'eloquent',
-            'model' => App\Model_Penjual\Penjual::class,
+            'model' => App\Penjual::class,
         ],
 
         'pembelis' => [
             'driver' => 'eloquent',
-            'model' => App\Model_Pembeli\Pembeli::class,
+            'model' => App\Pembeli::class,
         ],
 
         // 'users' => [
@@ -123,11 +115,6 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
 
         'admins' => [
             'provider' => 'admins',

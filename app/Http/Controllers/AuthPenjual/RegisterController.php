@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\AuthPenjual;
 
 use App\User;
-use App\Model_Penjual\Penjual;
+use App\Penjual;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -74,7 +74,7 @@ class RegisterController extends Controller
     protected function createPenjual(Request $request)
     {
         $this->validator($request->all())->validate();
-        $penjual = \App\Model_Penjual\Penjual::create([
+        $penjual = \App\Penjual::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),

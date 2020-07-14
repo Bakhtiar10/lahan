@@ -164,41 +164,31 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Email</th>
-                                    <th>Judul</th>
-                                    <th>Luas</th>
-                                    <th>Jenis</th>
-                                    <th>Sertifikat</th>
-                                    <th>Foto</th>
-                                    <th>Harga</th>
-                                    <th>No Hp</th>
+                                    <th>Nama Penjual</th>
+                                    <th>Judul Lahan</th>
+                                    <th>Foto Lahan</th>
+                                    <th>Harga Lahan</th>
+                                    <th>Di Beli oleh</th>
+                                    <th>Pada Tanggal</th>
+                                    <th>Foto KTP</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @php $no = 1; @endphp
-                                @foreach($sold_out as $so)
                                 <tr>
-                                    <td>{{ $no++ }}</td>
-                                    <td>{{ $so->penjual->email }}</td>
-                                    <td>{{ $so->judul_lahan }}</td>
-                                    <td>{{ $so->luas_lahan }}</td>
-                                    <td>{{ $so->jenis_lahan }}</td>
-                                    <td>{{ $so->sertifikat }}</td>
-                                    <td>
-                                        @foreach($so->images as $di)
-                                        <img src="{{ asset($di->foto) }}" alt="" width="50">
-                                        @break
-                                        @endforeach
-                                    </td>
-                                    <td>{{ $so->harga_lahan }}</td>
-                                    <td>{{ $so->no_hp }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>
                                         <p>SOLD OUT</p>
                                     </td>
                                 </tr>
-                                @endforeach
                             </tbody>
                         </table>
                     </div>

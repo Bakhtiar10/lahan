@@ -51,7 +51,7 @@
                 <!-- #END# Notifications-->
                 <li class="dropdown user_profile">
                     <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                        <img src="assets/images/user.jpg" width="32" height="32" alt="User">
+                        {{Auth::user()->name}}
                     </a>
                     <ul class="dropdown-menu pullDown">
                         <li class="body">
@@ -62,7 +62,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" onClick="return false;">
+                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
+                                        style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                    <a href="#" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
                                         <i class="material-icons">power_settings_new</i>Logout
                                     </a>
                                 </li>

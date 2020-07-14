@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Penjual;
 
-use App\Model_Penjual\Lahan;
+use App\Lahan;
 use App\Image;
 use App\Http\Controllers\Controller;
 use Auth;
 use Storage;
+use App\Post;
+use App\Comment;
 
 use Illuminate\Http\Request;
 
@@ -20,14 +22,14 @@ class DataSayaController extends Controller
     public function index()
     {
         $lahan = Lahan::where('id_penjual', Auth::user()->id)->get();
+        
         return view('penjual.datasaya.datasaya', compact('lahan'));
     }
 
     public function detail($lahan)
-    {  
-        $lahan = Lahan::find($lahan);
-        // $koments = Postkoment::where('id_lahan', $datalahan)->get();
-        return view('penjual.datasaya.detail', compact('lahan', 'koments'));
+    {
+        $lahan = Lahan::with(['comments', 'comments.child'])->where('id', $lahan)->first();
+        return view('penjual.datasaya.detail', compact('lahan'));
     }
 
     public function create()
@@ -153,5 +155,23 @@ class DataSayaController extends Controller
 
         return redirect()->back();
 
+    }
+
+    public function comment(Request $request)
+    {
+        //VALIDASI DATA YANG DITERIMA
+        $this->validate($request, [
+            'email' => 'required',
+            'comment' => 'required'
+        ]);
+
+        Comment::create([
+            'id_lahan' => $request->id,
+            //JIKA PARENT ID TIDAK KOSONG, MAKA AKAN DISIMPAN IDNYA, SELAIN ITU NULL
+            'parent_id' => $request->parent_id != '' ? $request->parent_id:NULL,
+            'email' => $request->email,
+            'comment' => $request->comment
+        ]);
+        return redirect()->back()->with(['success' => 'Komentar Ditambahkan']);
     }
 }

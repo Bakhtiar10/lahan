@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Model_Penjual;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Image;
+use App\Comment;
 
 class Lahan extends Model
 {
@@ -16,5 +17,9 @@ class Lahan extends Model
 
     public function images(){
         return $this->hasMany(Image::class,'id_lahan');
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class,'id_lahan')->whereNull('parent_id');
     }
 }

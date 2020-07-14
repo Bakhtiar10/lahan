@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model_Pembeli\Pembeli;
+use App\Pembeli;
 
 class KomentarPembeli extends Model
 {

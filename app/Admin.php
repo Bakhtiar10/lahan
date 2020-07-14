@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model_Admin;
+namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -15,9 +15,8 @@ class Admin extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-   ];
+    protected $guarded = [];
+    protected $table = 'admins';
 
     /**
      * The attributes that should be hidden for arrays.

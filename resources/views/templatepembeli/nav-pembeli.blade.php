@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a href="">PETA KABUPATEN TEGAL</a>
+        <a href="/pembeli/peta">PETA KABUPATEN TEGAL</a>
         <ul class="nav navbar-nav navbar-right">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,10 +52,11 @@
                     </li>
 
                     <li>
-                        <a href="" class="" style="color: white">
-                            Pesan
+                        <a href="/pembeli/survei" class="" style="color: white">
+                            Data Survei
                         </a>
                     </li>
+
                     <li class="dropdown user_profile">
                         <a href="#" style="color: white" onClick="return false;" class="dropdown-toggle"
                             data-toggle="dropdown" role="button">

@@ -3,8 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model_Penjual\Lahan;
-use App\Model_Pembeli\Peta;
+use App\Lahan;
+use App\Peta;
 
 class Image extends Model
 {

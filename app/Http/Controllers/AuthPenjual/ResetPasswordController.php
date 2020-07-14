@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Auth;
-use App\Model_Penjual\Penjual;
+use App\Penjual;
 
 class ResetPasswordController extends Controller
 {
@@ -39,7 +39,7 @@ class ResetPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:penjual');
     }
 
     public function guard()
@@ -54,6 +54,7 @@ class ResetPasswordController extends Controller
 
     public function showResetForm(Request $request, $token = null)
     {
+        dd($request->all());
         return view('authPenjual.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );

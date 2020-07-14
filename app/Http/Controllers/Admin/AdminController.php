@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model_Admin\Admin;
-use App\Model_Penjual\Penjual;
-use App\Model_Penjual\Lahan;
-use App\Model_Pembeli\Pembeli;
+use App\Admin;
+use App\Penjual;
+use App\Lahan;
+use App\Pembeli;
 use App\User;
 use App\Exports\PembeliExport;
 use PDF;

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model_Penjual\Penjual;
-use App\Model_Pembeli\Pembeli;
+use App\Penjual;
+use App\Pembeli;
 use App\Exports\pembeliExport;
 use App\Exports\penjualExport;
 use Excel;

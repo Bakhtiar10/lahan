@@ -1,10 +1,12 @@
 <?php
 
-    namespace App\Model_Pembeli;
+    namespace App;
 
     use Illuminate\Notifications\Notifiable;
     use Illuminate\Contracts\Auth\MustVerifyEmail;
     use Illuminate\Foundation\Auth\User as Authenticatable;
+    use App\Postkoment;
+
 
     class Pembeli extends Authenticatable implements MustVerifyEmail
     {
@@ -27,5 +29,9 @@
 
         public function komentarpembeli(){
             return $this->hasMany(Pembeli::class);
+        }
+
+        public function pembeli(){
+            return $this->belongsTo(Postkoment::class,'id_user');
         }
     }

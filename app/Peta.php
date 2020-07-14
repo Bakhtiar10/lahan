@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model_Pembeli;
+namespace App;
 
 use App\Image;
 use Storage;

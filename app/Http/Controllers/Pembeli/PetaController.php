@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Pembeli;
 
 
-use App\Model_Pembeli\Peta;
-use App\Model_Penjual\Lahan;
+use App\Peta;
+use App\Lahan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use Storage;
+use Comment;
 
 class PetaController extends Controller
 {
@@ -40,8 +41,8 @@ class PetaController extends Controller
 
     public function detail_lahan($datalahan)
     {
-        $peta = Lahan::find($datalahan);
-        return view('pembeli.peta.detail_lahan', compact('peta', 'koments'));
+        $peta = Lahan::with(['comments', 'comments.child'])->where('id', $datalahan)->first();
+        return view('pembeli.peta.detail_lahan', compact('peta'));
     }
 
 }

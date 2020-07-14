@@ -30,7 +30,7 @@ class ForgotPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:penjual');
     }
 
     public function broker()
@@ -38,8 +38,13 @@ class ForgotPasswordController extends Controller
         return Password::broker('penjuals');
     }
 
+    public function guard(){
+        return Auth::guard('penjual');
+    }
+
     public function showLinkRequestForm()
     {
+        dd($this->guard());
         return view('authPenjual.passwords.email');
     }
 
@@ -48,7 +53,7 @@ class ForgotPasswordController extends Controller
         // dd($request->email);
         $this->validateEmail($request);
         $response = $this->broker()->sendResetLink($request->only('email'));
-        // dd($response);
+        //dd($this->sendResetLinkResponse($request, $response));
         return $response == Password::RESET_LINK_SENT
             ? $this->sendResetLinkResponse($request, $response)
             : $this->sendResetLinkFailedResponse($request, $response);

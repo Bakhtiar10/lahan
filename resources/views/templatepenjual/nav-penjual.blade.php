@@ -19,8 +19,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="" class="" style="color: white">
-                            Pesan
+                        <a href="/penjual/survei" class="" style="color: white">
+                            Data Survei
                         </a>
                     </li>
 

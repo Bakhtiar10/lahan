@@ -56,9 +56,9 @@
                 </li>
                 
                 <li>
-                    <a href="">
+                    <a href="/admin/survei">
                         <i class="fas fa-flag"></i>
-                        <span>Pemesanan</span>
+                        <span>Data Survei</span>
                     </a>
                 </li>
 

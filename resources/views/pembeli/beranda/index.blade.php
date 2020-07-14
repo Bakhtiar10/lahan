@@ -1,13 +1,16 @@
 @extends("templatepembeli.index")
-@section('title') beranda @endsection
+@section('title') Beranda Pembeli @endsection
 @section("content")
 
+
+
+
 <div class="container">
-@if(Session::has('message'))
-<div class="alert alert-success" role="alert">
-    {{Session::get('message')}}
-</div>
-@endif
+    @if(Session::has('message'))
+    <div class="alert alert-success" role="alert">
+        {{Session::get('message')}}
+    </div>
+    @endif
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
@@ -37,49 +40,54 @@
 </div>
 
 <!-- Single Slide -->
+<div class="space-80"></div>
 <div class="container">
-    <div class="row clearfix">
-        @foreach($lahan as $data)
-        <!-- Single Slide -->
-        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="header">
-                    <ul class="right">
-                        <li class="header-dropdown m-r--5">
-                            <a href="/pembeli/detail_lahan/{{$data->id}}">Lihat Detail</a>
-                        </li>
-                    </ul>
-                    <h4 class="product-title mb-2">{{$data->judul_lahan}}</h4>
-                    <h2 class="product-price display-4">Rp. {{number_format($data->harga_lahan,0,',','.')}}</h2>
-                </div>
-                <div class="body">
-                    <div class="item">
-                        <img src="{{asset($data->images[0]->foto)}}" alt=""
-                            style="width: 300px; height: 120px; margin-bottom: 10px">
+    <div class="card">
+        <div class="row">
+            @foreach($lahan as $data)
+            <div class="col-xs-12 col-sm-4 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="panel text-center single-blog">
+                    <img src="{{ asset($data->images[0]->foto) }}" class="img-full" alt="">
+                    <div class="padding-20">
+                        <ul class="list-unstyled list-inline">
+                            <li><span class="ti-user"></span> By : {{ $data->penjual->name }}</li>
+                            <li><span class="ti-calendar"></span> {{ date("d M Y", strtotime($data->created_at)) }}
+                            </li>
+                        </ul>
+                        <div class="space-10"></div>
+                        <ul class="list-unstyled list-inline">
+                            <li><span class=""></span>{{ $data->jenis_lahan }}</li>
+                            <li><span class=""></span> {{ $data->luas_lahan }}</li>
+                            <li><span class=""></span> Rp. {{number_format($data->harga_lahan,0,',','.')}}</li>
+
+                            <div class="space-20"></div>
+                            <li><span class=""></span>{{$data->judul_lahan}}</li>
+                            <div class="space-20"></div>
+                            <a href="/pembeli/detail_lahan/{{$data->id}}" class="btn btn-link">Lihat Detail</a>
+                        </ul>
                     </div>
                 </div>
+                <div class="space-30"></div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="card-body">
+                <form action="{{ route('pembeli_koment') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label>Komentar</label>
+                        <input type="hidden" value="{{ Auth::user()->id }}" name="id_pembeli">
+                        <textarea class="form-control" name="content" placeholder="Beri Komentar Untuk Website"
+                            rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Kirim</button>
+                </form>
             </div>
         </div>
-        @endforeach
     </div>
-</div>
 
-<div class="container">
-    <div class="row clearfix">
-        <div class="card-body">
-        <form action="{{ route('pembeli_koment') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label>Komentar</label>
-                <input type="hidden" value="{{ Auth::user()->id }}" name="id_pembeli">
-                <textarea class="form-control" name="content" placeholder="Beri Komentar Untuk Website" rows="4"></textarea>
-            </div>
-            <button type="submit" class="btn btn-success">Kirim</button>
-        </form>
-    </div>
-    </div>
-</div>
-
-
-
-@endsection
+    @endsection

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Pembeli;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model_Pembeli\Pembeli;
-use App\Model_Penjual\Penjual;
-use App\Model_Penjual\Lahan;
+use App\Pembeli;
+use App\Penjual;
+use App\Lahan;
 use App\KomentarPembeli;
 
 class PembeliController extends Controller

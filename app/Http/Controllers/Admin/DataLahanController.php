@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model_Penjual\Penjual;
-use App\Model_Penjual\Lahan;
-use App\Model_Pembeli\Pembeli;
+use App\Penjual;
+use App\Lahan;
+use App\Pembeli;
 
 use App\Exports\lahanmasukExport;
 use App\Exports\lahanjualExport;

@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model_Penjual\Penjual;
+use App\Penjual;
 
 class KomentarPenjual extends Model
 {   

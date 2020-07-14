@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\AuthPembeli;
 
 use App\User;
-use App\Model_Pembeli\Pembeli;
+use App\Pembeli;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -72,7 +72,7 @@ class RegisterController extends Controller
     protected function createPembeli(Request $request)
     {
         $this->validator($request->all())->validate();
-        $admin = \App\Model_Pembeli\Pembeli::create([
+        $admin = \App\Pembeli::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
