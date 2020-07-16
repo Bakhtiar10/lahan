@@ -14,6 +14,11 @@
         <div class="header">
             <h2><strong>Detail Lahan</strong></h2>
         </div>
+        @if(Session::has('message'))
+        <div class="alert alert-success" role="alert">
+            {{Session::get('message')}}
+        </div>
+        @endif
         <div class="card-body ">
             <div class="product-store">
                 <div class="row">
@@ -74,85 +79,68 @@
 </div>
 
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="formModal"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="formModal">Apakah anda yakin ingin mensurvei lahan ? </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <label for="email_address1">Nama Lengkap</label>
-                        <div class="form-group">
-                            <div class="form-line">
-                                <input type="text" id="email_address1" class="form-control" placeholder="Masukan Nama">
+    <form role="form" action="{{url('pembeli/survei/simpan')}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="formModal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="formModal">Apakah anda yakin ingin mensurvei lahan ? </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                            <input type="hidden" name="id_lahan" value="{{ $peta->id }}">
+
+
+                            <label for="nama_penyurvei">Nama Lengkap</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="nama_penyurvei"
+                                        placeholder="Masukan Nama">
+                                </div>
                             </div>
-                        </div>
-                        <label for="password">No Telepon</label>
-                        <div class="form-group">
-                            <div class="form-line">
-                                <input type="number" id="no_hp" class="form-control" placeholder="Masukan No Telepon ">
+            
+                            <label for="no_hp">No Telepon</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="number" class="form-control" name="no_hp"
+                                        placeholder="Masukan No Telepon ">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-line">
-                                <label for="foto">Foto KTP:</label>
-                                <input type="file" class="form-control" name="foto">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label for="foto_ktp">Foto KTP</label>
+                                    <input type="file" class="form-control" name="foto_ktp">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-line">
-                                <label>Tanggal</label>
-                                <input type="text" class="datepicker">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label>Tanggal</label>
+                                    <input type="text" class="datepicker" name="tanggal">
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-line">
-                                <label>Waktu</label>
-                                <input type="text" class="timepicker">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label>Waktu</label>
+                                    <input type="text" class="timepicker" name="waktu">
 
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                    <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        var elems = document.querySelectorAll('.timepicker');
-                        var instances = M.Timepicker.init(elems, options);
-                    });
-
-                    // Or with jQuery
-
-                    $(document).ready(function() {
-                        $('.timepicker').timepicker();
-                    });
-                    </script>
-                    <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        var elems = document.querySelectorAll('.datepicker');
-                        var instances = M.Datepicker.init(elems, options);
-                    });
-
-                    // Or with jQuery
-
-                    $(document).ready(function() {
-                        $('.datepicker').datepicker();
-                    });
-                    </script>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-info waves-effect">Simpan</button>
-                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Cancel</button>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ url('/pembeli/detail_lahan') }}" class="btn btn-md btn-danger"
+                            type="button">Batal</a>
+                        <button type="submit" class="btn btn-md btn-primary">Simpan</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
-
 
 
 <div class="container">
@@ -214,4 +202,32 @@ function balasKomentar(id, title) {
     $('#replyComment').val(title)
 }
 </script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.timepicker');
+    var instances = M.Timepicker.init(elems, options);
+});
+
+// Or with jQuery
+
+$(document).ready(function() {
+    $('.timepicker').timepicker();
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, options);
+});
+
+// Or with jQuery
+
+$(document).ready(function() {
+    $('.datepicker').datepicker();
+});
+</script>
+
+
 @endsection

@@ -47,6 +47,7 @@ async function getPeta(){
       let marker = new mapboxgl.Marker();
         showMarker(p, marker);
     });
+    
 
 
     semua.addEventListener('click', function(){

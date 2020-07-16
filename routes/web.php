@@ -67,7 +67,9 @@ Route::prefix('admin')->group(function() {
     Route::get('/komentpenjual_excel', 'Admin\KomentarWebsiteController@penjualExcel');
     Route::get('/komentpembeli_excel', 'Admin\KomentarWebsiteController@pembeliExcel');
 
-    Route::get('/survei', 'Admin\SurveiLahanController@index')->name('survei');
+    Route::get('/survei', 'Admin\SurveiController@index')->name('admin.survei');
+
+    Route::get('/status_survei', 'Admin\SurveiController@status_survei');
 
 });
 
@@ -130,6 +132,8 @@ Route::prefix('pembeli')->group(function() {
 
     Route::post('/lihat', 'Pembeli\PetaController@store_lahan')->name('store');
     Route::get('/survei', 'Pembeli\SurveiPembeliController@index')->name('surveipembeli');
+
+    Route::post('survei/simpan','Pembeli\SurveiPembeliController@store')->name('simpan');
 });
 
     

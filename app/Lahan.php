@@ -5,6 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Image;
 use App\Comment;
+use App\Penjual;
+use App\Survei;
+
 
 class Lahan extends Model
 {
@@ -21,5 +24,9 @@ class Lahan extends Model
 
     public function comments(){
         return $this->hasMany(Comment::class,'id_lahan')->whereNull('parent_id');
+    }
+
+    public function survey(){
+        return $this->hasMany(Survei::class);
     }
 }

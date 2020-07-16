@@ -58,7 +58,7 @@
                                             <input type="hidden" name="lahan_id" value="{{ $masuk->id }}">
                                             <input type="hidden" name="status_lahan" value="1">
 
-                                            <button class="btn btn-success">Dijual</button>
+                                            <button class="btn btn-success">Konfirmasi</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -128,7 +128,7 @@
                                             <input type="hidden" name="lahan_id" value="{{ $jual->id }}">
                                             <input type="hidden" name="status_lahan" value="0">
 
-                                            <button class="btn btn-success">Tidak Dijual</button>
+                                            <button class="btn btn-success">Terpublish</button>
                                         </form>
                                     </td>
                                 </tr>

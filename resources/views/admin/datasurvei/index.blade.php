@@ -21,35 +21,42 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Tanggal Survei</th>
+                                    <th>Waktu</th>
                                     <th>Nama Penyurvei</th>
                                     <th>Foto KTP</th>
                                     <th>No Hp</th>
-                                    <th>Alamat</th>
+                                    <th>Lokasi</th>
                                     <th>Judul Lahan</th>
-                                    <th>Penjual</th>
+                                    <th>Nama Penjual</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
 
                             <tbody>
+                                @php $no = 1; @endphp
+                                @foreach($survei_masuk as $datas)
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $datas->tanggal }}</td>
+                                    <td>{{ $datas->waktu }}</td>
+                                    <td>{{ $datas->nama_penyurvei }}</td>
                                     <td>
-                                        <form action="" method="get">
-                                            <input type="hidden" name="" value="">
-                                            <input type="hidden" name="status_lahan" value="0">
-                                            <button class="btn btn-succes">Konfirmasi</button>
+                                        <img src="{{ asset($datas->foto_ktp) }}" alt="" width="100">
+                                    </td>
+                                    <td>{{ $datas->no_hp }}</td>
+                                    <td>{{ $datas->lahan->alamat}}</td>
+                                    <td>{{ $datas->lahan->judul_lahan}}</td>
+                                    <td>{{ $datas->lahan->penjual->name }}</td>
+                                    <td>
+                                        <form action="{{ url('/admin/status_survei') }}" method="get">
+                                            <input type="hidden" name="survei_id" value="{{ $datas->id }}">
+                                            <input type="hidden" name="status_survei" value="1">
+
+                                            <button class="btn btn-success">Konfirmasi</button>
                                         </form>
-                                        <br>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -81,26 +88,41 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Tanggal Survei</th>
+                                    <th>Waktu</th>
                                     <th>Nama Penyurvei</th>
                                     <th>Foto KTP</th>
                                     <th>No Hp</th>
-                                    <th>Alamat</th>
+                                    <th>Lokasi</th>
                                     <th>Judul Lahan</th>
-                                    <th>Penjual</th>
+                                    <th>Nama Penjual</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
 
-                            <tbody>
+                                @php $no = 1; @endphp
+                                @foreach($konfirmasi as $datas)
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $datas->tanggal }}</td>
+                                    <td>{{ $datas->waktu }}</td>
+                                    <td>{{ $datas->nama_penyurvei }}</td>
+                                    <td>
+                                        <img src="{{ asset($datas->foto_ktp) }}" alt="" width="100">
+                                    </td>
+                                    <td>{{ $datas->no_hp }}</td>
+                                    <td>{{ $datas->lahan->alamat}}</td>
+                                    <td>{{ $datas->lahan->judul_lahan}}</td>
+                                    <td>{{ $datas->lahan->penjual->name }}</td>
+                                    <td>
+                                    <form action="{{ url('/admin/status_survei') }}" method="get">
+                                        <input type="hidden" name="survei_id" value="{{ $datas->id }}">
+                                        <input type="hidden" name="status_survei" value="0">
+
+                                        <button class="btn btn-success">Cancel</button>
+                                    </form>
+                                    </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

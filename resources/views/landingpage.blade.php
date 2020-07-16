@@ -56,7 +56,7 @@
                 <div class="col-xs-12 text-center">
                     <img src="{{ asset('assets/landingpage/images/lahan.png') }}" class="img-full" alt=""
                         style="width: 250px; height: 200px;">
-                    <h4 class="text-uppercase">Pemesanan Lahan</h4>
+                    <h4 class="text-uppercase">Penjualan Lahan</h4>
                 </div>
             </div>
             <div class="space-120"></div>

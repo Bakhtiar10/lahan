@@ -2,7 +2,7 @@
 @section('title') Data Survei @endsection
 @section("content")
 
-<div class="container">
+<div class="container-fluid">
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
@@ -18,9 +18,8 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Tanggal Survei</th>
+                                        <th>Waktu</th>
                                         <th>Penjual</th>
-                                        <th>Judul Lahan</th>
-                                        <th>Jenis Lahan</th>
                                         <th>Harga Lahan</th>
                                         <th>No Hp Penjual</th>
                                         <th>Alamat</th>
@@ -30,18 +29,25 @@
                                 </thead>
 
                                 <tbody>
+                                    @php $no = 1; @endphp
+                                    @foreach($survei as $datas)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Belum terkonfirmasi</td>
-                                        <td>Detail Lahan</td>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $datas->tanggal }}</td>
+                                        <td>{{ $datas->waktu }}</td>
+                                        <td>
+                                            {{ $datas->lahan->penjual->name }}
+                                        </td>
+                                        <td>Rp. {{number_format($datas->lahan->harga_lahan,0,',','.')}}</td>
+                                        <td>{{ $datas->lahan->no_hp }}</td>
+                                        <td>{{ $datas->lahan->alamat}}</td>
+                                        <td>{{ $datas->status_survei ? 'Telah dikonfirmasi' : 'Belum dikonfirmasi' }}</td>
+                                        <td>
+                                            <a href="{{route('detail_lahan',$datas->id_lahan)}}">Detail Lahan</a>
+                                            <div class="button btn btn-success">Pesan Lahan</div>
+                                        </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

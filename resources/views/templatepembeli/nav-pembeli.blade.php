@@ -19,7 +19,7 @@
                         </a>
                     </li>
 
-                    <li class="dropdown">
+                    <!-- <li class="dropdown">
                         <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown"
                             role="button">
                             <i class="far fa-bell"></i>
@@ -49,7 +49,7 @@
                                 <a href="#" onClick="return false;">View All Notifications</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
 
                     <li>
                         <a href="/pembeli/survei" class="" style="color: white">
