@@ -93,16 +93,8 @@
                     </div>
                     <div class="modal-body">
                             <input type="hidden" name="id_lahan" value="{{ $peta->id }}">
-
-
-                            <label for="nama_penyurvei">Nama Lengkap</label>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="text" class="form-control" name="nama_penyurvei"
-                                        placeholder="Masukan Nama">
-                                </div>
-                            </div>
-            
+                            <input type="hidden" class="form-control" name="id_pembeli" value="{{ Auth::user()->id }}" >
+                            
                             <label for="no_hp">No Telepon</label>
                             <div class="form-group">
                                 <div class="form-line">

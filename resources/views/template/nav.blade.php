@@ -18,6 +18,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <!-- #START# Notifications-->
                 <li class="dropdown">
                     <a href="#" onClick="return false;" class="dropdown-toggle" data-toggle="dropdown" role="button">
                         <i class="far fa-bell"></i>

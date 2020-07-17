@@ -54,7 +54,7 @@
                         </li>
                     </ul>
                 </li>
-                
+
                 <li>
                     <a href="/admin/survei">
                         <i class="fas fa-flag"></i>

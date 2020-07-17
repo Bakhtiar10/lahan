@@ -39,7 +39,7 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $datas->tanggal }}</td>
                                     <td>{{ $datas->waktu }}</td>
-                                    <td>{{ $datas->nama_penyurvei }}</td>
+                                    <td>{{ $datas->pembeli->name }}</td>
                                     <td>
                                         <img src="{{ asset($datas->foto_ktp) }}" alt="" width="100">
                                     </td>
@@ -105,7 +105,7 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $datas->tanggal }}</td>
                                     <td>{{ $datas->waktu }}</td>
-                                    <td>{{ $datas->nama_penyurvei }}</td>
+                                    <td>{{ $datas->pembeli->name }}</td>
                                     <td>
                                         <img src="{{ asset($datas->foto_ktp) }}" alt="" width="100">
                                     </td>

@@ -18,10 +18,11 @@ class CreateSurveiTable extends Migration
             $table->Integer('id_lahan')->unsigned();
             $table->date('tanggal');
             $table->time('waktu');
-            $table->text('nama_penyurvei');
+            $table->Integer('id_pembeli')->unsigned();
             $table->text('foto_ktp');
             $table->char('no_hp', 15);
             $table->boolean('status_survei')->default(false);
+            $table->boolean('status_pesan')->default(false);
             $table->timestamps();
         });
     }

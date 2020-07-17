@@ -15,4 +15,8 @@ class Survei extends Model
     public function lahan(){
         return $this->belongsTo(Lahan::class,'id_lahan');
     }
+
+    public function pembeli(){
+        return $this->belongsTo(Pembeli::class, 'id_pembeli');
+    }
 }

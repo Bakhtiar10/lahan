@@ -69,8 +69,6 @@ Route::prefix('admin')->group(function() {
 
     Route::get('/survei', 'Admin\SurveiController@index')->name('admin.survei');
 
-    Route::get('/status_survei', 'Admin\SurveiController@status_survei');
-
 });
 
 
@@ -104,6 +102,8 @@ Route::prefix('penjual')->group(function() {
     Route::get('/survei', 'Penjual\SurveiPenjualController@index')->name('surveipenjual');
 
     Route::post('/comments', 'Penjual\DataSayaController@comment')->name('penjual.komentar');
+
+    Route::get('/status_jual', 'Penjual\DataLahanController@statusjual');
 
 });
 

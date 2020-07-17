@@ -34,8 +34,8 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $datas->tanggal }}</td>
                                         <td>{{ $datas->waktu }}</td>
-                                        <td>{{ $datas->nama_penyurvei }}</td>
-                                       <td><img src="{{ asset($datas->foto_ktp) }}" alt="" width="100"></td>
+                                        <td>{{ $datas->pembeli->name }}</td>
+                                        <td><img src="{{ asset($datas->foto_ktp) }}" alt="" width="100"></td>
                                         <td>{{ $datas->no_hp }}</td>
                                         <td>{{ $datas->lahan->judul_lahan }}</td>
                                         <td>Rp. {{ number_format($datas->lahan->harga_lahan,0,"",".") }}</td>
@@ -66,31 +66,32 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Tanggal Pesan</th>
-                                        <th>Nama Pemesan</th>
+                                        <th>Nama Pembeli</th>
                                         <th>Foto KTP</th>
                                         <th>No Hp</th>
-                                        <th>Alamat</th>
                                         <th>Judul Lahan</th>
                                         <th>Harga Lahan</th>
+                                        <th>Jenis Lahan</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
+                                    @php $no = 1; @endphp
+                                    @foreach($pesan_masuk as $pesan)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $pesan->pembeli->name }}</td>
+                                        <td><img src="{{ asset($datas->foto_ktp) }}" alt="" width="100"></td>
+                                        <td>{{ $pesan->no_hp }}</td>
+                                        <td>{{ $pesan->lahan->judul_lahan }}</td>
+                                        <td>Rp. {{ number_format($datas->lahan->harga_lahan,0,"",".") }}</td>
+                                        <td>{{ $pesan->lahan->jenis_lahan  }}</td>
                                         <td>
-                                            <div class="button btn btn-success">Konfirmasi </div>
+                                            
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -120,25 +121,30 @@
                                         <th>Nama Pembeli</th>
                                         <th>Foto KTP</th>
                                         <th>No Hp</th>
-                                        <th>Alamat</th>
                                         <th>Judul Lahan</th>
+                                        <th>Jenis Lahan</th>
                                         <th>Harga Lahan</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
+                                    @php $no = 1; @endphp
+                                    @foreach($konfirmasi as $datas)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Sold Out</td>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $datas->tanggal }}</td>
+                                        <td>{{ $datas->pembeli->name }}</td>
+                                        <td><img src="{{ asset($datas->foto_ktp) }}" alt="" width="100"></td>
+                                        <td>{{ $datas->no_hp }}</td>
+                                        <td>{{ $datas->lahan->judul_lahan }}</td>
+                                        <td>{{ $datas->lahan->jenis_lahan }}</td>
+                                        <td>Rp. {{ number_format($datas->lahan->harga_lahan,0,"",".") }}</td>
+                                        <td>
+                                            
+                                        </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

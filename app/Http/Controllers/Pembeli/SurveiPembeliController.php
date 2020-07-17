@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Pembeli;
 use App\Image;
 use App\Survei;
+use Auth;
 
 class SurveiPembeliController extends Controller
 {
@@ -18,7 +19,7 @@ class SurveiPembeliController extends Controller
 
     public function index()
     {
-        $survei = Survei::with('lahan')->get();
+        $survei = Survei::with('lahan')->where('id_pembeli', Auth::user()->id)->get();
         return view('pembeli.datasurvei.index',compact('survei'));
     }
 
@@ -27,7 +28,6 @@ class SurveiPembeliController extends Controller
         // dd($request->all());
 
         $this->validate($request, [ 
-            'nama_penyurvei' => 'required',
             'no_hp'          => 'required',
             'foto_ktp'       => 'required',
             'tanggal'        => 'required',
@@ -41,7 +41,7 @@ class SurveiPembeliController extends Controller
 
         $survei = Survei::create([
             'id_lahan'       => $request->id_lahan,
-            'nama_penyurvei' => $request->nama_penyurvei,
+            'id_pembeli'     => $request->id_pembeli,
             'no_hp'          => $request->no_hp,
             'foto_ktp'       => $foto_ktp,
             'tanggal'        => $tanggal,
@@ -49,7 +49,6 @@ class SurveiPembeliController extends Controller
 
         ]);
         return redirect()->back()->with('message', 'survei telah dikirim!'); 
-        
     }
     
 }
