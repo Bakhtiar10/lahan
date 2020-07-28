@@ -27,6 +27,6 @@ class Lahan extends Model
     }
 
     public function survey(){
-        return $this->hasMany(Survei::class);
+        return $this->hasMany(Survei::class, 'id_lahan');
     }
 }

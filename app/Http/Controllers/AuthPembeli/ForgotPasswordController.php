@@ -29,4 +29,8 @@ class ForgotPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    public function showLinkRequestFormPembeli(){
+        return view('authPembeli.passwords.email');
+    }
 }

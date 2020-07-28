@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Pembeli;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Pembeli;
+use App\Penjual;
+Use App\Lahan;
 use App\Image;
 use App\Survei;
 use Auth;
@@ -50,5 +52,17 @@ class SurveiPembeliController extends Controller
         ]);
         return redirect()->back()->with('message', 'survei telah dikirim!'); 
     }
+
+    public function pesanLahan(Request $request){
+        $survei = Survei::findOrFail($request->survei_id);
+        
+            $survei->status_pesan = $request->status_pesan;
+            $survei->save();
+        
+
+        return redirect()->back()->with('message', 'Pesan telah terkirim!');
+    }
+
+
     
 }

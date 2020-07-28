@@ -6,7 +6,7 @@
     <div class="col-lg-6 col-sm-6">
         <div class="counter-box text-center white">
             <div class="text font-17 m-b-5">Statistik Lahan</div>
-            <div id="chart" style="width: 50px; height: 10px; margin-bottom: 10px"></div>
+            <canvas id="chartJenisLahan" height="280" width="600"></canvas>
         </div>
     </div>
     <div class="col-lg-6 col-sm-6">
@@ -20,35 +20,36 @@
         </div>
     </div>
 </div>
-<script>
-var options = {
-    series: [1, 2, 3],
-    chart: {
-        width: 380,
-        type: 'pie',
-    },
-    labels: ['Lahan Kavling', 'Lahan Perkebunan', 'Lahan Pertanian'],
-    responsive: [{
-        breakpoint: 480,
-        options: {
-            chart: {
-                width: 200
-            },
-            legend: {
-                position: 'bottom'
-            }
-        }
-    }]
-};
-
-var chart = new ApexCharts(document.querySelector("#chart"), options);
-chart.render();
-</script>
-
 
 @endsection
 
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
+<script>
+    var urlJenisLahan = "{{ route('chartJenisLahan') }}";
+    
+    
+    $(document).ready(function () {
+        var total = new Array();
+        $.get(urlJenisLahan, function (response) {
+            response.forEach(function (dataJenisLahan) {
+                total.push(dataJenisLahan.total);
+            });
 
+            var ctx = document.getElementById("chartJenisLahan").getContext('2d');        
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Lahan Kavling', 'Lahan Pertanian', 'Lahan Perkebunan'],
+                    datasets: [{
+                        data: total,
+                        backgroundColor: ["#a3c7c9","#889d9e","#647678"],
+                    }]
+                },
+                options: {}
+            });
+        });
+    });
+
+</script>
 @endsection

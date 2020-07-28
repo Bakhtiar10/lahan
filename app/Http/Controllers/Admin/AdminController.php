@@ -29,14 +29,6 @@ class AdminController extends Controller
         return view('admin.beranda.index',  compact('penjual','pembeli'));
     }
 
-    public function chart()
-    {
-            // $lahan = Lahan::all();
-            // $penjual = Penjual::all();
-            $data = Pembeli::all();
-     
-        return response()->json($data);
-
-    }
+    
 
 }

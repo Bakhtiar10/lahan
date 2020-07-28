@@ -31,4 +31,10 @@ class PenjualController extends Controller
 
         return redirect()->route('penjual.beranda')->with('message', 'Komentar telah dikirim');
     }
+
+
+    public function profile()
+    {
+        return view('penjual.profile.index');
+    }
 }

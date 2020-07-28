@@ -34,7 +34,7 @@
                             <div class="product-gallery-featured">
 
                                 @foreach($peta->images as $dp)
-                                <img src="{{asset($dp->foto)}}" alt="">
+                                <img src="{{asset($dp->foto)}}" alt="" style="width: 400px; height: 200px;">
                                 @break
                                 @endforeach
                             </div>
@@ -53,7 +53,7 @@
                                 <dd class="col-sm-9">{{$peta->judul_lahan}}</dd>
 
                                 <dt class="col-sm-3">Luas Lahan</dt>
-                                <dd class="col-sm-9">{{$peta->luas_lahan}}</dd>
+                                <dd class="col-sm-9">{{$peta->luas_lahan}} M2</dd>
 
                                 <dt class="col-sm-3">Jenis Lahan</dt>
                                 <dd class="col-sm-9">{{$peta->jenis_lahan}}</dd>
@@ -66,6 +66,10 @@
 
                                 <dt class="col-sm-3">No Penjual</dt>
                                 <dd class="col-sm-9">{{$peta->no_hp}}</dd>
+
+
+                                <dt class="col-sm-3">Deskripsi</dt>
+                                <dd class="col-sm-9">{{$peta->deskripsi}}</dd>
                             </dl>
                             <br>
                             <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -95,11 +99,10 @@
                             <input type="hidden" name="id_lahan" value="{{ $peta->id }}">
                             <input type="hidden" class="form-control" name="id_pembeli" value="{{ Auth::user()->id }}" >
                             
-                            <label for="no_hp">No Telepon</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="number" class="form-control" name="no_hp"
-                                        placeholder="Masukan No Telepon ">
+                                    <input type="hidden" class="form-control" name="no_hp"
+                                        placeholder="Masukan No Telepon " value="{{ Auth::user()->no_hp }}">
                                 </div>
                             </div>
                             <div class="form-group">

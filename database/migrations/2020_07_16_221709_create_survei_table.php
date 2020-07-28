@@ -19,7 +19,7 @@ class CreateSurveiTable extends Migration
             $table->date('tanggal');
             $table->time('waktu');
             $table->Integer('id_pembeli')->unsigned();
-            $table->text('foto_ktp');
+            $table->longText('foto_ktp')->nullable();
             $table->char('no_hp', 15);
             $table->boolean('status_survei')->default(false);
             $table->boolean('status_pesan')->default(false);

@@ -21,31 +21,40 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="judul_lahan">Judul Lahan</label>
-                                <input type="text" value="{{old('judul_lahan')}}" name="judul_lahan"
-                                    class="form-control" placeholder="Masukan Judul Lahan">
+                                <input type="text" value="{{old('judul_lahan')}}" name="judul_lahan" id="judul_lahan"
+                                    class="form-control @error('judul_lahan') is-invalid @enderror" placeholder="Masukan Judul Lahan">
                             </div>
+                            @error('judul_lahan')
+                                <span style="color:red">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="luas_lahan">Luas Lahan</label>
-                                <input type="text" value="{{old('luas_lahan')}}" name="luas_lahan" class="form-control"
+                                <input type="text" value="{{old('luas_lahan')}}" name="luas_lahan" class="form-control  @error('luas_lahan') is-invalid @enderror" id="luas_lahan"
                                     placeholder="Masukan Luas">
                             </div>
+                            @error('luas_lahan')
+                                <span style="color:red">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="harga_lahan">Harga Lahan</label>
-                                <input type="text" value="{{old('harga_lahan')}}" name="harga_lahan"
-                                    class="form-control input-harga" placeholder="Masukan Harga">
+                                <input type="text" value="{{old('harga_lahan')}}" name="harga_lahan" id="harga_lahan"
+                                    class="form-control input-harga  @error('harga_lahan') is-invalid @enderror" placeholder="Masukan Harga">
                             </div>
+                            @error('harga_lahan')
+                                <span style="color:red">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="sertifikat">Sertifikat</label>
-                                <select class="form-control" name="sertifikat" id="sertifikat">
+                                <select class="form-control  @error('sertifikat') is-invalid @enderror" name="sertifikat" id="sertifikat">
                                     <option value="{{old('sertifikat')}}">-- Pilih Jenis Sertifikat --</option>
                                     <option value="SHM - Sertifikat Hak Milik"
                                         {{old('sertifikat') === 'SHM - Sertifikat Hak Milik' ? 'selected' : ''}}>SHM -
@@ -58,26 +67,21 @@
                                     <option value="HP - Hak Pakai"
                                         {{old('sertifikat') === 'HP - Hak Pakai' ? 'selected' : ''}}>HP - Hak Pakai</option>
 
-                                        <option value="Belum Terdaftar"
-                                        {{old('sertifikat') === 'Belum Terdaftar' ? 'selected' : ''}}>Belum
-                                        Terdaftar</option>
+                                        <option value="Lainnya"
+                                        {{old('sertifikat') === 'Lainnya' ? 'selected' : ''}}>Lainnya
+                                        </option>
                                 </select>
                             </div>
+                            @error('sertifikat')
+                                <span style="color:red">{{ $message }}</span>
+                            @enderror
                         </div>
-
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="no_hp">Nomor Telepon</label>
-                                <input type="number" value="{{old('no_hp')}}" name="no_hp" class="form-control"
-                                    placeholder="Masukan Nomor Telepon">
-                            </div>
-                        </div>
+                        
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="jenis_lahan">Jenis Lahan</label>
-                                <select class="form-control" name="jenis_lahan" id="jenis_lahan">
+                                <select class="form-control  @error('jenis_lahan') is-invalid @enderror" name="jenis_lahan" id="jenis_lahan">
                                     <option value="{{old('jenis_lahan')}}">-- Pilih Jenis Lahan --</option>
                                     <option value="Lahan Kavling"
                                         {{old('jenis_lahan') === 'Lahan Kavling' ? 'selected' : ''}}>Lahan Kavling
@@ -90,21 +94,40 @@
                                     </option>
                                 </select>
                             </div>
+                            @error('jenis_lahan')
+                                <span style="color:red">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="alamat">Alamat</label>
-                                <input type="text" value="{{old('alamat')}}" name="alamat" class="form-control"
-                                    placeholder="Masukan Alamat">
+                                <input type="text" value="{{old('alamat')}}" name="alamat" class="form-control  @error('alamat') is-invalid @enderror"
+                                    placeholder="Masukan Alamat" id="alamat">
                             </div>
+                            @error('alamat')
+                                <span style="color:red">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="foto">Foto:</label>
-                                <input type="file" class="form-control" name="foto">
+                                <input type="file" class="form-control  @error('foto') is-invalid @enderror" name="foto" id="foto">
                             </div>
+                            @error('foto')
+                                <span style="color:red">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="deskripsi">Deskripsi</label>
+                                <input type="hidden" value="{{ Auth::user()->no_hp }}" name="no_hp" class="form-control">
+                                <textarea name="deskripsi" id="deskripsi" cols="30" rows="5"class="form-control @error('deskripsi') is-invalid @enderror" placeholder="Masukan deskripsi"></textarea>
+                            </div>
+                            @error('deskripsi')
+                                <span style="color:red">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="col-md-6">

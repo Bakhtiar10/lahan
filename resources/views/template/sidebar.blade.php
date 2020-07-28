@@ -34,23 +34,34 @@
                 </li>
 
                 <li>
-                    <a href="/admin/datalahan">
+                    <a href="#" onClick="return false;" class="menu-toggle">
                         <i class="fas fa-map"></i>
                         <span>Data Lahan</span>
                     </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="/admin/datalahanmasuk">Data Lahan Masuk</a>
+                        </li>
+                        <li>
+                            <a href="/admin/datalahandijual">Data Lahan Dijual</a>
+                        </li>
+                        <li>
+                            <a href="/admin/datalahansoldout">Data Lahan Soldout</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li>
                     <a href="#" onClick="return false;" class="menu-toggle">
                         <i class="fas fa-paw"></i>
-                        <span>Komentar Website</span>
+                        <span>Report Website</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="/admin/penjual">Komentar Penjual</a>
+                            <a href="/admin/penjual">Report Penjual</a>
                         </li>
                         <li>
-                            <a href="/admin/pembeli">Komentar Pembeli</a>
+                            <a href="/admin/pembeli">Report Pembeli</a>
                         </li>
                     </ul>
                 </li>

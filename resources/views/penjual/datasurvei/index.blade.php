@@ -82,13 +82,20 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $pesan->pembeli->name }}</td>
-                                        <td><img src="{{ asset($datas->foto_ktp) }}" alt="" width="100"></td>
+                                        <td><img src="{{ asset($pesan->foto_ktp) }}" alt="" width="100"></td>
                                         <td>{{ $pesan->no_hp }}</td>
                                         <td>{{ $pesan->lahan->judul_lahan }}</td>
-                                        <td>Rp. {{ number_format($datas->lahan->harga_lahan,0,"",".") }}</td>
+                                        <td>Rp. {{ number_format($pesan->lahan->harga_lahan,0,"",".") }}</td>
                                         <td>{{ $pesan->lahan->jenis_lahan  }}</td>
                                         <td>
-                                            
+                                            <form action="{{ route('pesan.jual') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="lahan_id" value="{{ $pesan->lahan->id }}">
+                                                <input type="hidden" name="status_jual" value="1">
+                                                <input type="hidden" name="id_pembeli" value={{ $pesan->pembeli->id }}>
+                                                <input type="hidden" name="foto_ktp" value={{ $pesan->foto_ktp }}>
+                                                <button class="btn btn-primary btn-sm">Konfirmasi</button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -117,7 +124,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Tanggal Pembelian</th>
+                                        <th>Tanggal Pesan</th>
                                         <th>Nama Pembeli</th>
                                         <th>Foto KTP</th>
                                         <th>No Hp</th>
@@ -129,21 +136,19 @@
                                 </thead>
 
                                 <tbody>
-                                    @php $no = 1; @endphp
-                                    @foreach($konfirmasi as $datas)
-                                    <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $datas->tanggal }}</td>
-                                        <td>{{ $datas->pembeli->name }}</td>
-                                        <td><img src="{{ asset($datas->foto_ktp) }}" alt="" width="100"></td>
-                                        <td>{{ $datas->no_hp }}</td>
-                                        <td>{{ $datas->lahan->judul_lahan }}</td>
-                                        <td>{{ $datas->lahan->jenis_lahan }}</td>
-                                        <td>Rp. {{ number_format($datas->lahan->harga_lahan,0,"",".") }}</td>
-                                        <td>
-                                            
-                                        </td>
-                                    </tr>
+                                @php $no = 1; @endphp
+                                    @foreach($sold_out as $so)
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $so->lahan->updated_at }}</td>
+                                            <td>{{ $so->pembeli->name }}</td>
+                                            <td><img src="{{ asset($so->foto_ktp) }}" alt="" width="100"></td>
+                                            <td>{{ $so->pembeli->no_hp }}</td>
+                                            <td>{{ $so->lahan->judul_lahan }}</td>
+                                            <td>{{ $so->lahan->jenis_lahan }}</td>
+                                            <td>Rp. {{ number_format($so->lahan->harga_lahan) }}</td>
+                                            <td>Sold Out</td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>

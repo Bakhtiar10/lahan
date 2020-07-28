@@ -39,7 +39,10 @@ Route::prefix('admin')->group(function() {
     Route::get('/datapenjual', 'Admin\DataUserController@penjual')->name('admin.datapenjual');
     Route::get('/datapembeli', 'Admin\DataUserController@pembeli')->name('admin.datapembeli');
 
-    Route::get('/datalahan', 'Admin\DataLahanController@index')->name('admin.datalahan');
+    Route::get('/datalahanmasuk', 'Admin\DataLahanController@index')->name('admin.datalahanmasuk');
+    Route::get('/datalahandijual', 'Admin\DataLahanController@lahandijual')->name('admin.datalahandijual');
+    Route::get('/datalahansoldout', 'Admin\DataLahanController@lahansoldout')->name('admin.datalahansoldout');
+
     Route::get('/status', 'Admin\DataLahanController@statuslahan');
 
     Route::get('/chart','Admin\DashboardController@chart');
@@ -68,6 +71,8 @@ Route::prefix('admin')->group(function() {
     Route::get('/komentpembeli_excel', 'Admin\KomentarWebsiteController@pembeliExcel');
 
     Route::get('/survei', 'Admin\SurveiController@index')->name('admin.survei');
+    Route::patch('/survei/{id}', 'Admin\SurveiController@status_survei')->name('admin.status.survei');
+
 
 });
 
@@ -103,7 +108,10 @@ Route::prefix('penjual')->group(function() {
 
     Route::post('/comments', 'Penjual\DataSayaController@comment')->name('penjual.komentar');
 
-    Route::get('/status_jual', 'Penjual\DataLahanController@statusjual');
+    Route::post('/status_jual', 'Penjual\SurveiPenjualController@statusjual')->name('pesan.jual');
+
+
+    Route::get('profile', 'Penjual\PenjualController@profile')->name('penjual.profile');
 
 });
 
@@ -116,7 +124,7 @@ Route::prefix('pembeli')->group(function() {
     Route::post('/logout', 'AuthPembeli\LoginController@pembeliLogout')->name('pembeli.logout');
     Route::get('/register', 'AuthPembeli\RegisterController@showPembeliRegisterForm')->name('pembeli.register');
     Route::post('/register', 'AuthPembeli\RegisterController@createPembeli')->name('pembeli.register.submit');
-    Route::get('/password/reset', 'AuthPembeli\ForgotPasswordController@showLinkRequestForm')->name('pembeli.password.request');
+    Route::get('/password/reset', 'AuthPembeli\ForgotPasswordController@showLinkRequestFormPembeli')->name('pembeli.password.request');
     Route::post('/password/email', 'AuthPembeli\ForgotPasswordController@sendResetLinkEmail')->name('pembeli.password.email');
     Route::get('/password/reset/{token}', 'AuthPembeli\ResetPasswordController@showResetForm')->name('pembeli.password.reset');
     Route::post('/password/reset', 'AuthPembeli\ResetPasswordController@reset');
@@ -134,8 +142,15 @@ Route::prefix('pembeli')->group(function() {
     Route::get('/survei', 'Pembeli\SurveiPembeliController@index')->name('surveipembeli');
 
     Route::post('survei/simpan','Pembeli\SurveiPembeliController@store')->name('simpan');
+
+    Route::post('/survei/pesan', 'Pembeli\SurveiPembeliController@pesanLahan')->name('survei.pesan');
+
+
+    Route::get('profile', 'Pembeli\PembeliController@profile')->name('penjual.profile');
+
 });
 
+Route::get('chart-jenis-lahan', 'ChartController@chartJenisLahan')->name('chartJenisLahan');
     
 
 

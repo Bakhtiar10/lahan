@@ -16,17 +16,18 @@ class CreateLahanTable extends Migration
         Schema::create('lahan', function (Blueprint $table) {
             $table->increments('id');
             $table->Integer('id_penjual')->unsigned();
-            $table->text('judul_lahan');
-            $table->text('luas_lahan');
+            $table->string('judul_lahan', 50);
+            $table->integer('luas_lahan');
             $table->bigInteger('harga_lahan');
-            $table->text('sertifikat');
+            $table->string('sertifikat');
             $table->char('no_hp', 15);
             $table->string('jenis_lahan');
-            $table->text('alamat');
+            $table->string('alamat',100);
             $table->text('latitude');
             $table->text('longitude');
             $table->boolean('status_jual')->default(false);
             $table->boolean('status_lahan')->default(false);
+            $table->longText('deskripsi');
             $table->timestamps();
 
             $table -> foreign('id_penjual') -> references('id') -> on('penjual') -> onDelete('cascade');

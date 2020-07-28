@@ -41,7 +41,6 @@
                         <li><a href="{{ route('login') }}">Login Admin</a></li>
                         <li><a href="{{ route('penjual.login') }}">Login Penjual</a></li>
                         <li><a href="{{ route('pembeli.login') }}">Login Pembeli</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
                     </ul>
                     @endauth
                 </div>
@@ -56,7 +55,7 @@
                 <div class="col-xs-12 text-center">
                     <img src="{{ asset('assets/landingpage/images/lahan.png') }}" class="img-full" alt=""
                         style="width: 250px; height: 200px;">
-                    <h4 class="text-uppercase">Penjualan Lahan</h4>
+                    <h4 class="text-uppercase">My-Land</h4>
                 </div>
             </div>
             <div class="space-120"></div>
@@ -69,7 +68,7 @@
                 @foreach($lahan as $data)
                 <div class="col-xs-12 col-sm-4 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="panel text-center single-blog">
-                        <img src="{{ asset($data->images[0]->foto) }}" class="img-full" alt="">
+                        <img src="{{ asset($data->images[0]->foto) }}" class="img-full" alt="" style="width: 300px; height: 150px; Margin-top: 20px;">
                         <div class="padding-20">
                             <ul class="list-unstyled list-inline">
                                 <li><span class="ti-user"></span> By: {{ $data->penjual->name }}</li>
@@ -95,7 +94,7 @@
                 @endforeach
             </div>
 
-            <div class="row">
+            <!-- <div class="row">
                 <div class="space-30"></div>
                 <div class="col-xs-12 text-center">
                     <ul class="list-unstyle list-inline paginations">
@@ -111,7 +110,7 @@
                         <li><a href="#"><span class="ti-angle-double-right"></span></a></li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="space-80"></div>
     </section>

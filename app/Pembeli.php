@@ -15,10 +15,6 @@
         protected $table = 'pembeli';
         protected $guarded = [];
 
-        protected $fillable = [
-            'name', 'email', 'password',
-        ];
-
         protected $hidden = [
             'password', 'remember_token',
         ];

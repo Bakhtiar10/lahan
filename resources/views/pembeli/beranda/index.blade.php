@@ -21,15 +21,15 @@
                 <div class="body">
                     <div class="owl-carousel owl-theme" id="single_slide_autoplay">
                         <div class="item">
-                            <img src="../../assets/images/image-gallery/lahan_pertanian.jpg" alt="" style="width:1000px; height:350px; Margin-left: 45px;
+                            <img src="../../assets/images/image-gallery/lahan_pertanian.jpg" alt="" style="width:1000px; height:250px; Margin-left: 45px;
                                 Margin-right: 50px;">
                         </div>
                         <div class="item">
-                            <img src="../../assets/images/image-gallery/lahan_perkebunan.jpg" alt="" style="width:1000px; height:350px; Margin-left: 45px;
+                            <img src="../../assets/images/image-gallery/lahan_perkebunan.jpg" alt="" style="width:1000px; height:250px; Margin-left: 45px;
                                 Margin-right: 50px;">
                         </div>
                         <div class="item">
-                            <img src="../../assets/images/image-gallery/lahan_kavling.png" alt="" style="width:1000px; height:350px; Margin-left: 45px;
+                            <img src="../../assets/images/image-gallery/lahan_kavling.png" alt="" style="width:1000px; height:250px; Margin-left: 45px;
                                 Margin-right: 50px;">
                         </div>
                     </div>
@@ -40,14 +40,14 @@
 </div>
 
 <!-- Single Slide -->
-<div class="space-80"></div>
+<div class="space-30"></div>
 <div class="container">
     <div class="card">
         <div class="row">
             @foreach($lahan as $data)
             <div class="col-xs-12 col-sm-4 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="panel text-center single-blog">
-                    <img src="{{ asset($data->images[0]->foto) }}" class="img-full" alt="">
+                    <img src="{{ asset($data->images[0]->foto) }}" style="width: 300px; height: 150px; Margin-top: 20px;">
                     <div class="padding-20">
                         <ul class="list-unstyled list-inline">
                             <li><span class="ti-user"></span> By : {{ $data->penjual->name }}</li>

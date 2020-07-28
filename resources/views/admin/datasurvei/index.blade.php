@@ -29,6 +29,7 @@
                                     <th>Judul Lahan</th>
                                     <th>Nama Penjual</th>
                                     <th>Action</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
 
@@ -47,12 +48,12 @@
                                     <td>{{ $datas->lahan->alamat}}</td>
                                     <td>{{ $datas->lahan->judul_lahan}}</td>
                                     <td>{{ $datas->lahan->penjual->name }}</td>
+                                    <td> <a href="">Detail</a></td>
                                     <td>
-                                        <form action="{{ url('/admin/status_survei') }}" method="get">
-                                            <input type="hidden" name="survei_id" value="{{ $datas->id }}">
-                                            <input type="hidden" name="status_survei" value="1">
-
-                                            <button class="btn btn-success">Konfirmasi</button>
+                                        <form action="{{ route('admin.status.survei', $datas->id) }}" method="post">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button type="submit" class="btn btn-success">Konfirmasi</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -114,12 +115,11 @@
                                     <td>{{ $datas->lahan->judul_lahan}}</td>
                                     <td>{{ $datas->lahan->penjual->name }}</td>
                                     <td>
-                                    <form action="{{ url('/admin/status_survei') }}" method="get">
-                                        <input type="hidden" name="survei_id" value="{{ $datas->id }}">
-                                        <input type="hidden" name="status_survei" value="0">
-
-                                        <button class="btn btn-success">Cancel</button>
-                                    </form>
+                                    <form action="{{ route('admin.status.survei', $datas->id) }}" method="post">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button type="submit" class="btn btn-danger">Cancel</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

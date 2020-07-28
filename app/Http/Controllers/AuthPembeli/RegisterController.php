@@ -76,6 +76,7 @@ class RegisterController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'no_hp' => $request['no_hp']
         ]);
         return redirect()->intended('pembeli/login');
     }

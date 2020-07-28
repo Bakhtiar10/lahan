@@ -25,7 +25,6 @@
                                     <th>Email</th>
                                     <th>Tanggal & Waktu</th>
                                     <th>Komentar</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
 
@@ -38,7 +37,6 @@
                                     <td>{{ $data->pembeli->email }}</td>
                                     <td>{{ $data->created_at }}</td>
                                     <td>{{ $data->content }}</td>
-                                    <td></td>
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class SurveiController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    
     public function index()
     {
         $survei_masuk = Survei::where('status_survei', 0)->get();
@@ -16,16 +23,10 @@ class SurveiController extends Controller
         return view('admin.datasurvei.index',compact('survei_masuk' , 'konfirmasi'));
     }
 
-    public function status_survei(Request $request)
+    public function status_survei(Request $request, $id)
     {
-        $survei = Survei::findOrFail($request->survei_id);
-        if($request->status_survei == 0){
-            $survei->status_survei = 0;
-            $survei->save();
-        }else{
-            $survei->status_survei = 1;
-            $survei->save();
-        }
+        $survei = Survei::findOrFail($id);
+        $survei->update(['status_survei' => !$survei->status_survei]);
   
         return redirect()->route('admin.survei');
     }

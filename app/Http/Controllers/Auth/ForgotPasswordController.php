@@ -45,7 +45,7 @@ class ForgotPasswordController extends Controller
 
     public function showLinkRequestForm()
     {
-        dd($this->guard());
+        // dd($this->guard());
         return view('auth.passwords.email');
     }
 

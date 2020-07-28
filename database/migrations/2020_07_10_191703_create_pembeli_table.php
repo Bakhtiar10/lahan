@@ -15,9 +15,11 @@ class CreatePembeliTable extends Migration
     {
         Schema::create('pembeli', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('name',50);
+            $table->string('email',50)->unique();
             $table->string('password');
+            $table->char('no_hp', 15);
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

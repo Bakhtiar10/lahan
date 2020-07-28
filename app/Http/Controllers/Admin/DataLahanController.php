@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Penjual;
 use App\Lahan;
 use App\Pembeli;
+use App\Survei;
+use App\SoldOut;
 
 use App\Exports\lahanmasukExport;
 use App\Exports\lahanjualExport;
@@ -21,10 +23,20 @@ class DataLahanController extends Controller
     public function index(){
 
         $lahan_masuk = Lahan::where('status_lahan', 0)->get();
+        return view('admin.datalahan.lahanmasuk',compact('lahan_masuk'));
+    }
+
+    public function lahandijual(){
         $lahan_jual = Lahan::where('status_lahan', 1)->where('status_jual',0)->get();
-        $sold_out = Lahan::where('status_jual', 1)->get();
         
-        return view('admin.datalahan.lahan',compact('lahan_masuk', 'lahan_jual','sold_out'));
+        return view('admin.datalahan.lahandijual',compact('lahan_jual'));
+    }
+
+    public function lahansoldout(){
+        $sold_out = SoldOut::with(['lahan', 'lahan.penjual', 'pembeli', 'lahan.survey'])
+        ->get();
+        
+        return view('admin.datalahan.lahansoldout',compact('sold_out'));
     }
 
     public function statuslahan(Request $request)
@@ -38,7 +50,7 @@ class DataLahanController extends Controller
             $lahan->save();
         }
   
-        return redirect()->route('admin.datalahan');
+        return redirect()->route('admin.datalahanmasuk');
     }
 
     public function lahanmasukPDF()

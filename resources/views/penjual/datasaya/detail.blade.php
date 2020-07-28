@@ -42,7 +42,7 @@
                             <div class="product-gallery-featured">
 
                                 @foreach($lahan->images as $dp)
-                                <img src="{{asset($dp->foto)}}" alt="">
+                                <img src="{{asset($dp->foto)}}" alt="" style="width: 400px; height: 200px;">
                                 @break
                                 @endforeach
                             </div>

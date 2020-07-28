@@ -21,7 +21,7 @@ class DataSayaController extends Controller
 
     public function index()
     {
-        $lahan = Lahan::where('id_penjual', Auth::user()->id)->get();
+        $lahan = Lahan::where('id_penjual', Auth::user()->id)->where('status_jual',0)->get();
         
         return view('penjual.datasaya.datasaya', compact('lahan'));
     }
@@ -39,20 +39,28 @@ class DataSayaController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
-
-        $request->validate([
-            'judul_lahan'  => 'required',
-            'luas_lahan'   => 'required',
+        $rules = [
+            'judul_lahan'  => 'required|unique:lahan',
+            'luas_lahan'   => 'required|integer',
             'harga_lahan'  => 'required',
             'sertifikat'   => 'required',
             'no_hp'        => 'required',
             'jenis_lahan'  => 'required',
             'alamat'       => 'required',
             'foto'         => 'required',
+            'deskripsi'    => 'required',
             'latitude'     => 'required',
             'longitude'    => 'required',
-        ]);
+        ];
+
+        $message = [
+            'integer' => 'Form :attribute harus berupa angka',
+            'required' => 'Form :attribute tidak boleh kosong',
+            'unique' => 'Form :attribute sudah ada'  
+        ];
+
+        $this->validate($request, $rules, $message);
+
         $foto = $request->file('foto')->store('gambar');
 
         $harga_lahan = (int)str_replace(".","", $request->harga_lahan);
@@ -66,6 +74,7 @@ class DataSayaController extends Controller
             'no_hp'        => $request->no_hp,
             'jenis_lahan'  => $request->jenis_lahan,
             'alamat'       => $request->alamat,
+            'deskripsi'    => $request->deskripsi,
             'latitude'     => $request->latitude,
             'longitude'    => $request->longitude,
         ]);
