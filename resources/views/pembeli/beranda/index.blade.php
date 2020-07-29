@@ -80,8 +80,9 @@
                     @csrf
                     <div class="form-group">
                         <label>Komentar</label>
+                        @error('content') <span style="color:red">{{ $message }}</span> @enderror
                         <input type="hidden" value="{{ Auth::user()->id }}" name="id_pembeli">
-                        <textarea class="form-control" name="content" placeholder="Beri Komentar Untuk Website"
+                        <textarea class="form-control  @error('content') is-invalid @enderror" name="content" placeholder="Beri Komentar Untuk Website"
                             rows="4"></textarea>
                     </div>
                     <button type="submit" class="btn btn-success">Kirim</button>

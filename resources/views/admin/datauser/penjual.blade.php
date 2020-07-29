@@ -36,7 +36,7 @@
                                     <td>{{ $datas->name }}</td>
                                     <td>{{ $datas->email }}</td>
                                     <td>{{ $datas->created_at }}</td>
-                                    <td> <a href="">Detail</a></td>
+                                    <td> <a href="/admin/detailpenjual/{{$datas->id}}">Detail</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

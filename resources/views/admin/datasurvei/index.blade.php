@@ -9,9 +9,9 @@
             <div class="body">
                 <div class="table-responsive">
                     <div class="dt-buttons">
-                        <a href="" class="btn btn-outline-success btn-border-radius">Export to
+                        <a href="/admin/surveimasukexcel" class="btn btn-outline-success btn-border-radius">Export to
                             Excell</a>
-                        <a href="" target="_blank" class="btn btn-outline-danger btn-border-radius">Export to
+                        <a href="{{ route('export_pdf.surveimasuk') }}" target="_blank" class="btn btn-outline-danger btn-border-radius">Export to
                             PDF</a>
                     </div>
                     <div id="tableExport_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -23,11 +23,10 @@
                                     <th>Tanggal Survei</th>
                                     <th>Waktu</th>
                                     <th>Nama Penyurvei</th>
-                                    <th>Foto KTP</th>
-                                    <th>No Hp</th>
-                                    <th>Lokasi</th>
-                                    <th>Judul Lahan</th>
+                                    <th>No Hp Penyurvei</th>
                                     <th>Nama Penjual</th>
+                                    <th>Alamat Lahan</th>
+                                    <th>Judul Lahan</th>
                                     <th>Action</th>
                                     <th>Status</th>
                                 </tr>
@@ -41,14 +40,11 @@
                                     <td>{{ $datas->tanggal }}</td>
                                     <td>{{ $datas->waktu }}</td>
                                     <td>{{ $datas->pembeli->name }}</td>
-                                    <td>
-                                        <img src="{{ asset($datas->foto_ktp) }}" alt="" width="100">
-                                    </td>
                                     <td>{{ $datas->no_hp }}</td>
+                                    <td>{{ $datas->lahan->penjual->name }}</td>
                                     <td>{{ $datas->lahan->alamat}}</td>
                                     <td>{{ $datas->lahan->judul_lahan}}</td>
-                                    <td>{{ $datas->lahan->penjual->name }}</td>
-                                    <td> <a href="">Detail</a></td>
+                                    <td> <a href="/admin/detailsurveimasuk/{{$datas->id}}">Detail</a></td>
                                     <td>
                                         <form action="{{ route('admin.status.survei', $datas->id) }}" method="post">
                                             @csrf
@@ -77,9 +73,9 @@
             <div class="body">
                 <div class="table-responsive">
                     <div class="dt-buttons">
-                        <a href="" class="btn btn-outline-success btn-border-radius">Export to
+                        <a href="/admin/historisurveiexcel" class="btn btn-outline-success btn-border-radius">Export to
                             Excell</a>
-                        <a href="" target="_blank" class="btn btn-outline-danger btn-border-radius">Export to
+                        <a href="{{ route('export_pdf.historisurvei') }}" target="_blank" class="btn btn-outline-danger btn-border-radius">Export to
                             PDF</a>
                     </div>
                     <div id="tableExport_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -100,6 +96,7 @@
                                 </tr>
                             </thead>
 
+                            <tbody>
                                 @php $no = 1; @endphp
                                 @foreach($konfirmasi as $datas)
                                 <tr>

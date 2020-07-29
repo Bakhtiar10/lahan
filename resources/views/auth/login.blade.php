@@ -63,13 +63,13 @@
                         Login
                     </button>
                 </div>
-                <div class="text-center p-t-50">
+                <!-- <div class="text-center p-t-50">
                     @if (Route::has('password.request'))
                     <a class="txt1" href="{{ route('admin.password.request') }}">
                         Forgot Password ?
                     </a>
                     @endif
-                </div>
+                </div> -->
             </form>
         </div>
     </div>

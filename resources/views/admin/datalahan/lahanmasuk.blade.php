@@ -28,8 +28,6 @@
                                     <th>Luas</th>
                                     <th>Jenis</th>
                                     <th>Sertifikat</th>
-                                    <th>Foto</th>
-                                    <th>Harga</th>
                                     <th>No Hp</th>
                                     <th>Detail</th>
                                     <th>Status</th>
@@ -43,18 +41,11 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $masuk->penjual->email }}</td>
                                     <td>{{ $masuk->judul_lahan }}</td>
-                                    <td>{{ $masuk->luas_lahan }}</td>
+                                    <td>{{ $masuk->luas_lahan }} M2</td>
                                     <td>{{ $masuk->jenis_lahan }}</td>
                                     <td>{{ $masuk->sertifikat }}</td>
-                                    <td>
-                                        @foreach($masuk->images as $di)
-                                        <img src="{{ asset($di->foto) }}" alt="" width="50">
-                                        @break
-                                        @endforeach
-                                    </td>
-                                    <td>{{ $masuk->harga_lahan }}</td>
                                     <td>{{ $masuk->no_hp }}</td>
-                                    <td> <a href="">Detail</a></td>
+                                    <td> <a href="/admin/detaillahanmasuk/{{$masuk->id}}">Detail</a></td>
                                     <td>
                                         <form action="{{ url('/admin/status') }}" method="get">
                                             <input type="hidden" name="lahan_id" value="{{ $masuk->id }}">

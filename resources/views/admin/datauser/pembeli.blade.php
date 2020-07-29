@@ -36,7 +36,7 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
-                                    <td> <a href="">Detail</a></td>
+                                    <td> <a href="/admin/detailpembeli/{{$user->id}}">Detail</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

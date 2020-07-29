@@ -19,7 +19,7 @@
             {{Session::get('message')}}
         </div>
         @endif
-        <div class="card-body ">
+        <div class="card-body">
             <div class="product-store">
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
@@ -107,7 +107,12 @@
                             </div>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <label for="foto_ktp">Foto KTP</label>
+                                <img src="{{ asset('assets/images/contohktp.png') }}" style="width: 150px; height: 150px;"> Contoh Selfie dengan Foto KTP
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label for="foto_ktp">Selfie Foto KTP</label>
                                     <input type="file" class="form-control" name="foto_ktp">
                                 </div>
                             </div>

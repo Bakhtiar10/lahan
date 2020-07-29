@@ -67,13 +67,13 @@
                     Belum Punya Akun ?
                     <a class="txt1" href="{{ route('penjual.register') }}">Register</a>
                 </div>
-                <div class="text-center p-t-50">
+                <!-- <div class="text-center p-t-50">
                     @if (Route::has('password.request'))
                     <a class="txt1" href="{{ route('penjual.password.request') }}">
                         Forgot Password ?
                     </a>
                     @endif
-                </div>
+                </div> -->
             </form>
         </div>
     </div>

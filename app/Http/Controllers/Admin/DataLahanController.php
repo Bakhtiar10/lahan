@@ -26,6 +26,11 @@ class DataLahanController extends Controller
         return view('admin.datalahan.lahanmasuk',compact('lahan_masuk'));
     }
 
+    public function detaillahanmasuk($id){
+        $detaillahanmasuk = Lahan::find($id);
+        return view('admin.datalahan.detaillahanmasuk',compact('detaillahanmasuk'));
+    }
+
     public function lahandijual(){
         $lahan_jual = Lahan::where('status_lahan', 1)->where('status_jual',0)->get();
         

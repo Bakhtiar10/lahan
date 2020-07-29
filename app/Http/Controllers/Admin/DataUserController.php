@@ -25,6 +25,17 @@ class DataUserController extends Controller
         return view('admin.datauser.pembeli',compact('pembeli'));
     }
 
+    public function detailpembeli($id){
+        $detailpembeli = Pembeli::find($id);
+        // dd($detailpembeli);
+        return view('admin.datauser.detailpembeli',compact('detailpembeli'));
+    }
+
+    public function detailpenjual($id){
+        $detailpenjual = Penjual::find($id);
+        return view('admin.datauser.detailpenjual',compact('detailpenjual'));
+    }
+
     public function pembeliPDF()
     {
     	$pembeli = Pembeli::all();

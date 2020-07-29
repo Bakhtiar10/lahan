@@ -37,9 +37,14 @@ Route::prefix('admin')->group(function() {
     Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
 
     Route::get('/datapenjual', 'Admin\DataUserController@penjual')->name('admin.datapenjual');
+    Route::get('/detailpenjual/{id}', 'Admin\DataUserController@detailpenjual')->name('admin.detailpenjual');
+
     Route::get('/datapembeli', 'Admin\DataUserController@pembeli')->name('admin.datapembeli');
+    Route::get('/detailpembeli/{id}', 'Admin\DataUserController@detailpembeli')->name('admin.detailpembeli');
 
     Route::get('/datalahanmasuk', 'Admin\DataLahanController@index')->name('admin.datalahanmasuk');
+    Route::get('/detaillahanmasuk/{id}', 'Admin\DataLahanController@detaillahanmasuk')->name('admin.detaillahanmasuk');
+
     Route::get('/datalahandijual', 'Admin\DataLahanController@lahandijual')->name('admin.datalahandijual');
     Route::get('/datalahansoldout', 'Admin\DataLahanController@lahansoldout')->name('admin.datalahansoldout');
 
@@ -48,6 +53,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/chart','Admin\DashboardController@chart');
 
     Route::get('/penjual', 'Admin\KomentarWebsiteController@penjual')->name('penjual');
+    
     Route::get('/pembeli', 'Admin\KomentarWebsiteController@pembeli')->name('pembeli');
 
     Route::get('/pembeli_pdf', 'Admin\DataUserController@pembeliPDF')->name('export_pdf.pembeli');
@@ -72,6 +78,13 @@ Route::prefix('admin')->group(function() {
 
     Route::get('/survei', 'Admin\SurveiController@index')->name('admin.survei');
     Route::patch('/survei/{id}', 'Admin\SurveiController@status_survei')->name('admin.status.survei');
+    Route::get('/detailsurveimasuk/{id}', 'Admin\SurveiController@detailsurveimasuk')->name('admin.detailsurveimasuk');
+
+    Route::get('/surveimasukexcel', 'Admin\SurveiController@surveimasukExcel');
+    Route::get('/historisurveiexcel', 'Admin\SurveiController@historisurveiExcel');
+
+    Route::get('/surveimasuk_pdf', 'Admin\SurveiController@surveimasukPDF')->name('export_pdf.surveimasuk');
+    Route::get('/historisurvei_pdf', 'Admin\SurveiController@historisurveiPDF')->name('export_pdf.historisurvei');
 
 
 });
@@ -112,6 +125,8 @@ Route::prefix('penjual')->group(function() {
 
 
     Route::get('profile', 'Penjual\PenjualController@profile')->name('penjual.profile');
+    Route::post('update_profile/{id}', 'Penjual\PenjualController@updateProfile')->name('penjual.update_profile');
+    Route::post('update_fotoprofile/{id}', 'Penjual\PenjualController@updateFotoProfile')->name('penjual.update_fotoprofile');
 
 });
 
@@ -146,7 +161,9 @@ Route::prefix('pembeli')->group(function() {
     Route::post('/survei/pesan', 'Pembeli\SurveiPembeliController@pesanLahan')->name('survei.pesan');
 
 
-    Route::get('profile', 'Pembeli\PembeliController@profile')->name('penjual.profile');
+    Route::get('profile', 'Pembeli\PembeliController@profile')->name('pembeli.profile');
+    Route::post('update_profile/{id}', 'Pembeli\PembeliController@updateProfile')->name('pembeli.update_profile');
+    Route::post('update_fotoprofile/{id}', 'Pembeli\PembeliController@updateFotoProfile')->name('pembeli.update_fotoprofile');
 
 });
 

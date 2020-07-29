@@ -29,7 +29,11 @@
                         <a href="#" style="color: white" onClick="return false;" class="dropdown-toggle"
                             data-toggle="dropdown" role="button">
                             {{Auth::user()->name}}
-                            <!-- <img src="{{ asset(Auth::user()->image) }}" width="32" height="32" alt="User"> -->
+                            @if(Auth::user()->image !== null)
+                            <img src="{{ asset(Auth::user()->image) }}" width="32" height="32" alt="User">
+                            @else
+                            <img src="{{ asset('assets/images/user_default.png') }}" width="32" height="32" alt="User">
+                            @endif
                         </a>
                         <ul class="dropdown-menu pullDown">
                             <li class="body">
