@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Landing Page</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="{{ asset('assets/landingpage/images/apple-touch-icon.png') }}">
     <link rel="shortcut icon" type="image/ico" href="{{ asset('assets/landingpage/images/favicon.ico') }}" />
@@ -20,8 +19,7 @@
     <link rel="stylesheet" href="{{ asset('assets/landingpage/css/normalize.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/landingpage/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/landingpage/css/responsive.css') }}">
-    <script src="{{ asset('assets/landingpage/js/vendor/modernizr-2.8.3.min.js') }}"
-        type="e763a39d6fa7d0f8e02806d7-text/javascript"></script>
+    <script src="{{ asset('assets/landingpage/js/vendor/modernizr-2.8.3.min.js') }}"></script>
 </head>
 
 <body data-spy="scroll" data-target="#mainmenu" data-offset="50">
