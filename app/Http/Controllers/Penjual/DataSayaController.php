@@ -105,6 +105,7 @@ class DataSayaController extends Controller
             'no_hp'        => 'required',
             'jenis_lahan'  => 'required',
             'alamat'       => 'required',
+            'deskripsi'    => 'required',
             'latitude'     => 'required',
             'longitude'    => 'required',
         ]);
@@ -131,6 +132,7 @@ class DataSayaController extends Controller
             'no_hp'        => $request->no_hp,
             'jenis_lahan'  => $request->jenis_lahan,
             'alamat'       => $request->alamat,
+            'deskripsi'    => $request->deskripsi,
             'latitude'     => $request->latitude,
             'longitude'    => $request->longitude,
         ];

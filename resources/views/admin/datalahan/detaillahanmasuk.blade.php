@@ -30,7 +30,7 @@
                                 <dd class="col-sm-9">{{  $detaillahanmasuk->judul_lahan }}</dd>
 
                                 <dt class="col-sm-3">Luas</dt>
-                                <dd class="col-sm-9">{{ $detaillahanmasuk->luas_lahan }}</dd>
+                                <dd class="col-sm-9">{{ $detaillahanmasuk->luas_lahan }} M2</dd>
 
                                 <dt class="col-sm-3">Jenis</dt>
                                 <dd class="col-sm-9">{{ $detaillahanmasuk->jenis_lahan }}</dd>

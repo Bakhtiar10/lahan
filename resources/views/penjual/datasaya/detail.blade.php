@@ -74,6 +74,9 @@
 
                                 <dt class="col-sm-3">No Penjual</dt>
                                 <dd class="col-sm-9">{{$lahan->no_hp}}</dd>
+
+                                <dt class="col-sm-3">Deskripsi</dt>
+                                <dd class="col-sm-9">{{$lahan->deskripsi}}</dd>
                             </dl>
                         </div>
                     </div>

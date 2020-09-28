@@ -67,15 +67,6 @@
                             </div>
                         </div>
 
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="no_hp">Nomor Telepon</label>
-                                <input type="number" name="no_hp" class="form-control"
-                                    value="{{old('no_hp',$data->no_hp)}}">
-                            </div>
-                        </div>
-
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="jenis_lahan">Jenis Lahan</label>
@@ -90,6 +81,14 @@
                                     <option value="Lahan Perkebunan"  {{ $data->jenis_lahan == 'Lahan Perkebunan' ? 'selected' : '' }} >Lahan Perkebunan
                                     </option>
                                 </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="deskripsi">Deskripsi</label>
+                                <input type="hidden" value="{{ Auth::user()->no_hp }}" name="no_hp" class="form-control">
+                                <textarea name="deskripsi" id="deskripsi" cols="30" rows="5"class="form-control"  value="{{old('deskripsi',$data->deskripsi)}}"></textarea>
                             </div>
                         </div>
 

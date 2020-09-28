@@ -3,8 +3,6 @@
 @section("content")
 
 
-
-
 <div class="container">
     @if(Session::has('message'))
     <div class="alert alert-success" role="alert">

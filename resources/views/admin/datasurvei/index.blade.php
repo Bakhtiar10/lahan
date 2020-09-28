@@ -25,7 +25,6 @@
                                     <th>Nama Penyurvei</th>
                                     <th>No Hp Penyurvei</th>
                                     <th>Nama Penjual</th>
-                                    <th>Alamat Lahan</th>
                                     <th>Judul Lahan</th>
                                     <th>Action</th>
                                     <th>Status</th>
@@ -42,7 +41,6 @@
                                     <td>{{ $datas->pembeli->name }}</td>
                                     <td>{{ $datas->no_hp }}</td>
                                     <td>{{ $datas->lahan->penjual->name }}</td>
-                                    <td>{{ $datas->lahan->alamat}}</td>
                                     <td>{{ $datas->lahan->judul_lahan}}</td>
                                     <td> <a href="/admin/detailsurveimasuk/{{$datas->id}}">Detail</a></td>
                                     <td>
@@ -88,8 +86,8 @@
                                     <th>Waktu</th>
                                     <th>Nama Penyurvei</th>
                                     <th>Foto KTP</th>
-                                    <th>No Hp</th>
-                                    <th>Lokasi</th>
+                                    <th>No Hp Pembeli</th>
+                                    <th>Alamat Lahan</th>
                                     <th>Judul Lahan</th>
                                     <th>Nama Penjual</th>
                                     <th>Action</th>

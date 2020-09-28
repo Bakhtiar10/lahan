@@ -76,8 +76,8 @@
                             <div class="space-10"></div>
                             <ul class="list-unstyled list-inline">
                                 <li><span class=""></span>{{ $data->jenis_lahan }}</li>
-                                <li><span class=""></span> {{ $data->luas_lahan }}</li>
-                                <li><span class=""></span> {{$data->harga_lahan}}</li>
+                                <li><span class=""></span> {{ $data->luas_lahan }} M2</li>
+                                <li><span class=""></span> Rp. {{number_format($data->harga_lahan,0,',','.')}}</li>
 
                                 <div class="space-20"></div>
                                 <li><span class=""></span>{{$data->judul_lahan}}</li>
@@ -91,24 +91,6 @@
                 </div>
                 @endforeach
             </div>
-
-            <!-- <div class="row">
-                <div class="space-30"></div>
-                <div class="col-xs-12 text-center">
-                    <ul class="list-unstyle list-inline paginations">
-                        <li><a href="#"><span class="ti-angle-double-left"></span></a></li>
-                        <li><a href="#"><span class="ti-angle-left"></span></a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li><a href="#"><span class="ti-angle-right"></span></a></li>
-                        <li><a href="#"><span class="ti-angle-double-right"></span></a></li>
-                    </ul>
-                </div>
-            </div> -->
         </div>
         <div class="space-80"></div>
     </section>
