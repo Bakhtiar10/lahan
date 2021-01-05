@@ -31,7 +31,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="luas_lahan">Luas Lahan</label>
+                                <label for="luas_lahan">Luas Lahan (M2)</label>
                                 <input type="text" value="{{old('luas_lahan')}}" name="luas_lahan" class="form-control  @error('luas_lahan') is-invalid @enderror" id="luas_lahan"
                                     placeholder="Masukan Luas">
                             </div>

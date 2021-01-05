@@ -24,6 +24,7 @@
                                         <th>No Hp</th>
                                         <th>Judul Lahan</th>
                                         <th>Harga Lahan</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
 
@@ -39,62 +40,15 @@
                                         <td>{{ $datas->no_hp }}</td>
                                         <td>{{ $datas->lahan->judul_lahan }}</td>
                                         <td>Rp. {{ number_format($datas->lahan->harga_lahan,0,"",".") }}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row clearfix">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="header">
-                    <h2><strong>Data Pemesanan</strong></h2>
-                </div>
-                <div class="body">
-                    <div class="table-responsive">
-                        <div id="tableExport_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable"
-                                role="grid" aria-describedby="tableExport_info">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Pembeli</th>
-                                        <th>Foto KTP</th>
-                                        <th>No Hp</th>
-                                        <th>Judul Lahan</th>
-                                        <th>Harga Lahan</th>
-                                        <th>Jenis Lahan</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    @php $no = 1; @endphp
-                                    @foreach($pesan_masuk as $pesan)
-                                    <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $pesan->pembeli->name }}</td>
-                                        <td><img src="{{ asset($pesan->foto_ktp) }}" alt="" width="100"></td>
-                                        <td>{{ $pesan->no_hp }}</td>
-                                        <td>{{ $pesan->lahan->judul_lahan }}</td>
-                                        <td>Rp. {{ number_format($pesan->lahan->harga_lahan,0,"",".") }}</td>
-                                        <td>{{ $pesan->lahan->jenis_lahan  }}</td>
+                                        
                                         <td>
                                             <form action="{{ route('pesan.jual') }}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="lahan_id" value="{{ $pesan->lahan->id }}">
+                                            @csrf
+                                                <input type="hidden" value="{{ $datas->lahan->id }}" name="lahan_id">
+                                                <input type="hidden" name="id_pembeli" value="{{ $datas->pembeli->id }}">
+                                                <input type="hidden" name="foto_ktp" value="{{ $datas->foto_ktp }}">
                                                 <input type="hidden" name="status_jual" value="1">
-                                                <input type="hidden" name="id_pembeli" value={{ $pesan->pembeli->id }}>
-                                                <input type="hidden" name="foto_ktp" value={{ $pesan->foto_ktp }}>
-                                                <button class="btn btn-primary btn-sm">Konfirmasi</button>
+                                                <input type="submit" value="Jual">
                                             </form>
                                         </td>
                                     </tr>

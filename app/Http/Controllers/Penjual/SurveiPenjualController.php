@@ -20,14 +20,15 @@ class SurveiPenjualController extends Controller
 
     public function index()
     {
-        $pesan_masuk = Survei::with('lahan')->where('status_pesan', 1)->whereHas('lahan', function($query_lahan){
-            $query_lahan->where('status_jual', 0);
-        })->get();
         
         $survei = Survei::with(['lahan', 'lahan.penjual'])->where('status_survei', 1)->whereHas('lahan.penjual',
         function($query){
             $query->where('id_penjual', Auth::user()->id);
+        })->whereHas('lahan', function($query){
+            $query->where('status_jual',0);
         })->get();
+
+        // dd($survei);
         
         $sold_out = SoldOut::with(['lahan', 'lahan.penjual', 'pembeli', 'lahan.survey'])->where('id_penjual', Auth::user()->id)
         ->whereHas('lahan.survey', function($query){
@@ -35,7 +36,7 @@ class SurveiPenjualController extends Controller
         })
         ->get();
 
-        return view('penjual.datasurvei.index',compact('survei', 'pesan_masuk', 'sold_out'));
+        return view('penjual.datasurvei.index',compact('survei', 'sold_out'));
     }
 
     public function statusjual(Request $request)

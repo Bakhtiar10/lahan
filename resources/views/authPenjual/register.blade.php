@@ -19,9 +19,9 @@
         <div class="wrap-login100">
             <form class="login100-form validate-form" method="POST" action="{{ route('penjual.register') }}">
                 @csrf
-                <span class="login100-form-logo">
+                <!-- <span class="login100-form-logo">
                     <img alt="" src="{{ asset('assets/images/loading.png') }}">
-                </span>
+                </span> -->
                 <span class="login100-form-title p-b-34 p-t-27">
                     Register Penjual
                 </span>

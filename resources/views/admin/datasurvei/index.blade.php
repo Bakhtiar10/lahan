@@ -110,12 +110,12 @@
                                     <td>{{ $datas->lahan->judul_lahan}}</td>
                                     <td>{{ $datas->lahan->penjual->name }}</td>
                                     <td>
-                                    <form action="{{ route('admin.status.survei', $datas->id) }}" method="post">
+                                    <!-- <form action="{{ route('admin.status.survei', $datas->id) }}" method="post">
                                             @csrf
                                             @method('PATCH')
                                             <button type="submit" class="btn btn-danger">Cancel</button>
                                         </form>
-                                    </td>
+                                    </td> -->
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <img src="{{ asset('assets/landingpage/images/lahan.png') }}" class="img-full" alt=""
-                        style="width: 250px; height: 200px;">
+                        style="width: 200px; height: 200px;">
                     <h4 class="text-uppercase">My-Land</h4>
                 </div>
             </div>
@@ -82,7 +82,8 @@
                                 <div class="space-20"></div>
                                 <li><span class=""></span>{{$data->judul_lahan}}</li>
                                 <div class="space-20"></div>
-                                <a href="/pembeli/detail_lahan/{{$data->id}}" class="btn btn-link">Lihat Detail</a>
+                                <a href="/detaillahan/{{$data->id}}" class="btn btn-link">Detail Lahan</a>
+                                <a href="/pembeli/detail_lahan/{{$data->id}}" class="btn btn-link">Survey Lahan</a>
                                 <div class="space-20"></div>
                             </ul>
                         </div>

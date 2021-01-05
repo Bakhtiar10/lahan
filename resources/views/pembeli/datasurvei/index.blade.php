@@ -40,18 +40,7 @@
                                         <td>{{ $datas->status_survei ? 'Telah dikonfirmasi' : 'Belum dikonfirmasi' }}
                                         </td>
                                         <td>
-                                           
-                                            <form action="{{ route('survei.pesan') }}" method="post">
                                             <a href="{{route('detail_lahan',$datas->id_lahan)}}">Detail Lahan</a>
-                                                @csrf
-                                                <input type="hidden" name="survei_id" value="{{ $datas->id }}">
-                                                <input type="hidden" name="status_pesan" value="1">
-                                                @if($datas->status_pesan == 0)
-                                                <button class="btn btn-primary btn-sm">Konfirmasi Pesan</button>
-                                                @else
-                                                <button class="btn btn-default btn-sm" disabled>Anda telah memesan </button>
-                                                @endif
-                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach

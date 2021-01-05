@@ -48,16 +48,25 @@ class LoginController extends Controller
 
     public function pembeliLogin(Request $request)
     {
-        $this->validate($request, [
+        $rules = [
             'email'   => 'required|email',
             'password' => 'required|min:6'
-        ]);
+        ];
 
+        $message = [
+            'required' => 'Bidang :attribute tidak boleh kosong!',
+            'email' => "Format email salah",
+            'min' => 'Panjang karakter minimal 6'
+        ];
+
+        $this->validate($request, $rules, $message);
         if (Auth::guard('pembeli')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
 
             return redirect()->intended('pembeli/beranda');
         }
-        return back()->withInput($request->only('email', 'remember'));
+        return back()->withInput($request->only('email', 'remember'))->withErrors([
+            'Email atau password salah',
+        ]);;
     }
 
     public function pembeliLogout(Request $request)

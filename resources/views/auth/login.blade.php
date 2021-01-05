@@ -19,61 +19,46 @@
 <div class="limiter">
     <div class="container-login100 page-background">
         <div class="wrap-login100">
-            <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
-                @csrf
-                <span class="login100-form-logo">
-                    <img alt="" src="../../assets/images/loading.png">
-                </span>
+
+            {{-- menampilkan error validasi --}}
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            <br />
+
+            <!-- form validasi -->
+            <form action="{{ route('login') }}" method="post">
+                {{ csrf_field() }}
+
                 <span class="login100-form-title p-b-34 p-t-27">
                     Login Admin
                 </span>
-                <div class="wrap-input100 validate-input" data-validate="Enter Email">
-                    <input id="email" type="email" class="input100 @error('email') is-invalid @enderror" name="email"
-                        value="{{ old('email') }}" required autocomplete="email" autofocus>
-                    <i class="material-icons focus-input1001">person</i>
-                    @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-                <div class="wrap-input100 validate-input" data-validate="Enter password">
-                    <input id="password" type="password" class="input100 @error('password') is-invalid @enderror"
-                        name="password" required autocomplete="current-password">
-                    <i class="material-icons focus-input1001">lock</i>
-                    @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
 
+                <div class="form-group">
+                    <label for="email">email</label>
+                    <input class="form-control" type="text" name="email" value="{{ old('email') }}">
                 </div>
-                <div class="contact100-form-checkbox">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value=""> Remember me
-                            <span class="form-check-sign">
-                                <span class="check"></span>
-                            </span>
-                        </label>
-                    </div>
+                <div class="form-group">
+                    <label for="password">password</label>
+                    <input class="form-control" type="password" name="password" value="{{ old('password') }}">
                 </div>
-                <div class="container-login100-form-btn">
-                    <button class="login100-form-btn">
-                        Login
-                    </button>
+
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Login">
                 </div>
-                <!-- <div class="text-center p-t-50">
-                    @if (Route::has('password.request'))
-                    <a class="txt1" href="{{ route('admin.password.request') }}">
-                        Forgot Password ?
-                    </a>
-                    @endif
-                </div> -->
             </form>
         </div>
     </div>
 </div>
+
+</html>
+
 <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
 <!-- Extra page Js -->
@@ -107,6 +92,3 @@ if (self == top) {
     netbro_cache_analytics(requestCfs, function() {});
 };
 </script>
-</body>
-
-</html>

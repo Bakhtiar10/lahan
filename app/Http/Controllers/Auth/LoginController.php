@@ -47,16 +47,26 @@ class LoginController extends Controller
     
     public function Login(Request $request)
     {
-        $this->validate($request, [
+        $rules = [
             'email'   => 'required|email',
             'password' => 'required|min:6'
-        ]);
+        ];
 
+        $message = [
+            'required' => 'Bidang :attribute tidak boleh kosong!',
+            'email' => "Format email salah",
+            'min' => 'Panjang karakter minimal 6'
+        ];
+
+        $this->validate($request, $rules, $message);
+        
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
 
             return redirect()->intended('/admin/beranda');
         }
-        return back()->withInput($request->only('email', 'remember'));
+        return back()->withInput($request->only('email', 'remember'))->withErrors([
+            'Email atau password salah',
+        ]);
     }
 
     public function Logout(Request $request)
