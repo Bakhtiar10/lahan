@@ -12,4 +12,9 @@ class LandingPageController extends Controller
         $lahan = Lahan::where('status_lahan', 1)->where('status_jual', 0)->get();
         return view('landingpage',compact('lahan'));
     }
+
+    public function viewlogin()
+    {
+        return view('viewlogin',compact('login'));
+    }
 }

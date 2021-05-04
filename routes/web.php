@@ -19,7 +19,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'LandingPageController@index')->name('landingpage');
 
+Route::get('/viewlogin', 'LandingPageController@viewlogin')->name('viewlogin');
+
 Route::get('/detaillahan/{datalahan}', 'DetailLahanController@index')->name('detaillahan');
+
+
 
 // Route::post('/lihat', 'PostKomentController@store_lahan')->name('store.koment_lahan');
 

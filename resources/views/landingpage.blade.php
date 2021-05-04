@@ -36,9 +36,12 @@
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     @else
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ route('login') }}">Login Admin</a></li>
+                    <li><a href="/viewlogin">Login</a></li>
+                    <li><a href="/">Register</a></li>
+
+                        <!-- <li><a href="{{ route('login') }}">Login Admin</a></li>
                         <li><a href="{{ route('penjual.login') }}">Login Penjual</a></li>
-                        <li><a href="{{ route('pembeli.login') }}">Login Pembeli</a></li>
+                        <li><a href="{{ route('pembeli.login') }}">Login Pembeli</a></li> -->
                     </ul>
                     @endauth
                 </div>
