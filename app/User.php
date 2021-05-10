@@ -6,8 +6,9 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Role;
+use App\VerifyMail;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use Notifiable;
 
@@ -45,4 +46,8 @@ class User extends Authenticatable implements MustVerifyEmail
     // public function hasPermission($permission) {
     //     return $this->role->permissions()->where('name', $permission)->first() ?: false;
     // }
+
+    public function verifyMail() {
+        return $this->hasOne(VerifyMail::class);
+    }
 }

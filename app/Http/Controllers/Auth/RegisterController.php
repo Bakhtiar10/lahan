@@ -9,7 +9,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use App\Role;
+use App\VerifyMail as VerifyUser;
+use App\Mail\VerifyMail;
 
 class RegisterController extends Controller
 {
@@ -77,7 +80,7 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'role_id' => $data['role_id'],
             'name' => $data['name'],
             'username' => $data['username'],
@@ -85,5 +88,37 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'no_hp' => $data['no_hp']
         ]);
+
+        $verify_mails = VerifyUser::create([
+            'user_id' => $user->id,
+            'token' => sha1(time())
+        ]);
+
+        \Mail::to($user->email)->send(new VerifyMail($user));
+
+        return $user;
+
+    }
+
+    public function verifyMail($token) {
+        $verify_mails = VerifyUser::where('token', $token)->first();
+        if(isset($verify_mails)){
+            $user = $verify_mails->user;
+            if(!$user->verified){
+                $verify_mails->user->verified = 1;
+                $verify_mails->user->save();
+                $status = "Your e-mail is verified. You can now login.";
+            }else{
+                $status = "Your e-mail is already verified. You can now login.";
+            }
+        }else{
+            return redirect('/login')->with('warning', "Sorry your email cannot be identified.");
+        }
+        return redirect('/login')->with('status', $status);
+    }
+
+    protected function registered(Request $request, $user){
+        $this->guard()->logout();
+        return redirect('/login')->with('status', 'We sent you an activation code. Check your email and click on the link to verify.');
     }
 }

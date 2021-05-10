@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNewColumnToUsers extends Migration
+class CreateVerifyUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateNewColumnToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('verified')->default(false)->after('role_id');
-            $table->foreign('role_id')->references('id') -> on('roles')->onDelete('cascade')->onUpdate('cascade');
+        Schema::create('verify_users', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->bigInteger('user_id');
+            $table->text('token');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ class CreateNewColumnToUsers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('new_column_to_users');
+        Schema::dropIfExists('verify_users');
     }
 }

@@ -12,7 +12,9 @@
 */
 
 
-Auth::routes(['verify' => true]);
+Auth::routes();
+
+ROute::get('/user/verify/{token}', 'Auth\RegisterController@verifyMail');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

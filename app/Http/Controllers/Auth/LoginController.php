@@ -33,14 +33,14 @@ class LoginController extends Controller
 
         switch ($role) {
           case 1:
-            return 'admin.beranda';
+            return 'admin/beranda';
             break;
           case 2:
-            return 'penjual.beranda';
+            return 'penjual/beranda';
             break; 
       
           case 3 :
-                return 'pembeli.beranda';
+                return 'pembeli/beranda';
           default:
             return 'admin.beranda'; 
           break;
@@ -76,7 +76,7 @@ class LoginController extends Controller
 
         // dd($request->all());
         if(Auth::attempt([$fieldType => $request->email, 'password' => $request->password])){
-            return redirect()->route($this->redirectTo());
+          return $this->sendLoginResponse($request);
         }else{
             return redirect()->route('login')->withErrors('Email atau password salah');
         }
@@ -87,5 +87,13 @@ class LoginController extends Controller
         $this->guard()->logout();
         $request->session()->invalidate();
         return redirect('/login');
+    }
+
+    public function authenticated(Request $request, $user){
+      if ($user->verified == false) {
+        auth()->logout();
+        return back()->with('warning', 'You need to confirm your account. We have sent you an activation code, please check your email.');
+      }
+      return redirect()->intended($this->redirectTo());
     }
 }

@@ -35,7 +35,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'no_hp' => '087730261606',
             'password' => Hash::make('password'),
-            'role_id' => 1
+            'role_id' => 1,
+            'verified' => true,
         ]);
      
         DB::table('users')->insert([
@@ -44,7 +45,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'penjual@gmail.com',
             'no_hp' => '083841005309',
             'password' => Hash::make('password'),
-            'role_id' => 2
+            'role_id' => 2,
+            'verified' => true,
         ]);
      
         DB::table('users')->insert([
@@ -53,7 +55,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'pembeli@gmail.com',
             'no_hp' => '087730261606',
             'password' => Hash::make('password'),
-            'role_id' => 3
+            'role_id' => 3,
+            'verified' => true,
         ]);  
     }
 }
