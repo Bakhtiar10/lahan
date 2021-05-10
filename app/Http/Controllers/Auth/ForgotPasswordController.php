@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Support\Facades\Password;
 use Auth;
+use App\User;
 
 
 class ForgotPasswordController extends Controller
@@ -29,34 +30,30 @@ class ForgotPasswordController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest:admin');
-    }
-
-    public function broker()
-    {
-        return Password::broker('admins');
-    }
-
-    public function guard(){
-        return Auth::guard('admin');
-    }
-
-    public function showLinkRequestForm()
-    {
-        // dd($this->guard());
-        return view('auth.passwords.email');
-    }
 
     public function sendResetLinkEmail(Request $request)
     {
-        // dd($request->email);
-        $this->validateEmail($request);
-        $response = $this->broker()->sendResetLink($request->only('email'));
-        // dd($response);
-        return $response == Password::RESET_LINK_SENT
-            ? $this->sendResetLinkResponse($request, $response)
-            : $this->sendResetLinkFailedResponse($request, $response);
+        $this->validate($request, ['email' => 'required|email']);
+        $user_check = User::where('email', $request->email)->first();
+
+        if($user_check === null){
+            return back()->with('warning', 'Account with this email is not available');
+        }else{
+            if (!$user_check->verified) {
+                return back()->with('warning', 'Your account is not activated. Please activate it first.');
+            } else {
+                $response = $this->broker()->sendResetLink(
+                    $request->only('email')
+                );
+        
+                if ($response === Password::RESET_LINK_SENT) {
+                    return back()->with('status', trans($response));
+                }
+        
+                return back()->withErrors(
+                    ['email' => trans($response)]
+                );
+            }
+        }
     }
 }

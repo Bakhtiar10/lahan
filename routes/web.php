@@ -38,10 +38,10 @@ Route::prefix('admin')->group(function() {
     // Route::post('/login', 'Auth\LoginController@login')->name('admin.login.submit');
 
     Route::get('/beranda', 'Admin\AdminController@index')->name('admin.beranda');
-    Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
-    Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
-    Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
-    Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
+    // Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+    // Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+    // Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
+    // Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
 
     Route::get('/datapenjual', 'Admin\DataUserController@penjual')->name('admin.datapenjual');
     Route::get('/detailpenjual/{id}', 'Admin\DataUserController@detailpenjual')->name('admin.detailpenjual');
@@ -57,7 +57,7 @@ Route::prefix('admin')->group(function() {
 
     Route::get('/status', 'Admin\DataLahanController@statuslahan');
 
-    Route::get('/chart','Admin\DashboardController@chart');
+    // Route::get('/chart','Admin\DashboardController@chart');
 
     Route::get('/penjual', 'Admin\KomentarWebsiteController@penjual')->name('penjual');
     

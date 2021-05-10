@@ -20,15 +20,19 @@
     <div class="container-login100 page-background">
         <div class="wrap-login100">
             @if (session('status'))
-            <div class="alert alert-success">
-              {{ session('status') }}
-            </div>
-          @endif
-          @if (session('warning'))
-            <div class="alert alert-warning">
-              {{ session('warning') }}
-            </div>
-          @endif
+                <div class="alert alert-success alert-dismissible rounded position-absolute"
+                    style="top: 0; right: 0; margin-top: 10px; margin-right: 10px">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ session('status') }}
+                </div>
+            @endif
+            @if (session('warning'))
+                <div class="alert alert-success alert-dismissible rounded position-absolute"
+                    style="top: 0; right: 0; margin-top: 10px; margin-right: 10px">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ session('warning') }}
+                </div>
+            @endif
             {{-- menampilkan error validasi --}}
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
@@ -51,13 +55,15 @@
 
                 <div class="form-group">
                     <div class="wrap-input100 validate-input" data-validate="Enter username">
-						<input class="input100" type="text" name="email" placeholder="Username or Email" value="{{ old('email') }}">
-						<i class="material-icons focus-input1001">person</i>
-					</div>
+                        <input class="input100" type="text" name="email" placeholder="Username or Email"
+                            value="{{ old('email') }}">
+                        <i class="material-icons focus-input1001">person</i>
+                    </div>
                 </div>
                 <div class="form-group">
                     <div class="wrap-input100 validate-input" data-validate="Enter password">
-                        <input class="input100" type="password" name="password" placeholder="Password" value="{{ old('password') }}">
+                        <input class="input100" type="password" name="password" placeholder="Password"
+                            value="{{ old('password') }}">
                         <i class="material-icons focus-input1001">lock</i>
                     </div>
                 </div>
@@ -75,6 +81,11 @@
                 <span class="txt1" href="">
                     Don't have a account ? <a href="{{ route('register') }}"> Register</a>
                 </span>
+            </div>
+            <div class="text-center p-t-50">
+                <a class="txt1" href="{{ route('password.request') }}">
+                    Forgot Password ?
+                </a>
             </div>
         </div>
     </div>

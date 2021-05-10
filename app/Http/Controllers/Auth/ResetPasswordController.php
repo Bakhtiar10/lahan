@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
 use Auth;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
@@ -28,8 +29,6 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/beranda';
-
     /**
      * Create a new controller instance.
      *
@@ -40,21 +39,28 @@ class ResetPasswordController extends Controller
         $this->middleware('guest');
     }
 
-    public function guard()
-    {
-        return Auth::guard('admin');
-    }
-
-    public function broker()
-    {
-        return Password::broker('admins');
-    }
-
     public function showResetForm(Request $request, $token = null)
     {
-        dd($this->guard());
+        // dd($this->guard());
         return view('auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );
+    }
+
+    function resetPassword($user, $password)
+    {
+        $user->forceFill([
+            'password' => bcrypt($password),
+            'remember_token' => Str::random(60)
+        ])->save();
+    }
+
+    protected function sendResetResponse(Request $request, $response)
+    {
+        return $this->redirectTo();
+    }
+
+    public function redirectTo(){
+        return redirect()->route('login')->with('status', 'Password has been changed');
     }
 }
