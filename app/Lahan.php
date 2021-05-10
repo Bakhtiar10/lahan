@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Image;
 use App\Comment;
-use App\Penjual;
+use App\User;
 use App\Survei;
 
 
@@ -14,8 +14,8 @@ class Lahan extends Model
     protected $table = 'lahan';
     protected $guarded = [];
 
-    public function penjual(){
-        return $this->belongsTo(Penjual::class,'id_penjual');
+    public function user(){
+        return $this->belongsTo(User::class,'id_penjual');
     }
 
     public function images(){

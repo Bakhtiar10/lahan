@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'admin',
-        'passwords' => 'admins',
+        'guard' => 'web',
+        'passwords' => 'users',
     ],
 
     /*
@@ -37,19 +37,9 @@ return [
 
     'guards' => [
 
-        'admin' => [
+        'web' => [
             'driver' => 'session',
-            'provider' => 'admins',
-        ],
-
-        'penjual' => [
-            'driver' => 'session',
-            'provider' => 'penjuals',
-        ],
-
-        'pembeli' => [
-            'driver' => 'session',
-            'provider' => 'pembelis',
+            'provider' => 'users',
         ],
 
         'api' => [
@@ -78,19 +68,9 @@ return [
 
     'providers' => [
 
-        'admins' => [
+        'users' => [
             'driver' => 'eloquent',
-            'model' => App\Admin::class,
-        ],
-
-        'penjuals' => [
-            'driver' => 'eloquent',
-            'model' => App\Penjual::class,
-        ],
-
-        'pembelis' => [
-            'driver' => 'eloquent',
-            'model' => App\Pembeli::class,
+            'model' => App\User::class,
         ],
 
         // 'users' => [
@@ -116,22 +96,11 @@ return [
 
     'passwords' => [
 
-        'admins' => [
-            'provider' => 'admins',
+        'users' => [
+            'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
-        ],
-
-        'penjuals' => [
-            'provider' => 'penjuals',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
-
-        'pembelis' => [
-            'provider' => 'pembelis',
-            'table' => 'password_resets',
-            'expire' => 60,
+            'throttle' => 60,
         ],
     ],
 

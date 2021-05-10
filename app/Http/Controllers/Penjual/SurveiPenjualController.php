@@ -15,20 +15,18 @@ class SurveiPenjualController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:penjual');
+        $this->middleware('auth');
     }
 
     public function index()
     {
         
-        $survei = Survei::with(['lahan', 'lahan.penjual'])->where('status_survei', 1)->whereHas('lahan.penjual',
+        $survei = Survei::with(['lahan', 'lahan.user'])->where('status_survei', 1)->whereHas('lahan.user',
         function($query){
             $query->where('id_penjual', Auth::user()->id);
         })->whereHas('lahan', function($query){
             $query->where('status_jual',0);
         })->get();
-
-        // dd($survei);
         
         $sold_out = SoldOut::with(['lahan', 'lahan.penjual', 'pembeli', 'lahan.survey'])->where('id_penjual', Auth::user()->id)
         ->whereHas('lahan.survey', function($query){

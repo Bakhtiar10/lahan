@@ -15,7 +15,7 @@ class CreateLahanTable extends Migration
     {
         Schema::create('lahan', function (Blueprint $table) {
             $table->increments('id');
-            $table->Integer('id_penjual')->unsigned();
+            $table->bigInteger('id_penjual')->unsigned();
             $table->string('judul_lahan', 50);
             $table->integer('luas_lahan');
             $table->bigInteger('harga_lahan');
@@ -30,7 +30,7 @@ class CreateLahanTable extends Migration
             $table->longText('deskripsi');
             $table->timestamps();
 
-            $table -> foreign('id_penjual') -> references('id') -> on('penjual') -> onDelete('cascade');
+            $table -> foreign('id_penjual') -> references('id') -> on('users') -> onDelete('cascade')->onUpdate('cascade');
         });
     }
 

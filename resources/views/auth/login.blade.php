@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title>Login Admin</title>
+    <title>Halaman Login</title>
     <!-- Favicon-->
     <link rel="icon" href="{{ asset('assets//images/favicon.ico') }}" type="image/x-icon">
 
@@ -22,13 +22,13 @@
 
             {{-- menampilkan error validasi --}}
             @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif
             <br />
 
@@ -37,20 +37,29 @@
                 {{ csrf_field() }}
 
                 <span class="login100-form-title p-b-34 p-t-27">
-                    Login Admin
+                    Halaman Login
                 </span>
 
                 <div class="form-group">
-                    <label for="email">email</label>
-                    <input class="form-control" type="text" name="email" value="{{ old('email') }}">
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+						<input class="input100" type="text" name="email" placeholder="Username or Email" value="{{ old('email') }}">
+						<i class="material-icons focus-input1001">person</i>
+					</div>
                 </div>
                 <div class="form-group">
-                    <label for="password">password</label>
-                    <input class="form-control" type="password" name="password" value="{{ old('password') }}">
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" name="password" placeholder="Password" value="{{ old('password') }}">
+                        <i class="material-icons focus-input1001">lock</i>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <input class="btn btn-primary" type="submit" value="Login">
+                    {{-- <input class="btn btn-primary" type="submit" value="Login"> --}}
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -63,8 +72,7 @@
 
 <!-- Extra page Js -->
 <script src="{{ asset('assets/js/pages/examples/pages.js') }}"></script>
-
-<script type="text/javascript">
+{{-- <script type="text/javascript">
 if (self == top) {
     function netbro_cache_analytics(fn, callback) {
         setTimeout(function() {
@@ -91,4 +99,4 @@ if (self == top) {
     }
     netbro_cache_analytics(requestCfs, function() {});
 };
-</script>
+</script> --}}

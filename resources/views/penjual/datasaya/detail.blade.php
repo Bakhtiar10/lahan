@@ -52,7 +52,7 @@
                         <div class="product-description">
                             <dl class="row mb-5">
                                 <dt class="col-sm-3">Nama Penjual</dt>
-                                <dd class="col-sm-9">{{ $lahan->penjual->name }}</dd>
+                                <dd class="col-sm-9">{{ $lahan->user->name }}</dd>
 
                                 <dt class="col-sm-3">Harga</dt>
                                 <dd class="col-sm-9">Rp. {{number_format($lahan->harga_lahan,0,',','.')}}</dd>

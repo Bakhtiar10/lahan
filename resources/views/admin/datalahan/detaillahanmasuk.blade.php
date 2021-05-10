@@ -24,7 +24,7 @@
                             <dl class="row mb-5">
 
                                 <dt class="col-sm-3">Email</dt>
-                                <dd class="col-sm-9">{{ $detaillahanmasuk->penjual->email }}</dd>
+                                <dd class="col-sm-9">{{ $detaillahanmasuk->user->email }}</dd>
 
                                 <dt class="col-sm-3">Judul</dt>
                                 <dd class="col-sm-9">{{  $detaillahanmasuk->judul_lahan }}</dd>

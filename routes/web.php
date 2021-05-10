@@ -12,7 +12,6 @@
 */
 
 
-Auth::routes();
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -33,13 +32,10 @@ Route::get('/detaillahan/{datalahan}', 'DetailLahanController@index')->name('det
 
 Route::prefix('admin')->group(function() {
 
-    Route::get('/login', 'Auth\LoginController@showLoginForm')->name('admin.login');
-    Route::post('/login', 'Auth\LoginController@login')->name('admin.login.submit');
+    // Route::get('/login', 'Auth\LoginController@showLoginForm')->name('admin.login');
+    // Route::post('/login', 'Auth\LoginController@login')->name('admin.login.submit');
 
-    
-    Route::post('/logout', 'Auth\LoginController@Logout')->name('admin.logout');
-
-    Route::get('/beranda', 'Admin\AdminController@index')->name('admin.beranda')->middleware('auth:admin');
+    Route::get('/beranda', 'Admin\AdminController@index')->name('admin.beranda');
     Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
     Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
     Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
@@ -103,8 +99,8 @@ Route::prefix('admin')->group(function() {
 
 Route::prefix('penjual')->group(function() {
 
-    Route::get('/login', 'AuthPenjual\LoginController@showPenjualLoginForm')->name('penjual.login');
-    Route::post('/login', 'AuthPenjual\LoginController@penjualLogin')->name('penjual.login.submit');
+    // Route::get('/login', 'AuthPenjual\LoginController@showPenjualLoginForm')->name('penjual.login');
+    // Route::post('/login', 'AuthPenjual\LoginController@penjualLogin')->name('penjual.login.submit');
     Route::post('/logout', 'AuthPenjual\LoginController@penjualLogout')->name('penjual.logout');
 
     Route::get('beranda', 'Penjual\PenjualController@index')->name('penjual.beranda');
@@ -145,8 +141,8 @@ Route::prefix('penjual')->group(function() {
 
 Route::prefix('pembeli')->group(function() {
 
-    Route::get('/login', 'AuthPembeli\LoginController@showPembeliLoginForm')->name('pembeli.login');
-    Route::post('/login', 'AuthPembeli\LoginController@pembeliLogin')->name('pembeli.login.submit');
+    // Route::get('/login', 'AuthPembeli\LoginController@showPembeliLoginForm')->name('pembeli.login');
+    // Route::post('/login', 'AuthPembeli\LoginController@pembeliLogin')->name('pembeli.login.submit');
     Route::post('/logout', 'AuthPembeli\LoginController@pembeliLogout')->name('pembeli.logout');
 
     Route::get('/register', 'AuthPembeli\RegisterController@showPembeliRegisterForm')->name('pembeli.register');

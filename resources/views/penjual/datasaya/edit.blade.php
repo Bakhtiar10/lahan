@@ -88,7 +88,7 @@
                             <div class="form-group">
                                 <label for="deskripsi">Deskripsi</label>
                                 <input type="hidden" value="{{ Auth::user()->no_hp }}" name="no_hp" class="form-control">
-                                <textarea name="deskripsi" id="deskripsi" cols="30" rows="5"class="form-control"  value="{{old('deskripsi',$data->deskripsi)}}"></textarea>
+                                <textarea name="deskripsi" id="deskripsi" cols="30" rows="5"class="form-control" >{{old('deskripsi', $data->deskripsi)}}</textarea>
                             </div>
                         </div>
 

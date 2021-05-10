@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Penjual;
+use App\User;
 use App\Pembeli;
 use App\Exports\pembeliExport;
 use App\Exports\penjualExport;
@@ -16,29 +17,29 @@ class DataUserController extends Controller
 {
     
     public function penjual(){
-        $penjual = Penjual::all();
+        $penjual = User::where('role_id', 2)->get();
         return view('admin.datauser.penjual',compact('penjual'));
     }
 
     public function pembeli(){
-        $pembeli = Pembeli::all();
+        $pembeli = User::where('role_id', 3)->get();;
         return view('admin.datauser.pembeli',compact('pembeli'));
     }
 
     public function detailpembeli($id){
-        $detailpembeli = Pembeli::find($id);
+        $detailpembeli = User::find($id);
         // dd($detailpembeli);
         return view('admin.datauser.detailpembeli',compact('detailpembeli'));
     }
 
     public function detailpenjual($id){
-        $detailpenjual = Penjual::find($id);
+        $detailpenjual = User::find($id);
         return view('admin.datauser.detailpenjual',compact('detailpenjual'));
     }
 
     public function pembeliPDF()
     {
-    	$pembeli = Pembeli::all();
+    	$pembeli = User::where('role_id', 3)->get();
  
     	$pdf = PDF::loadview('admin.datauser.pembeli_pdf',['pembeli'=>$pembeli]);
     	return $pdf->stream('data_pembeli_pdf');
@@ -46,7 +47,7 @@ class DataUserController extends Controller
 
     public function penjualPDF()
     {
-    	$penjual = Penjual::all();
+    	$penjual = User::where('role_id', 2)->get();
  
     	$pdf = PDF::loadview('admin.datauser.penjual_pdf',['penjual'=>$penjual]);
     	return $pdf->stream('data_penjual_pdf');

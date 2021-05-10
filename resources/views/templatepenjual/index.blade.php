@@ -4,7 +4,7 @@
 
 <body class="light">
 
-    @if(Auth::guard('penjual'))
+    @if(Auth::user()->role_id === 2)
     @include("templatepenjual.nav-penjual")
     <!-- #Top Bar -->
 
@@ -19,9 +19,9 @@
         </div>
 
     </div>
-    @endif
 
     @include("templatepenjual.script")
+    @endif
 
 
 </body>

@@ -28,52 +28,64 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/beranda';
+    public function redirectTo() {
+        $role = Auth::user()->role_id; 
+
+        switch ($role) {
+          case 1:
+            return 'admin.beranda';
+            break;
+          case 2:
+            return 'penjual.beranda';
+            break; 
+      
+          case 3 :
+                return 'pembeli.beranda';
+          default:
+            return 'admin.beranda'; 
+          break;
+        }
+      }
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+    
     public function __construct()
     {
-        $this->middleware('guest:admin')->except('Logout');  
+        $this->middleware('guest')->except('logout');
     }
 
-    public function showLoginForm()
-    {
-        return view('auth.login');
-    }
-    
-    public function Login(Request $request)
+    public function login(Request $request)
     {
         $rules = [
-            'email'   => 'required|email',
+            'email'   => 'required',
             'password' => 'required|min:6'
         ];
 
         $message = [
             'required' => 'Bidang :attribute tidak boleh kosong!',
-            'email' => "Format email salah",
             'min' => 'Panjang karakter minimal 6'
         ];
 
         $this->validate($request, $rules, $message);
         
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        $fieldType = filter_var($request->email, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-            return redirect()->intended('/admin/beranda');
+        // dd($request->all());
+        if(Auth::attempt([$fieldType => $request->email, 'password' => $request->password])){
+            return redirect()->route($this->redirectTo());
+        }else{
+            return redirect()->route('login')->withErrors('Email atau password salah');
         }
-        return back()->withInput($request->only('email', 'remember'))->withErrors([
-            'Email atau password salah',
-        ]);
     }
 
-    public function Logout(Request $request)
+    public function logout(Request $request)
     {
-        Auth::guard('admin')->logout();
-        // $request->session()->invalidate();
-        return redirect('/admin/login');
-        // echo "HAI";
+        $this->guard()->logout();
+        $request->session()->invalidate();
+        return redirect('/login');
     }
 }

@@ -17,29 +17,22 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-       
-        switch ($guard){
-            case 'admin':
-                if (Auth::guard($guard)->check()) {
+        if (Auth::guard($guard)->check()) {
+            $role = Auth::user()->role_id;
+            switch ($role) {
+                case 1:
                     return redirect()->route('admin.beranda');
-                }
-                break;
-
-            case 'penjual':
-                if (Auth::guard($guard)->check()) {
+                    break;
+                case 2:
                     return redirect()->route('penjual.beranda');
-                }
-                break;
-          
-
-            default:
-                if (Auth::guard($guard)->check()) {
+                    break;
+                case 3 :
                     return redirect()->route('pembeli.beranda');
-                }
-                break;
-        
-    }
-
-    return $next($request);
+                default:
+                    return redirect()->route('admin.beranda');
+                    break;
+            }
+        }
+        return $next($request);
     }
 }

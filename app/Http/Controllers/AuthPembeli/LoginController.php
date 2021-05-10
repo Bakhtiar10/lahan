@@ -35,11 +35,7 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest:pembeli')->except('pembeliLogout'); 
-    }
-
+    
 
     public function showPembeliLoginForm()
     {

@@ -39,7 +39,7 @@
                                 @foreach($lahan_masuk as $masuk)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $masuk->penjual->email }}</td>
+                                    <td>{{ $masuk->user->email }}</td>
                                     <td>{{ $masuk->judul_lahan }}</td>
                                     <td>{{ $masuk->luas_lahan }} M2</td>
                                     <td>{{ $masuk->jenis_lahan }}</td>

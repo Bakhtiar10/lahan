@@ -48,7 +48,7 @@
                     <img src="{{ asset($data->images[0]->foto) }}" style="width: 300px; height: 150px; Margin-top: 20px;">
                     <div class="padding-20">
                         <ul class="list-unstyled list-inline">
-                            <li><span class="ti-user"></span> By : {{ $data->penjual->name }}</li>
+                            <li><span class="ti-user"></span> By : {{ $data->user->name }}</li>
                             <li><span class="ti-calendar"></span> {{ date("d M Y", strtotime($data->created_at)) }}
                             </li>
                         </ul>

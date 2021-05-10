@@ -17,14 +17,14 @@ class AdminController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        $this->middleware('auth');
     }
 
 
     public function index()
     {
-        $penjual = Penjual::all();
-        $pembeli = Pembeli::all();
+        $penjual = User::where('role_id', 2)->get();
+        $pembeli = User::where('role_id', 3)->get();
 
         return view('admin.beranda.index',  compact('penjual','pembeli'));
     }

@@ -16,7 +16,7 @@ class SurveiPembeliController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:pembeli');
+        $this->middleware('auth');
     }
 
     public function index()

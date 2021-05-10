@@ -36,12 +36,8 @@
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     @else
                     <ul class="nav navbar-nav">
-                    <li><a href="/viewlogin">Login</a></li>
+                    <li><a href="/login">Login</a></li>
                     <li><a href="/">Register</a></li>
-
-                        <!-- <li><a href="{{ route('login') }}">Login Admin</a></li>
-                        <li><a href="{{ route('penjual.login') }}">Login Penjual</a></li>
-                        <li><a href="{{ route('pembeli.login') }}">Login Pembeli</a></li> -->
                     </ul>
                     @endauth
                 </div>
@@ -72,7 +68,7 @@
                         <img src="{{ asset($data->images[0]->foto) }}" class="img-full" alt="" style="width: 300px; height: 150px; Margin-top: 20px;">
                         <div class="padding-20">
                             <ul class="list-unstyled list-inline">
-                                <li><span class="ti-user"></span> By: {{ $data->penjual->name }}</li>
+                                <li><span class="ti-user"></span> By: {{ $data->user->name }}</li>
                                 <li><span class="ti-calendar"></span> {{ date("d M Y", strtotime($data->created_at)) }}
                                 </li>
                             </ul>

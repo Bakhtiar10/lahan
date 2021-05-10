@@ -44,7 +44,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <form id="logout-pembeli-form" action="{{ route('pembeli.logout') }}"
+                                        <form id="logout-pembeli-form" action="{{ route('logout') }}"
                                             method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>

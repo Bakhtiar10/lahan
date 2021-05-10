@@ -16,7 +16,7 @@ class DataSayaController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:penjual');
+        $this->middleware('auth');
     }
 
     public function index()
