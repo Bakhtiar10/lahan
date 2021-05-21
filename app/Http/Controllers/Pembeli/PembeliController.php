@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Pembeli;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Pembeli;
+use App\User;
 use App\Penjual;
 use App\Lahan;
 use App\KomentarPembeli;
@@ -42,12 +42,12 @@ class PembeliController extends Controller
 
     public function profile()
     {
-        $pembeli = Pembeli::where('id', Auth::user()->id)->first();
+        $pembeli = User::where('id', Auth::user()->id)->first();
         return view('pembeli.profile.index', compact('pembeli'));
     }
 
     public function updateProfile(Request $request,$id){
-        $pembeli = Pembeli::findOrFail($id);
+        $pembeli = User::findOrFail($id);
 
         if($request->password){
             $rule = [
@@ -90,7 +90,7 @@ class PembeliController extends Controller
     }
 
     public function updateFotoProfile(Request $request,$id){
-        $pembeli = Pembeli::findOrFail($id);
+        $pembeli = User::findOrFail($id);
         $image = $pembeli->image;
 
         if($request->image){

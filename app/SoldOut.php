@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Lahan;
+use App\User;
 use App\Pembeli;
 
 class SoldOut extends Model
@@ -14,7 +15,9 @@ class SoldOut extends Model
         return $this->belongsTo(Lahan::class, 'id_lahan');
     }
 
-    public function pembeli(){
-        return $this->belongsTo(Pembeli::class, 'id_pembeli');
+    public function user(){
+        return $this->belongsTo(User::class, 'id_pembeli');
     }
+
+
 }

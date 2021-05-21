@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Penjual;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Penjual;
 use App\User;
 use App\KomentarPenjual;
+use App\Lahan;
+use App\SoldOut;
 use Auth;
 use Storage;
 
@@ -21,7 +22,14 @@ class PenjualController extends Controller
 
     public function index()
     {
-        return view('penjual.beranda.index');
+        $data_lahan_terjual = SoldOut::with(['lahan', 'lahan.user', 'user', 'lahan.survey'])->whereHas('lahan', function($query){
+            return $query->where('id_penjual', Auth::user()->id);
+        })->get();
+
+        // dd($data_lahan_terjual);
+        $data_lahan_belum_terjual = Lahan::where('status_lahan', 1)->where('status_jual',0)->get();
+
+        return view('penjual.beranda.index', compact('data_lahan_terjual', 'data_lahan_belum_terjual'));
     }
 
 
@@ -43,12 +51,12 @@ class PenjualController extends Controller
 
     public function profile()
     {
-        $penjual = Penjual::where('id', Auth::user()->id)->first();
+        $penjual = User::where('id', Auth::user()->id)->first();
         return view('penjual.profile.index', compact('penjual'));
     }
 
     public function updateProfile(Request $request,$id){
-        $penjual = Penjual::findOrFail($id);
+        $penjual = User::findOrFail($id);
 
         if($request->password){
             $rule = [
@@ -91,7 +99,7 @@ class PenjualController extends Controller
     }
 
     public function updateFotoProfile(Request $request,$id){
-        $penjual = Penjual::findOrFail($id);
+        $penjual = User::findOrFail($id);
         $image = $penjual->image;
 
         if($request->image){

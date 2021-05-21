@@ -10,6 +10,7 @@ Use App\Lahan;
 use App\Image;
 use App\Survei;
 use Auth;
+use Validator;
 
 class SurveiPembeliController extends Controller
 {
@@ -29,12 +30,22 @@ class SurveiPembeliController extends Controller
     {
         // dd($request->all());
 
-        $this->validate($request, [ 
-            'no_hp'          => 'required',
-            'foto_ktp'       => 'required',
+        $rules = [
+            'foto_ktp'       => 'required|mimes:jpeg,jpg,png,gif|required|max:10000',
             'tanggal'        => 'required',
             'waktu'          => 'required',
-        ]);
+        ];
+
+        $messages = [
+            'required' => 'Form :attribute tidak boleh kosong',
+            'max' => 'Ukuran gambar harus :max KB'
+        ];
+
+        $validation = Validator::make($request->all(), $rules, $messages);
+        if($validation->fails()){
+            // dd($validation->errors());
+            return redirect()->back()->with('errors', $validation->errors()); 
+        } 
 
         $tanggal = date('Y-m-d', strtotime($request->tanggal));
         $waktu = date("H:i:s", strtotime($request->waktu));

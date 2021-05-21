@@ -133,17 +133,23 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="latitude">Latitude</label>
-                                <input type="text" id="latitude" name="latitude" class="form-control"
+                                <input type="text" id="latitude" name="latitude" class="form-control @error('latitude') is-invalid @enderror"
                                     placeholder="Masukan Latitude">
                             </div>
+                            @error('latitude')
+                                <span style="color:red">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="longitude">Longitude</label>
-                                <input type="text" id="longitude" name="longitude" class="form-control"
+                                <input type="text" id="longitude" name="longitude" class="form-control @error('longitude') is-invalid @enderror"
                                     placeholder="Masukan Longitude">
                             </div>
+                            @error('longitude')
+                                <span style="color:red">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="col-md-12">

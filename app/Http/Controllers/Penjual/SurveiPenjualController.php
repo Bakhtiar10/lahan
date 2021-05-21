@@ -28,11 +28,12 @@ class SurveiPenjualController extends Controller
             $query->where('status_jual',0);
         })->get();
         
-        $sold_out = SoldOut::with(['lahan', 'lahan.penjual', 'pembeli', 'lahan.survey'])->where('id_penjual', Auth::user()->id)
+        $sold_out = SoldOut::with(['lahan', 'lahan.user', 'user', 'lahan.survey'])->where('id_penjual', Auth::user()->id)
         ->whereHas('lahan.survey', function($query){
             $query->where('id_penjual', Auth::user()->id);
         })
         ->get();
+        // dd($sold_out);
 
         return view('penjual.datasurvei.index',compact('survei', 'sold_out'));
     }

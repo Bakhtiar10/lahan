@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets/landingpage/css/theme.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/landingpage/css/overright.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/landingpage/css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/landingpage/style.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/landingpage/style.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/landingpage/css/responsive.css') }}">
     <script src="{{ asset('assets/landingpage/js/vendor/modernizr-2.8.3.min.js') }}"
     type="e763a39d6fa7d0f8e02806d7-text/javascript"></script>
@@ -29,7 +29,7 @@
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet">
     
     <!-- Custom Css -->
-    <link href="{{ asset('assets/user/css/shop-item.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('assets/user/css/shop-item.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
 
     <!-- Theme style. You can choose a theme from css/themes instead of get all themes -->

@@ -23,8 +23,9 @@ class SurveiController extends Controller
     
     public function index()
     {
-        $survei_masuk = Survei::where('status_survei', 0)->get();
-        $konfirmasi = Survei::where('status_survei', 1)->get();
+        $survei_masuk = Survei::with('user')->where('status_survei', 0)->get();
+        $konfirmasi = Survei::with('user')->where('status_survei', 1)->get();
+        // dd($survei_masuk);
         return view('admin.datasurvei.index',compact('survei_masuk' , 'konfirmasi'));
     }
 

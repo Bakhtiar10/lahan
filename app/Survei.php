@@ -3,8 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Penjual;
-use App\Pembeli;
+use App\User;
 use App\Lahan;
 
 class Survei extends Model
@@ -16,7 +15,7 @@ class Survei extends Model
         return $this->belongsTo(Lahan::class,'id_lahan');
     }
 
-    public function pembeli(){
-        return $this->belongsTo(Pembeli::class, 'id_pembeli');
+    public function user(){
+        return $this->belongsTo(User::class, 'id_pembeli');
     }
 }

@@ -38,9 +38,9 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $datas->tanggal }}</td>
                                     <td>{{ $datas->waktu }}</td>
-                                    <td>{{ $datas->pembeli->name }}</td>
+                                    <td>{{ $datas->user->name }}</td>
                                     <td>{{ $datas->no_hp }}</td>
-                                    <td>{{ $datas->lahan->penjual->name }}</td>
+                                    <td>{{ $datas->lahan->user->name }}</td>
                                     <td>{{ $datas->lahan->judul_lahan}}</td>
                                     <td> <a href="/admin/detailsurveimasuk/{{$datas->id}}">Detail</a></td>
                                     <td>
@@ -101,14 +101,14 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $datas->tanggal }}</td>
                                     <td>{{ $datas->waktu }}</td>
-                                    <td>{{ $datas->pembeli->name }}</td>
+                                    <td>{{ $datas->user->name }}</td>
                                     <td>
                                         <img src="{{ asset($datas->foto_ktp) }}" alt="" width="100">
                                     </td>
                                     <td>{{ $datas->no_hp }}</td>
                                     <td>{{ $datas->lahan->alamat}}</td>
                                     <td>{{ $datas->lahan->judul_lahan}}</td>
-                                    <td>{{ $datas->lahan->penjual->name }}</td>
+                                    <td>{{ $datas->lahan->user->name }}</td>
                                     <td>
                                     <!-- <form action="{{ route('admin.status.survei', $datas->id) }}" method="post">
                                             @csrf

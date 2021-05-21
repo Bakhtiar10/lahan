@@ -35,7 +35,7 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $datas->tanggal }}</td>
                                         <td>{{ $datas->waktu }}</td>
-                                        <td>{{ $datas->pembeli->name }}</td>
+                                        <td>{{ $datas->user->name }}</td>
                                         <td><img src="{{ asset($datas->foto_ktp) }}" alt="" width="100"></td>
                                         <td>{{ $datas->no_hp }}</td>
                                         <td>{{ $datas->lahan->judul_lahan }}</td>
@@ -45,7 +45,7 @@
                                             <form action="{{ route('pesan.jual') }}" method="post">
                                             @csrf
                                                 <input type="hidden" value="{{ $datas->lahan->id }}" name="lahan_id">
-                                                <input type="hidden" name="id_pembeli" value="{{ $datas->pembeli->id }}">
+                                                <input type="hidden" name="id_pembeli" value="{{ $datas->user->id }}">
                                                 <input type="hidden" name="foto_ktp" value="{{ $datas->foto_ktp }}">
                                                 <input type="hidden" name="status_jual" value="1">
                                                 <input type="submit" value="Jual">
@@ -95,9 +95,9 @@
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $so->lahan->updated_at }}</td>
-                                            <td>{{ $so->pembeli->name }}</td>
+                                            <td>{{ $so->user->name }}</td>
                                             <td><img src="{{ asset($so->foto_ktp) }}" alt="" width="100"></td>
-                                            <td>{{ $so->pembeli->no_hp }}</td>
+                                            <td>{{ $so->user->no_hp }}</td>
                                             <td>{{ $so->lahan->judul_lahan }}</td>
                                             <td>{{ $so->lahan->jenis_lahan }}</td>
                                             <td>Rp. {{ number_format($so->lahan->harga_lahan) }}</td>
