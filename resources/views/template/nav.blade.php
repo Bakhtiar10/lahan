@@ -5,7 +5,7 @@
                 data-target="#navbar-collapse" aria-expanded="false"></a>
             <a href="#" onClick="return false;" class="bars"></a>
             <a class="navbar-brand" href="index.html">
-                <img src="assets/images/logo.png" alt="" />
+                <img src="{{ asset('assets/images/logo.png') }}" alt="" />
                 <span class="logo-name">Lorax</span>
             </a>
         </div>
@@ -31,7 +31,7 @@
                                 <li>
                                     <a href="#" onClick="return false;">
                                         <span class="table-img msg-user">
-                                            <img src="assets/images/user/user1.jpg" alt="">
+                                            <img src="{{ asset('assets/images/user/user1.jpg') }}" alt="">
                                         </span>
                                         <span class="menu-info">
                                             <span class="menu-title">Sarah Smith</span>

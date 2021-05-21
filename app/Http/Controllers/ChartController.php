@@ -12,7 +12,16 @@ class ChartController extends Controller
         $chart = Lahan::select(
             \DB::raw('count(jenis_lahan) as total'),
             \DB::raw('jenis_lahan')
-        )->groupBy('jenis_lahan')->get();
+        )->join('sold_outs', 'lahan.id', '=', 'sold_outs.id_lahan')->groupBy('jenis_lahan')->get();
+     
+        return response()->json($chart);
+    }
+
+    public function chartJenisLahanBelumTerjual() {
+        $chart = Lahan::select(
+            \DB::raw('count(jenis_lahan) as total'),
+            \DB::raw('jenis_lahan')
+        )->groupBy('jenis_lahan')->where('status_jual', 0)->orderBy('jenis_lahan')->get();
      
         return response()->json($chart);
     }

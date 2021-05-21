@@ -177,7 +177,8 @@ Route::prefix('pembeli')->group(function() {
 
 });
 
-Route::get('chart-jenis-lahan', 'ChartController@chartJenisLahan')->name('chartJenisLahan');
+Route::get('chart-jenis-lahan', 'ChartController@chartJenisLahan')->name('chartJenisLahanTerjual');
+Route::get('chart-jenis-lahan-belum-terjual', 'ChartController@chartJenisLahanBelumTerjual')->name('chartJenisLahanBelumTerjual');
     
 
 

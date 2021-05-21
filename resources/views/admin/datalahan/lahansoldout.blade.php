@@ -38,7 +38,7 @@
                                @foreach($sold_out as $so)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $so->lahan->penjual->name }}</td>
+                                        <td>{{ $so->lahan->user->name }}</td>
                                         <td>{{ $so->lahan->judul_lahan }}</td>
                                         <td>
                                         @foreach($so->lahan->images as $di)
@@ -47,7 +47,7 @@
                                         @endforeach
                                         </td>
                                         <td>{{ $so->lahan->harga_lahan }}</td>
-                                        <td>{{ $so->pembeli->name }}</td>
+                                        <td>{{ $so->user->name }}</td>
                                         <td>{{ $so->lahan->updated_at }}</td>
                                         <td><img src="{{ asset($so->foto_ktp) }}" width="50" alt=""></td>
                                         <td>Sold Out</td>
