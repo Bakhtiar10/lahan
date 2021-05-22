@@ -132,7 +132,7 @@
 						</button>
 					</div>
 					<div class="text-center p-t-50">
-						<a class="txt1" href="sign-in.html">
+						<a class="txt1" href="{{ route('login') }}">
 							You already have a membership?
 						</a>
 					</div>

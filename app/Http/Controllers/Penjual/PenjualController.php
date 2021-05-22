@@ -27,7 +27,7 @@ class PenjualController extends Controller
         })->get();
 
         // dd($data_lahan_terjual);
-        $data_lahan_belum_terjual = Lahan::where('status_lahan', 1)->where('status_jual',0)->get();
+        $data_lahan_belum_terjual = Lahan::where('status_lahan', 1)->where('status_jual',0)->where('id_penjual', Auth::user()->id)->get();
 
         return view('penjual.beranda.index', compact('data_lahan_terjual', 'data_lahan_belum_terjual'));
     }

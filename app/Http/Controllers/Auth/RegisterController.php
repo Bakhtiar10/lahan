@@ -54,7 +54,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $rules = [
             'role_id' => ['required'],
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255'],
@@ -62,7 +62,19 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8'],
             'confirm_password' => ['required', 'string', 'min: 8', 'same:password'],
             'no_hp' => ['required']
-        ]);
+        ];
+
+        $message = [
+            'required' => 'Form :attribute tidak boleh kosong',
+            'string' => 'Form :attribute harus berupa huruf',
+            'max' => 'Form :attribute maksimal :max karakter',
+            'email' => 'Format :attribute salah',
+            'unique' => 'Data :attribute telah terdaftar',
+            'min' => 'Form :attribute minimal :min karakter',
+            'same' => 'Password dan konfirmasi password harus sama'
+        ];
+
+        return Validator::make($data, $rules, $message);
     }
 
     /**
@@ -107,18 +119,18 @@ class RegisterController extends Controller
             if(!$user->verified){
                 $verify_mails->user->verified = 1;
                 $verify_mails->user->save();
-                $status = "Your e-mail is verified. You can now login.";
+                $status = "Email anda telah diverifikasi. Silahkan Login";
             }else{
-                $status = "Your e-mail is already verified. You can now login.";
+                $status = "Email anda telah terverifikasi sebelumnya. Silahkan Login";
             }
         }else{
-            return redirect('/login')->with('warning', "Sorry your email cannot be identified.");
+            return redirect('/login')->with('warning', "Mohon maaf, email anda tidak terdaftar.");
         }
         return redirect('/login')->with('status', $status);
     }
 
     protected function registered(Request $request, $user){
         $this->guard()->logout();
-        return redirect('/login')->with('status', 'We sent you an activation code. Check your email and click on the link to verify.');
+        return redirect('/login')->with('status', 'Kode verifikasi telah dikirim ke email. Mohon cek email untuk verifikasi.');
     }
 }

@@ -5,13 +5,13 @@
     <div class="row">
         <div class="col-lg-4 col-sm-4">
             <div class="counter-box text-center white">
-                <div class="text font-17 m-b-5">Statistik Lahan</div>
+                <div class="text font-17 m-b-5">Statistik Lahan Terjual</div>
                 <canvas id="chartJenisLahan" height="280" width="400"></canvas>
             </div>
         </div>
         <div class="col-lg-4 col-sm-4">
             <div class="counter-box text-center white">
-                <div class="text font-17 m-b-5">Statistik Lahan</div>
+                <div class="text font-17 m-b-5">Statistik Lahan Belum Terjual</div>
                 <canvas id="chartJenisLahanBelumTerjual" height="280" width="400"></canvas>
             </div>
         </div>
