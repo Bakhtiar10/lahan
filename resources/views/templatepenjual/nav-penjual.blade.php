@@ -44,6 +44,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('chat.list') }}">
+                                            <i class="material-icons">mail</i>Chat
+                                        </a>
+                                    </li>
+                                    <li>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             style="display: none;">
                                             {{ csrf_field() }}

@@ -61,7 +61,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
             'confirm_password' => ['required', 'string', 'min: 8', 'same:password'],
-            'no_hp' => ['required']
+            'no_hp' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/']
         ];
 
         $message = [
@@ -71,7 +71,8 @@ class RegisterController extends Controller
             'email' => 'Format :attribute salah',
             'unique' => 'Data :attribute telah terdaftar',
             'min' => 'Form :attribute minimal :min karakter',
-            'same' => 'Password dan konfirmasi password harus sama'
+            'same' => 'Password dan konfirmasi password harus sama',
+            'regex' => 'Format :attribute salah'
         ];
 
         return Validator::make($data, $rules, $message);

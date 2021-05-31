@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Image;
+use App\User;
 use Storage;
 
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +17,7 @@ class Peta extends Model
         return $this->hasMany(Image::class, 'id_lahan');
     }
 
-    public function penjual(){
-        return $this->belongsTo(Penjual::class,'id_penjual');
+    public function user(){
+        return $this->belongsTo(User::class,'id_penjual');
     }
 }

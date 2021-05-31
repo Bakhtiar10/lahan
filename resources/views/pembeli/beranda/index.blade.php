@@ -45,7 +45,11 @@
             @foreach($lahan as $data)
             <div class="col-xs-12 col-sm-4 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="panel text-center single-blog">
+                    @if (count($data->images) > 0)
                     <img src="{{ asset($data->images[0]->foto) }}" style="width: 300px; height: 150px; Margin-top: 20px;">
+                    @else
+                    <img src="{{ asset('no-image-found.png') }}" style="width: 300px; height: 150px; Margin-top: 20px;">
+                    @endif
                     <div class="padding-20">
                         <ul class="list-unstyled list-inline">
                             <li><span class="ti-user"></span> By : {{ $data->user->name }}</li>

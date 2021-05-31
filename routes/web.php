@@ -180,5 +180,10 @@ Route::prefix('pembeli')->group(function() {
 Route::get('chart-jenis-lahan', 'ChartController@chartJenisLahan')->name('chartJenisLahanTerjual');
 Route::get('chart-jenis-lahan-belum-terjual', 'ChartController@chartJenisLahanBelumTerjual')->name('chartJenisLahanBelumTerjual');
     
+Route::get('/chat', 'ChatController@createChat')->name('chat.create');
+Route::post('/chat/store', 'ChatController@storeMessage')->name('chat.store');
+Route::get('/chat-list', 'ChatController@chatList')->name('chat.list');
+Route::get('/chat-json/{room_id}', 'ChatController@chatJson');
+Route::get('/message-json', 'ChatController@messageJson');
 
-
+Route::get('/lahan-json', 'LandingPageController@lahanJson');

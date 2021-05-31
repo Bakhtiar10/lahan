@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="{{ asset('assets/landingpage/css/theme.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/landingpage/css/overright.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/landingpage/css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/landingpage/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/landingpage/css/responsive.css') }}">
     <script src="{{ asset('assets/landingpage/js/vendor/modernizr-2.8.3.min.js') }}"></script>
 </head>
@@ -31,22 +30,20 @@
         <nav class="navbar navbar-default mainmenu-area navbar-fixed-top" data-spy="affix" data-offset-top="60">
             <div class="container">
                 @if (Route::has('login'))
-                <div class="collapse navbar-collapse navbar-right" id="mainmenu">
-                    @auth
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                    @else
-                    <ul class="nav navbar-nav">
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/">Register</a></li>
-                    </ul>
-                    @endauth
-                </div>
+                    <div class="collapse navbar-collapse navbar-right" id="mainmenu">
+                        @auth
+                            <li><a href="{{ url('/home') }}">Home</a></li>
+                        @else
+                            <ul class="nav navbar-nav">
+                                <li><a href="/login">Login</a></li>
+                                <li><a href="/">Register</a></li>
+                            </ul>
+                        @endauth
+                    </div>
                 @endif
             </div>
         </nav>
         <div class="space-120"></div>
-
-
         <div class="container text-white">
             <div class="row">
                 <div class="col-xs-12 text-center">
@@ -62,34 +59,53 @@
         <div class="space-80"></div>
         <div class="container">
             <div class="row">
-                @foreach($lahan as $data)
-                <div class="col-xs-12 col-sm-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="panel text-center single-blog">
-                        <img src="{{ asset($data->images[0]->foto) }}" class="img-full" alt="" style="width: 300px; height: 150px; Margin-top: 20px;">
-                        <div class="padding-20">
-                            <ul class="list-unstyled list-inline">
-                                <li><span class="ti-user"></span> By: {{ $data->user->name }}</li>
-                                <li><span class="ti-calendar"></span> {{ date("d M Y", strtotime($data->created_at)) }}
-                                </li>
-                            </ul>
-                            <div class="space-10"></div>
-                            <ul class="list-unstyled list-inline">
-                                <li><span class=""></span>{{ $data->jenis_lahan }}</li>
-                                <li><span class=""></span> {{ $data->luas_lahan }} M2</li>
-                                <li><span class=""></span> Rp. {{number_format($data->harga_lahan,0,',','.')}}</li>
-
-                                <div class="space-20"></div>
-                                <li><span class=""></span>{{$data->judul_lahan}}</li>
-                                <div class="space-20"></div>
-                                <a href="/detaillahan/{{$data->id}}" class="btn btn-link">Detail Lahan</a>
-                                <a href="/pembeli/detail_lahan/{{$data->id}}" class="btn btn-link">Survey Lahan</a>
-                                <div class="space-20"></div>
-                            </ul>
+                <div class="col-xs-12 wow fadeInUp" data-wow-delay="0.25">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="cari" placeholder="Search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="cari-submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
                         </div>
                     </div>
-                    <div class="space-30"></div>
                 </div>
-                @endforeach
+            </div>
+            <div class="space-20"></div>
+            <div class="row">
+                <div class="col-xs-3 col-sm-4 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="card rounded">
+                        <div class="body">
+                            <div class="w-100">
+                                <div class="form-group">
+                                    <select name="kecamatan" id="kecamatan" class="form-control">
+                                        <option value="">Pilih Kecamatan</option>
+                                        <option value="Tegal Timur">Tegal Timur</option>
+                                        <option value="Tegal Barat">Tegal Barat</option>
+                                        <option value="Tegal Selatan">Tegal Selatan</option>
+                                        <option value="Margadana">Margadana</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="jenis_lahan" id="jenis_lahan" class="form-control">
+                                        <option value="">Pilih Jenis Lahan</option>
+                                        <option value="Lahan Kavling">Lahan Kavling</option>
+                                        <option value="Lahan Pertanian">Lahan Pertanian</option>
+                                        <option value="Lahan Perkebunan">Lahan Perkebunan</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="harga_lahan" id="harga_lahan" class="form-control">
+                                        <option value="">Pilih Harga</option>
+                                        <option value="Termurah">Termurah</option>
+                                        <option value="Termahal">Termahal</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-9 col-sm-4 container-show-lahan" style="display: flex; gap: 5%;"
+                    data-wow-delay="0.2s"></div>
             </div>
         </div>
         <div class="space-80"></div>
@@ -116,19 +132,21 @@
         </div>
     </footer>
     <!-- <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> -->
-    <script src="{{ asset('assets/landingpagejs/vendor/jquery-1.12.4.min.js') }}"
-        type="e763a39d6fa7d0f8e02806d7-text/javascript"></script>
+    {{-- <script src="{{ asset('assets/landingpagejs/vendor/jquery-1.12.4.min.js') }}" --}}
+    {{-- type="e763a39d6fa7d0f8e02806d7-text/javascript"></script> --}}
     <script src="{{ asset('assets/landingpagejs/vendor/bootstrap.min.js') }}"
         type="e763a39d6fa7d0f8e02806d7-text/javascript"></script>
     <script src="{{ asset('assets/landingpagejs/owl.carousel.min.js') }}"
         type="e763a39d6fa7d0f8e02806d7-text/javascript"></script>
-    <script src="{{ asset('assets/landingpagejs/scrollUp.min.js') }}" type="e763a39d6fa7d0f8e02806d7-text/javascript">
+    <script src="{{ asset('assets/landingpagejs/scrollUp.min.js') }}"
+        type="e763a39d6fa7d0f8e02806d7-text/javascript">
     </script>
     <script src="{{ asset('assets/landingpagejs/magnific-popup.min.js') }}"
         type="e763a39d6fa7d0f8e02806d7-text/javascript"></script>
     <script src="{{ asset('assets/landingpagejs/ripples-min.js') }}" type="e763a39d6fa7d0f8e02806d7-text/javascript">
     </script>
-    <script src="{{ asset('assets/landingpagejs/contact-form.js') }}" type="e763a39d6fa7d0f8e02806d7-text/javascript">
+    <script src="{{ asset('assets/landingpagejs/contact-form.js') }}"
+        type="e763a39d6fa7d0f8e02806d7-text/javascript">
     </script>
     <script src="{{ asset('assets/landingpagejs/spectragram.min.js') }}"
         type="e763a39d6fa7d0f8e02806d7-text/javascript"></script>
@@ -138,10 +156,87 @@
     </script>
     <script src="{{ asset('assets/landingpagejs/plugins.js') }}" type="e763a39d6fa7d0f8e02806d7-text/javascript">
     </script>
-    <script src="{{ asset('assets/landingpagejs/main.js') }}" type="e763a39d6fa7d0f8e02806d7-text/javascript"></script>
-    <script src="{{ asset('assets/landingpagejs/maps.js') }}" type="e763a39d6fa7d0f8e02806d7-text/javascript"></script>
-    <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"
-        data-cf-settings="e763a39d6fa7d0f8e02806d7-|49" defer=""></script>
+    <script src="{{ asset('assets/landingpagejs/main.js') }}" type="e763a39d6fa7d0f8e02806d7-text/javascript">
+    </script>
+    <script src="{{ asset('assets/landingpagejs/maps.js') }}" type="e763a39d6fa7d0f8e02806d7-text/javascript">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{-- <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"
+        data-cf-settings="e763a39d6fa7d0f8e02806d7-|49" defer=""></script> --}}
+    <script>
+        function loadData(kecamatan, jenis_lahan, harga_lahan, cari) {
+            $.ajax({
+                type: 'GET',
+                url: '/lahan-json',
+                dataType: 'json',
+                data: {
+                    kecamatan: kecamatan !== '' ? kecamatan : undefined,
+                    jenis_lahan: jenis_lahan !== '' ? jenis_lahan : undefined,
+                    harga_lahan: harga_lahan !== '' ? harga_lahan : undefined,
+                    cari: cari !== '' ? cari : undefined,
+                },
+                success: function(data) {
+                    var html = '';
+                    $.each(data.data, function(key, data) {
+                        console.log(data);
+                        html += `
+                        <div class="panel text-center single-blog shadow">
+                            <img src="${data.images.length > 0 ? data.images[0].foto : ''}" class="img-full" alt=""
+                                style="width: 250px; height: 100px; Margin-top: 20px;">
+                            <div class="padding-20">
+                                <ul class="list-unstyled list-inline">
+                                    <li><span class="ti-user"></span> By: ${data.user.name}</li>
+                                    <li><span class="ti-calendar"></span>
+                                        01 Jan 2019
+                                    </li>
+                                </ul>
+                                <div class="space-5"></div>
+                                <ul class="list-unstyled list-inline">
+                                    <li><span class=""></span>${data.jenis_lahan}</li>
+                                    <li><span class=""></span> ${data.luas_lahan} M2</li>
+                                    <li><span class=""></span> Rp. ${new Intl.NumberFormat('id-ID',{style: 'currency', currency: 'IDR'}).format(data.harga_lahan)}
+                                    </li>
+
+                                    <div class="space-20"></div>
+                                    <li><span class=""></span>${data.judul_lahan}</li>
+                                    <div class="space-20"></div>
+                                    <div style="display:flex; gap:5%">
+                                        <a href="/detaillahan/${data.id}" class="btn btn-link">Detail Lahan</a>
+                                        <a href="/pembeli/detail_lahan/${data.id}" class="btn btn-link">Survey
+                                        Lahan</a>
+                                    </div>
+                                    <div class="space-20"></div>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="space-30"></div>
+                        `
+                    });
+
+                    $('.container-show-lahan').html(html);
+                }
+            })
+        }
+        $(document).ready(function() {
+            loadData($('#kecamatan').val(), $('#jenis_lahan').val(), $('#harga_lahan').val(), $('#cari').val());
+            $('#kecamatan').on('change', function() {
+                loadData($(this).val(), $('#jenis_lahan').val(), $('#harga_lahan').val(), $('#cari').val());
+            });
+
+            $('#harga_lahan').on('change', function() {
+                loadData($('#kecamatan').val(), $('#jenis_lahan').val(), $(this).val(), $('#cari').val());
+            });
+
+            $('#jenis_lahan').on('change', function() {
+                loadData($('#kecamatan').val(), $(this).val(), $('#harga_lahan').val(), $('#cari').val());
+            });
+
+            $('#cari-submit').on('click', function(){
+                loadData($('#kecamatan').val(), $('#jenis_lahan').val(), $('#harga_lahan').val(), $('#cari').val());
+            })
+        })
+
+    </script>
 </body>
 
 </html>

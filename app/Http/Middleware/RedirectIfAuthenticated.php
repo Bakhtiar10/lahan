@@ -28,6 +28,7 @@ class RedirectIfAuthenticated
                     break;
                 case 3 :
                     return redirect()->route('pembeli.beranda');
+                    break;
                 default:
                     return redirect()->route('admin.beranda');
                     break;

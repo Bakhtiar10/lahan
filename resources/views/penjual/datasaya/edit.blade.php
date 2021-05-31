@@ -82,6 +82,27 @@
                                     </option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="kecamatan">Kecamatan</label>
+                                <select class="form-control  @error('kecamatan') is-invalid @enderror" name="kecamatan" id="kecamatan">
+                                    <option value="{{old('kecamatan',$data->kecamatan)}}">-- Pilih Jenis Lahan --</option>
+                                    <option value="Tegal Timur"
+                                        {{$data->kecamatan === 'Tegal Timur' ? 'selected' : ''}}>Tegal Timur
+                                    </option>
+                                    <option value="Tegal Barat"
+                                        {{$data->kecamatan === 'Tegal Barat' ? 'selected' : ''}}>Tegal Barat
+                                    </option>
+                                    <option value="Tegal Selatan"
+                                        {{$data->kecamatan === 'Tegal Selatan' ? 'selected' : ''}}>Tegal Selatan
+                                    </option>
+                                    <option value="Margadana"
+                                        {{$data->kecamatan === 'Margadana' ? 'selected' : ''}}>Margadana
+                                    </option>
+                                </select>
+                            </div>
+                            @error('kecamatan')
+                                <span style="color:red">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="col-md-6">

@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Role;
 use App\VerifyMail;
+use App\Chat;
 
 class User extends Authenticatable
 {
@@ -49,5 +50,9 @@ class User extends Authenticatable
 
     public function verifyMail() {
         return $this->hasOne(VerifyMail::class);
+    }
+
+    public function chat() {
+        return $this->hasMany(Chat::class);
     }
 }

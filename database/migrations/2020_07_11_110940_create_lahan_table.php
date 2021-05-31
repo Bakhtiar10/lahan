@@ -23,6 +23,7 @@ class CreateLahanTable extends Migration
             $table->char('no_hp', 15);
             $table->string('jenis_lahan');
             $table->string('alamat',100);
+            $table->string('kecamatan', 20);
             $table->text('latitude');
             $table->text('longitude');
             $table->boolean('status_jual')->default(false);

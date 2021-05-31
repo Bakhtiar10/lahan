@@ -109,8 +109,30 @@
                                 <span style="color:red">{{ $message }}</span>
                             @enderror
                         </div>
+                        
 
                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="kecamatan">Kecamatan</label>
+                                <select class="form-control  @error('kecamatan') is-invalid @enderror" name="kecamatan" id="kecamatan">
+                                    <option value="{{old('kecamatan')}}">-- Pilih Jenis Lahan --</option>
+                                    <option value="Tegal Timur"
+                                        {{old('kecamatan') === 'Tegal Timur' ? 'selected' : ''}}>Tegal Timur
+                                    </option>
+                                    <option value="Tegal Barat"
+                                        {{old('kecamatan') === 'Tegal Barat' ? 'selected' : ''}}>Tegal Barat
+                                    </option>
+                                    <option value="Tegal Selatan"
+                                        {{old('kecamatan') === 'Tegal Selatan' ? 'selected' : ''}}>Tegal Selatan
+                                    </option>
+                                    <option value="Margadana"
+                                        {{old('kecamatan') === 'Margadana' ? 'selected' : ''}}>Margadana
+                                    </option>
+                                </select>
+                            </div>
+                            @error('kecamatan')
+                                <span style="color:red">{{ $message }}</span>
+                            @enderror
                             <div class="form-group">
                                 <label for="foto">Foto:</label>
                                 <input type="file" class="form-control  @error('foto') is-invalid @enderror" name="foto" id="foto">

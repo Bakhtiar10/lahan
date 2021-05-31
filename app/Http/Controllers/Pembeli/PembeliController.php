@@ -20,7 +20,8 @@ class PembeliController extends Controller
 
     public function index()
     {
-        $lahan = Lahan::where('status_lahan', 1)->where('status_jual',0)->get();
+        $lahan = Lahan::where('status_lahan', 1)->where('status_jual', 0)->get();
+        // dd($lahan);
         return view('pembeli.beranda.index',compact('lahan'));
     }
 

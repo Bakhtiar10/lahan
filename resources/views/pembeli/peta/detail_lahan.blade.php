@@ -75,6 +75,11 @@
                                 <br>
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#exampleModal">Survei Lahan</button>
+                                <form action="{{ route('chat.create') }}">
+                                    <input type="hidden" name="receive" value="{{ $peta->user->id }}">
+                                    <input type="hidden" name="sender" value="{{ Auth::user()->id }}">
+                                    <button type="submit" class="btn btn-warning">Tanya Penjual</button>
+                                </form>
                             </div>
                         </div>
                     </div>
