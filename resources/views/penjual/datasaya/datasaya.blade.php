@@ -25,11 +25,17 @@
                         <div class="product-grid">
                             <div class="product-image">
                                 <a href="#">
-                                    @foreach($pe->images as $pi)
-                                    <img class="pic-1" src="{{asset($pi->foto)}}" alt=""
+                                    @if (count($pe->images) >0)
+                                    <img class="pic-1" src="{{asset($pi[0]->foto)}}" alt=""
+                                        style="width: 200px; height: 150px; Margin-top: 20px;">        
+                                    @else
+                                    <img class="pic-1" src="{{asset('no-image-found.png')}}" alt=""
                                         style="width: 200px; height: 150px; Margin-top: 20px;">
+                                    @endif
+                                    {{-- @foreach($pe->images as $pi)
+                                    
                                     @break
-                                    @endforeach
+                                    @endforeach --}}
                                 </a>
                                 <ul class="social">
                                     <li><a href="{{route('detail', $pe)}}" data-tip="Detail"><i
