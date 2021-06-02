@@ -19,6 +19,28 @@
     <link rel="stylesheet" href="{{ asset('assets/landingpage/css/normalize.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/landingpage/css/responsive.css') }}">
     <script src="{{ asset('assets/landingpage/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    <style>
+        .button-card {
+            margin-top: 10px;
+            width: 150px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid cyan;
+            font-size: 12px;
+            border-radius: 25px;
+            color: cyan;
+            text-decoration: none
+        }
+
+        .button-card:hover {
+            text-decoration: none;
+            color: blue;
+            border: 1px solid blue;
+        }
+
+    </style>
 </head>
 
 <body data-spy="scroll" data-target="#mainmenu" data-offset="50">
@@ -72,17 +94,13 @@
             </div>
             <div class="space-20"></div>
             <div class="row">
-                <div class="col-xs-3 col-sm-4 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="col-md-2 col-sm-4 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="card rounded">
                         <div class="body">
                             <div class="w-100">
                                 <div class="form-group">
-                                    <select name="kecamatan" id="kecamatan" class="form-control">
-                                        <option value="">Pilih Kecamatan</option>
-                                        <option value="Tegal Timur">Tegal Timur</option>
-                                        <option value="Tegal Barat">Tegal Barat</option>
-                                        <option value="Tegal Selatan">Tegal Selatan</option>
-                                        <option value="Margadana">Margadana</option>
+                                    <select name="kecamatan" id="kecamatan" class="form-control kecamatan-select">
+
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -104,8 +122,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-9 col-sm-4 container-show-lahan" style="display: flex; gap: 5%;"
-                    data-wow-delay="0.2s"></div>
+                <div class="col-md-10 col-sm-4 container-show-lahan" style="display: flex; gap: 5%; flex-wrap: wrap;"
+                    data-wow-delay="0.2s">
+
+                </div>
             </div>
         </div>
         <div class="space-80"></div>
@@ -164,6 +184,29 @@
     {{-- <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"
         data-cf-settings="e763a39d6fa7d0f8e02806d7-|49" defer=""></script> --}}
     <script>
+        const kecamatanArray = ["Adiwerna", "Balapulang", "Bojong", "Bumijawa", "Dukuhturi", "Dukuhwaru", "Jatinegara",
+            "Kedungbanteng", "Kramat", "Lebaksiu", "Margasari", "Pagerbarang", "Pangkah", "Slawi", "Suradadi",
+            "Talang", "Tarub", "Warureja", "Tegal Timur", "Tegal Barat", "Tegal Selatan", "Margadana"
+        ];
+
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (monthNames[d.getMonth() + 1]),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2)
+                month = '0' + month;
+            if (day.length < 2)
+                day = '0' + day;
+
+            return [day, month, year].join(' ');
+        }
+
         function loadData(kecamatan, jenis_lahan, harga_lahan, cari) {
             $.ajax({
                 type: 'GET',
@@ -177,62 +220,77 @@
                 },
                 success: function(data) {
                     var html = '';
-                    $.each(data.data, function(key, data) {
-                        console.log(data);
-                        html += `
-                        <div class="panel text-center single-blog shadow">
-                            <img src="${data.images.length > 0 ? data.images[0].foto : ''}" class="img-full" alt=""
-                                style="width: 250px; height: 100px; Margin-top: 20px;">
-                            <div class="padding-20">
-                                <ul class="list-unstyled list-inline">
-                                    <li><span class="ti-user"></span> By: ${data.user.name}</li>
-                                    <li><span class="ti-calendar"></span>
-                                        01 Jan 2019
-                                    </li>
-                                </ul>
-                                <div class="space-5"></div>
-                                <ul class="list-unstyled list-inline">
-                                    <li><span class=""></span>${data.jenis_lahan}</li>
-                                    <li><span class=""></span> ${data.luas_lahan} M2</li>
-                                    <li><span class=""></span> Rp. ${new Intl.NumberFormat('id-ID',{style: 'currency', currency: 'IDR'}).format(data.harga_lahan)}
-                                    </li>
+                    if (data.data.length > 0) {
+                        $.each(data.data, function(key, data) {
+                            console.log(data);
+                            html += `
+                                    <div class="panel text-center single-blog" style="width: 30%; border : 1px solid #e9e9e9">
+                                        <img src="${data.images.length > 0 ? `http://localhost:8000/${data.images[0].foto}` : ''}"
+                                            class="img-full" alt="" style="width: 250px; height: 100px; Margin-top: 20px;">
+                                        <div class="padding-20">
+                                            <ul class="list-unstyled list-inline">
+                                                <li><span class="ti-user"></span> By : ${data.user.name}</li>
+                                                <li><span class="ti-calendar"></span> ${formatDate(data.created_at)}
+                                                </li>
+                                            </ul>
+                                            <div class="space-10"></div>
+                                            <ul class="list-unstyled list-inline">
+                                                <li><span class=""></span>${data.jenis_lahan}</li>
+                                                <li><span class=""></span> ${data.luas_lahan}</li>
+                                                <li><span class=""></span> Rp. ${new Intl.NumberFormat('id-ID',{style: 'currency',
+                                                    currency: 'IDR'}).format(data.harga_lahan)}
+                                                </li>
 
-                                    <div class="space-20"></div>
-                                    <li><span class=""></span>${data.judul_lahan}</li>
-                                    <div class="space-20"></div>
-                                    <div style="display:flex; gap:5%">
-                                        <a href="/detaillahan/${data.id}" class="btn btn-link">Detail Lahan</a>
-                                        <a href="/pembeli/detail_lahan/${data.id}" class="btn btn-link">Survey
-                                        Lahan</a>
+                                                <div class="space-20"></div>
+                                                <li><span class=""></span>${data.judul_lahan}</li>
+                                                <div class="space-20"></div>
+                                                <a href="/pembeli/detail_lahan/${ data.id }" class="btn btn-link">Lihat Detail</a>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <div class="space-20"></div>
-                                </ul>
+                                `
+                        });
+                    } else {
+                        html += `
+                            <div class="text-center" style="width: 100%; height: 100px; margin-top: 50px">
+                                Tidak ada data
                             </div>
-                        </div>
-                        <div class="space-30"></div>
-                        `
-                    });
+                            `
+                    }
 
                     $('.container-show-lahan').html(html);
                 }
             })
         }
+
+
+        let htmlKecamatan = '<option value="">Pilih Kecamatan</option>';
+        $.each(kecamatanArray, function(key, item) {
+            htmlKecamatan += `<option value="${item}">${item}</option>`
+        })
+        $('.kecamatan-select').html(htmlKecamatan);
         $(document).ready(function() {
+
             loadData($('#kecamatan').val(), $('#jenis_lahan').val(), $('#harga_lahan').val(), $('#cari').val());
             $('#kecamatan').on('change', function() {
-                loadData($(this).val(), $('#jenis_lahan').val(), $('#harga_lahan').val(), $('#cari').val());
+                console.log($(this).val())
+                loadData($(this).val(), $('#jenis_lahan').val(), $('#harga_lahan').val(), $('#cari')
+                    .val());
             });
 
             $('#harga_lahan').on('change', function() {
-                loadData($('#kecamatan').val(), $('#jenis_lahan').val(), $(this).val(), $('#cari').val());
+                loadData($('#kecamatan').val(), $('#jenis_lahan').val(), $(this).val(), $('#cari')
+                    .val());
             });
 
             $('#jenis_lahan').on('change', function() {
-                loadData($('#kecamatan').val(), $(this).val(), $('#harga_lahan').val(), $('#cari').val());
+                loadData($('#kecamatan').val(), $(this).val(), $('#harga_lahan').val(), $('#cari')
+                    .val());
             });
 
-            $('#cari-submit').on('click', function(){
-                loadData($('#kecamatan').val(), $('#jenis_lahan').val(), $('#harga_lahan').val(), $('#cari').val());
+            $('#cari-submit').on('click', function() {
+                loadData($('#kecamatan').val(), $('#jenis_lahan').val(), $('#harga_lahan').val(), $(
+                    '#cari').val());
             })
         })
 

@@ -34,7 +34,7 @@
                                         <td>{{ $datas->tanggal }}</td>
                                         <td>{{ $datas->waktu }}</td>
                                         <td>
-                                            {{ $datas->lahan->penjual->name }}
+                                            {{ $datas->lahan->user->name }}
                                         </td>
                                         <td>Rp. {{number_format($datas->lahan->harga_lahan,0,',','.')}}</td>
                                         <td>{{ $datas->status_survei ? 'Telah dikonfirmasi' : 'Belum dikonfirmasi' }}

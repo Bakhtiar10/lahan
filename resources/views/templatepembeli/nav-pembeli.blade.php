@@ -24,6 +24,11 @@
                             Data Survei
                         </a>
                     </li>
+                    <li class="nav-item ">
+                        <a href="{{ route('chat.list-pembeli') }}" class="" style="color: white">
+                            Chat
+                        </a>
+                    </li>
 
                     <li class="dropdown user_profile">
                         <a href="#" style="color: white" onClick="return false;" class="dropdown-toggle"

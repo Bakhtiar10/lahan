@@ -1,4 +1,4 @@
-@extends("templatepenjual.index")
+@extends("templatepembeli.index")
 @section('content')
     <div class="container">
         <div class="row">
@@ -21,13 +21,13 @@
                                 <div class="font-weight-bold text-uppercase">{{ $list->sender->name }}</div>
                             </div>
                         </a>
-                    @empty
-                    <a href="javascript: void(0)" class=" text-center" style="text-decoration: none; color: black">
-                        <div class="rounded border d-flex align-items-center justify-content-center" style="width : 100%; height: 100px">
-                            <div class="font-weight-bold text-uppercase">Tidak ada Pesan</div>
-                        </div>
-                    </a>
-                    @endforelse
+                        @empty
+                        <a href="javascript: void(0)" class=" text-center" style="text-decoration: none; color: black">
+                            <div class="rounded border d-flex align-items-center justify-content-center" style="width : 100%; height: 100px">
+                                <div class="font-weight-bold text-uppercase">Tidak ada Pesan</div>
+                            </div>
+                        </a>
+                        @endforelse
                 </div>
             </div>
             <div class="col-md-8">

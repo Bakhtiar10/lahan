@@ -13,12 +13,8 @@
     </style>
     <div class="col-lg-2">
         <div class="form-group">
-            <select name="kecamatan" id="kecamatan" class="form-control">
-                <option value="">Pilih Kecamatan</option>
-                <option value="Tegal Timur">Tegal Timur</option>
-                <option value="Tegal Barat">Tegal Barat</option>
-                <option value="Tegal Selatan">Tegal Selatan</option>
-                <option value="Margadana">Margadana</option>
+            <select name="kecamatan" id="kecamatan" class="form-control kecamatan-select">
+
             </select>
         </div>
         <div class="form-group">
@@ -73,6 +69,18 @@
             zoom: 11
         });
         map.addControl(new mapboxgl.NavigationControl());
+
+        const kecamatanArray = ["Adiwerna", "Balapulang", "Bojong", "Bumijawa", "Dukuhturi", "Dukuhwaru", "Jatinegara",
+            "Kedungbanteng", "Kramat", "Lebaksiu", "Margasari", "Pagerbarang", "Pangkah", "Slawi", "Suradadi",
+            "Talang", "Tarub", "Warureja", "Tegal Timur", "Tegal Barat", "Tegal Selatan", "Margadana"
+        ];
+
+        let htmlKecamatan = '<option value="">Pilih Kecamatan</option>';
+        $.each(kecamatanArray, function(key, item) {
+            htmlKecamatan += `<option value="${item}">${item}</option>`
+        })
+        $('.kecamatan-select').html(htmlKecamatan);
+
 
         async function loadData(kecamatan, jenis_lahan, harga_lahan) {
             let data = {

@@ -73,11 +73,13 @@
                                     <dd class="col-sm-9">{{ $peta->deskripsi }}</dd>
                                 </dl>
                                 <br>
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#exampleModal">Survei Lahan</button>
+                                
                                 <form action="{{ route('chat.create') }}">
                                     <input type="hidden" name="receive" value="{{ $peta->user->id }}">
                                     <input type="hidden" name="sender" value="{{ Auth::user()->id }}">
+                                    <input type="hidden" name="lahan" value="{{ $peta->id }}">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModal">Survei Lahan</button>
                                     <button type="submit" class="btn btn-warning">Tanya Penjual</button>
                                 </form>
                             </div>

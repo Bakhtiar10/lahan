@@ -21,6 +21,7 @@
 @endsection
 @section('script')
     <script>
+        const firstChat = '{!! session("chat_klik_first") !!}';
         $(document).ready(function() {
             function getUrlVars() {
                 var vars = [],
@@ -59,8 +60,8 @@
                         })
 
                         $('#container-chat').html(html);
-                        var messageBody = document.querySelector('#container-chat');
-                        messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+                        // var messageBody = document.querySelector('#container-chat');
+                        // messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
                     }
                 })
             }

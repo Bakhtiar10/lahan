@@ -24,6 +24,11 @@
                             Data Survei
                         </a>
                     </li>
+                    <li class="nav-item @if(Request::is('penjual/survei')) active font-weight-bold @endif">
+                        <a href="{{ route('chat.list') }}" class="" style="color: white">
+                            Chat
+                        </a>
+                    </li>
                     
                     <li class="dropdown user_profile @if(Request::is('penjual/profile')) active font-weight-bold @endif">
                         <a href="#" style="color: white" onClick="return false;" class="dropdown-toggle"
@@ -41,11 +46,6 @@
                                     <li>
                                         <a href="/penjual/profile">
                                             <i class="material-icons">person</i>Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('chat.list') }}">
-                                            <i class="material-icons">mail</i>Chat
                                         </a>
                                     </li>
                                     <li>

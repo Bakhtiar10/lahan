@@ -183,6 +183,7 @@ Route::get('chart-jenis-lahan-belum-terjual', 'ChartController@chartJenisLahanBe
 Route::get('/chat', 'ChatController@createChat')->name('chat.create');
 Route::post('/chat/store', 'ChatController@storeMessage')->name('chat.store');
 Route::get('/chat-list', 'ChatController@chatList')->name('chat.list');
+Route::get('/chat-list-pembeli', 'ChatController@chatListPembeli')->name('chat.list-pembeli');
 Route::get('/chat-json/{room_id}', 'ChatController@chatJson');
 Route::get('/message-json', 'ChatController@messageJson');
 
