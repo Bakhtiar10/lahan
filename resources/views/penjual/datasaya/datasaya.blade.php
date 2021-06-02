@@ -26,7 +26,7 @@
                             <div class="product-image">
                                 <a href="#">
                                     @if (count($pe->images) >0)
-                                    <img class="pic-1" src="{{asset($pi[0]->foto)}}" alt=""
+                                    <img class="pic-1" src="{{asset($pe->images[0]->foto)}}" alt=""
                                         style="width: 200px; height: 150px; Margin-top: 20px;">        
                                     @else
                                     <img class="pic-1" src="{{asset('no-image-found.png')}}" alt=""
