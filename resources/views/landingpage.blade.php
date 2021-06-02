@@ -220,37 +220,41 @@
                 },
                 success: function(data) {
                     var html = '';
-                    if (data.data.length > 0) {
+                    if(data.data.length > 0){
                         $.each(data.data, function(key, data) {
-                            console.log(data);
-                            html += `
-                                    <div class="panel text-center single-blog" style="width: 30%; border : 1px solid #e9e9e9">
-                                        <img src="${data.images.length > 0 ? `http://localhost:8000/${data.images[0].foto}` : ''}"
-                                            class="img-full" alt="" style="width: 250px; height: 100px; Margin-top: 20px;">
-                                        <div class="padding-20">
-                                            <ul class="list-unstyled list-inline">
-                                                <li><span class="ti-user"></span> By : ${data.user.name}</li>
-                                                <li><span class="ti-calendar"></span> ${formatDate(data.created_at)}
-                                                </li>
-                                            </ul>
-                                            <div class="space-10"></div>
-                                            <ul class="list-unstyled list-inline">
-                                                <li><span class=""></span>${data.jenis_lahan}</li>
-                                                <li><span class=""></span> ${data.luas_lahan}</li>
-                                                <li><span class=""></span> Rp. ${new Intl.NumberFormat('id-ID',{style: 'currency',
-                                                    currency: 'IDR'}).format(data.harga_lahan)}
-                                                </li>
+                        html += `
+                        <div class="panel single-blog text-center" style="width: 30%; border : 1px solid #e9e9e9">
+                            <img src="${data.images.length > 0 ? data.images[0].foto : ''}"
+                                class="img-full" alt="" style="width: 250px; height: 100px; Margin-top: 20px;">
+                            <div class="padding-20">
+                                <ul class="list-unstyled list-inline">
+                                    <li><span class="ti-user"></span> By: ${data.user.name}</li>
+                                    <li><span class="ti-calendar"></span>
+                                        ${formatDate(data.created_at)}
+                                    </li>
+                                </ul>
+                                <div class="space-5"></div>
+                                <ul class="list-unstyled list-inline">
+                                    <li><span class=""></span>${data.jenis_lahan}</li>
+                                    <li><span class=""></span> ${data.luas_lahan} M2</li>
+                                    <li><span class=""></span> Rp. ${new Intl.NumberFormat('id-ID',{style: 'currency',
+                                        currency: 'IDR'}).format(data.harga_lahan)}
+                                    </li>
 
-                                                <div class="space-20"></div>
-                                                <li><span class=""></span>${data.judul_lahan}</li>
-                                                <div class="space-20"></div>
-                                                <a href="/pembeli/detail_lahan/${ data.id }" class="btn btn-link">Lihat Detail</a>
-                                            </ul>
-                                        </div>
+                                    <li><span class=""></span>${data.judul_lahan}</li>
+                                    <div class="space-20"></div>
+                                    <div style="display:flex; justify-content: space-between; gap:2%">
+                                        <a href="/detaillahan/${data.id}" class="button-card">Detail Lahan</a>
+                                        <a href="/pembeli/detail_lahan/${data.id}" class="button-card">Survey
+                                            Lahan</a>
                                     </div>
-                                `
-                        });
-                    } else {
+                                    <div class="space-20"></div>
+                                </ul>
+                            </div>
+                        </div>
+                        `
+                    });
+                    }else{
                         html += `
                             <div class="text-center" style="width: 100%; height: 100px; margin-top: 50px">
                                 Tidak ada data
