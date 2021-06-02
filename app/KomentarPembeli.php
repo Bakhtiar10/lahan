@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Pembeli;
+use App\User;
 
 class KomentarPembeli extends Model
 {
@@ -12,6 +12,6 @@ class KomentarPembeli extends Model
 
 
     public function pembeli(){
-        return $this->belongsTo(Pembeli::class,'id_pembeli');
+        return $this->belongsTo(User::class,'id_pembeli');
     }
 }

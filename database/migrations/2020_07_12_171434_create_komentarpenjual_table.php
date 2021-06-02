@@ -15,11 +15,11 @@ class CreateKomentarpenjualTable extends Migration
     {
         Schema::create('komentarpenjual', function (Blueprint $table) {
             $table->increments('id');
-            $table->Integer('id_penjual')->unsigned(); 
+            $table->bigInteger('id_penjual')->unsigned(); 
             $table->text('content');
             $table->timestamps();
 
-            $table -> foreign('id_penjual') -> references('id') -> on('penjual') -> onDelete('cascade');
+            $table -> foreign('id_penjual') -> references('id') -> on('users') -> onDelete('cascade');
         });
     }
 

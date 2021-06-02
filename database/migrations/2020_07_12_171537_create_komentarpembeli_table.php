@@ -15,11 +15,11 @@ class CreateKomentarpembeliTable extends Migration
     {
         Schema::create('komentarpembeli', function (Blueprint $table) {
             $table->increments('id');
-            $table->Integer('id_pembeli')->unsigned(); 
+            $table->bigInteger('id_pembeli')->unsigned(); 
             $table->text('content');
             $table->timestamps();
 
-            $table -> foreign('id_pembeli') -> references('id') -> on('pembeli') -> onDelete('cascade');
+            $table -> foreign('id_pembeli') -> references('id') -> on('users') -> onDelete('cascade');
         });
     }
 

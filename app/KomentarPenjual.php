@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Penjual;
+use App\User;
 
 class KomentarPenjual extends Model
 {   
@@ -11,6 +11,6 @@ class KomentarPenjual extends Model
     protected $table = "komentarpenjual";
 
     public function penjual(){
-        return $this->belongsTo(Penjual::class,'id_penjual');
+        return $this->belongsTo(User::class,'id_penjual');
     }
 }
