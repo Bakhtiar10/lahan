@@ -17,8 +17,8 @@ class CreateSoldOutsTable extends Migration
             $table->bigIncrements('id');
             $table->Integer('id_lahan')->unsigned();
             $table->Integer('id_penjual')->unsigned();
-            $table->Integer('id_pembeli')->unsigned();
-            $table->longText('foto_ktp')->nullable();
+            // $table->Integer('id_pembeli')->unsigned();
+            // $table->longText('foto_ktp')->nullable();
             $table->timestamps();
         });
     }

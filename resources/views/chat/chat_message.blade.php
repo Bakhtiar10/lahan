@@ -1,4 +1,4 @@
-@extends("templatepembeli.index")
+@extends("templatepenjual.index")
 @section('content')
     <div class="container">
         <div class="card">
@@ -33,7 +33,7 @@
                     vars[hash[0]] = hash[1];
                 }
                 
-                return `sender=${vars['sender']}&receive=${vars['receive']}`;
+                return `sender={!! Auth::user()->id !!}&receive=${vars['receive']}`;
             }
 
             function loadMessage(){

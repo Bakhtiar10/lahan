@@ -25,10 +25,7 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="/admin/datapenjual">Data Penjual</a>
-                        </li>
-                        <li>
-                            <a href="/admin/datapembeli">Data Pembeli</a>
+                            <a href="/admin/datapenjual">Data User</a>
                         </li>
                     </ul>
                 </li>
@@ -64,13 +61,6 @@
                             <a href="/admin/pembeli">Report Pembeli</a>
                         </li>
                     </ul>
-                </li>
-
-                <li>
-                    <a href="/admin/survei">
-                        <i class="fas fa-flag"></i>
-                        <span>Data Survei</span>
-                    </a>
                 </li>
 
                 <li>

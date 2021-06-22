@@ -36,11 +36,8 @@ class LoginController extends Controller
             return 'admin/beranda';
             break;
           case 2:
-            return 'penjual/beranda';
+            return 'beranda';
             break; 
-      
-          case 3 :
-                return 'pembeli/beranda';
           default:
             return 'admin.beranda'; 
           break;
@@ -74,7 +71,6 @@ class LoginController extends Controller
         
         $fieldType = filter_var($request->email, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-        // dd($request->all());
         if(Auth::attempt([$fieldType => $request->email, 'password' => $request->password])){
           return $this->sendLoginResponse($request);
         }else{

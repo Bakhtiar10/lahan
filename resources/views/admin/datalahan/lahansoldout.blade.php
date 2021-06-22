@@ -26,10 +26,7 @@
                                     <th>Judul Lahan</th>
                                     <th>Foto Lahan</th>
                                     <th>Harga Lahan</th>
-                                    <th>Di Beli oleh</th>
                                     <th>Pada Tanggal</th>
-                                    <th>Foto KTP</th>
-                                    <th>Status</th>
                                 </tr>
                             </thead>
 
@@ -41,16 +38,14 @@
                                         <td>{{ $so->lahan->user->name }}</td>
                                         <td>{{ $so->lahan->judul_lahan }}</td>
                                         <td>
-                                        @foreach($so->lahan->images as $di)
-                                        <img src="{{ asset($di->foto) }}" alt="" width="50">
-                                        @break
-                                        @endforeach
+                                            @if (count($so->lahan->images) > 0)
+                                                <img src="{{ asset($so->lahan->images[0]) }}" alt="" width="50">
+                                            @else
+                                                <img src="{{ asset('no-image-found.png') }}" alt="" width="50">
+                                            @endif
                                         </td>
                                         <td>{{ $so->lahan->harga_lahan }}</td>
-                                        <td>{{ $so->user->name }}</td>
                                         <td>{{ $so->lahan->updated_at }}</td>
-                                        <td><img src="{{ asset($so->foto_ktp) }}" width="50" alt=""></td>
-                                        <td>Sold Out</td>
                                     </tr>
                                @endforeach
                             </tbody>

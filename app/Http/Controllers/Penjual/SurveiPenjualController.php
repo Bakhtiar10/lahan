@@ -41,6 +41,7 @@ class SurveiPenjualController extends Controller
     public function statusjual(Request $request)
     {
         $lahan = Lahan::findOrFail($request->lahan_id);
+        // dd($lahan);
         
         if($request->status_jual == 0){
             $lahan->status_jual = 0;
@@ -51,14 +52,12 @@ class SurveiPenjualController extends Controller
             
             SoldOut::create([
                 'id_lahan' => $lahan->id,
-                'id_pembeli' => $request->id_pembeli,
-                'id_penjual' => Auth::user()->id,
-                'foto_ktp' => $request->foto_ktp
+                'id_penjual' => $lahan->id_penjual,
             ]);
         }
 
 
   
-        return redirect()->route('surveipenjual');
+        return redirect()->route('datasaya');
     }
 }

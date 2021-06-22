@@ -10,16 +10,19 @@ use Session;
 
 class ChatController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function createChat(Request $request){
-        $room_id = 'S'.$request->sender.'R'.$request->receive;
+        $room_id = 'S'.Auth::user()->id.'R'.$request->receive;
         $chat = Chat::where('room_id', $room_id)->orderBy('created_at', 'ASC')->get();
 
         $receive_id = $request->receive;
         $lahan = Lahan::findOrFail($request->lahan);
 
-        if(!$request->session()->has('tanya_penjual')){
-            session()->put('tanya_penjual', 'pertama');
-        }
+        session()->put('tanya_penjual', 'pertama');
+        
         if($request->session()->has('tanya_penjual')){
            Chat::create([
                 'room_id' => $room_id,
@@ -27,6 +30,8 @@ class ChatController extends Controller
                 'receive_id' => $receive_id,
                 'message' => 'Tentang '.$lahan->judul_lahan
             ]);
+
+            session()->forget('tanya_penjual');
         }
 
         return view('chat.chat_message', compact('room_id', 'chat', 'receive_id'));
@@ -41,7 +46,7 @@ class ChatController extends Controller
             'message' => $request->message
         ]);
 
-        // $request->session()->put('tanya_penjual', 'default');
+        $request->session()->put('tanya_penjual', 'default');
 
         return session()->forget('tanya_penjual');
     }

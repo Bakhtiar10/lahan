@@ -99,22 +99,9 @@ Route::prefix('admin')->group(function() {
 
 
 
-Route::prefix('penjual')->group(function() {
-
-    // Route::get('/login', 'AuthPenjual\LoginController@showPenjualLoginForm')->name('penjual.login');
-    // Route::post('/login', 'AuthPenjual\LoginController@penjualLogin')->name('penjual.login.submit');
-    Route::post('/logout', 'AuthPenjual\LoginController@penjualLogout')->name('penjual.logout');
-
+Route::prefix('')->group(function() {
     Route::get('beranda', 'Penjual\PenjualController@index')->name('penjual.beranda');
    
-    Route::get('/register', 'AuthPenjual\RegisterController@showPenjualRegisterForm')->name('penjual.register');
-    Route::post('/register', 'AuthPenjual\RegisterController@createPenjual')->name('penjual.register.submit');
-    Route::get('/password/reset', 'AuthPenjual\ForgotPasswordController@showLinkRequestForm')->name('penjual.password.request');
-    Route::post('/password/email', 'AuthPenjual\ForgotPasswordController@sendResetLinkEmail')->name('penjual.password.email');
-    Route::get('/password/reset/{token}', 'AuthPenjual\ResetPasswordController@showResetForm')->name('penjual.password.reset');
-    Route::post('/password/reset', 'AuthPenjual\ResetPasswordController@resetPenjual')->name('penjual.password.update');
-
-
     Route::get('/datasaya', 'Penjual\DataSayaController@index')->name('datasaya');
     Route::get('datalahan/create','Penjual\DataSayaController@create')->name('create');
     Route::post('datalahan/simpan','Penjual\DataSayaController@store')->name('simpan');
@@ -136,6 +123,11 @@ Route::prefix('penjual')->group(function() {
     Route::get('profile', 'Penjual\PenjualController@profile')->name('penjual.profile');
     Route::post('update_profile/{id}', 'Penjual\PenjualController@updateProfile')->name('penjual.update_profile');
     Route::post('update_fotoprofile/{id}', 'Penjual\PenjualController@updateFotoProfile')->name('penjual.update_fotoprofile');
+
+    Route::get('/peta', 'Penjual\PetaController@index')->name('peta');
+    Route::get('/detail_lahan/{lahan}', 'Penjual\PetaController@detail_lahan')->name('detail_lahan');
+    Route::get('/show/peta', 'Penjual\PetaController@peta');
+    // Route::get('/detail_lahan/{lahan}', 'Pembeli\PetaController@detail_lahan')->name('detail_lahan');
 
 });
 

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class UsersTableSeeder extends Seeder
 {
@@ -17,10 +18,7 @@ class UsersTableSeeder extends Seeder
                 'role' => 'Admin'
             ],
             [
-                'role' => 'Penjual'
-            ],
-            [
-                'role' => 'Pembeli'
+                'role' => 'Biasa'
             ],
         ];
 
@@ -37,26 +35,34 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('password'),
             'role_id' => 1,
             'verified' => true,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
      
         DB::table('users')->insert([
-            'name' => 'penjual',
-            'username' => 'penjual',
-            'email' => 'penjual@gmail.com',
+            'name' => 'User1',
+            'username' => 'user1',
+            'email' => 'user1@gmail.com',
             'no_hp' => '083841005309',
             'password' => Hash::make('password'),
             'role_id' => 2,
             'verified' => true,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+            
         ]);
      
         DB::table('users')->insert([
-            'name' => 'pembeli',
-            'username' => 'pembeli',
-            'email' => 'pembeli@gmail.com',
+            'name' => 'User2',
+            'username' => 'user2',
+            'email' => 'user2@gmail.com',
             'no_hp' => '087730261606',
             'password' => Hash::make('password'),
-            'role_id' => 3,
+            'role_id' => 2,
             'verified' => true,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+            
         ]);  
     }
 }

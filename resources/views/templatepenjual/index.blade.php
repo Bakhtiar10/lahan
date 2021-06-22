@@ -9,14 +9,12 @@
     <!-- #Top Bar -->
 
 
-    <div class="container-fluid" style="margin-top: 90px">
-        <div class="block-header">
-            <div class="row">
+    <div class="" style="margin-top: 60px; background:white">
+        {{-- <div class="row"> --}}
 
-                @yield("content")
+            @yield("content")
 
-            </div>
-        </div>
+        {{-- </div> --}}
 
     </div>
 

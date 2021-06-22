@@ -10,6 +10,7 @@
 
 <div class="container">
     <div class="card">
+        asdadsa
         <div class="header">
             <h2><strong>Detail Lahan</strong></h2>
         </div>
@@ -40,11 +41,11 @@
                                 </ol>
                             </div>
                             <div class="product-gallery-featured">
-
-                                @foreach($lahan->images as $dp)
-                                <img src="{{asset($dp->foto)}}" alt="" style="width: 400px; height: 200px;">
-                                @break
-                                @endforeach
+                                @if (count($lahan->images) > 0)
+                                    <img src="{{asset($lahan->images[0]->foto)}}" alt="" style="width: 400px; height: 200px;">
+                                @else
+                                <img src="{{asset('no-image-found.png')}}" alt="" style="width: 400px; height: 200px;">
+                                @endif
                             </div>
                         </div>
                     </div>

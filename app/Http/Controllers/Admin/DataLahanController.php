@@ -38,7 +38,7 @@ class DataLahanController extends Controller
     }
 
     public function lahansoldout(){
-        $sold_out = SoldOut::with(['lahan', 'lahan.user', 'user', 'lahan.survey'])
+        $sold_out = SoldOut::with(['lahan', 'lahan.user'])
         ->get();
         
         return view('admin.datalahan.lahansoldout',compact('sold_out'));

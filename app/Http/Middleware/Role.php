@@ -21,10 +21,10 @@ class Role
             return redirect()->route('login');
         }
         
-        $user = Auth::user();
-        if($user->role_id === $role){
-            return $next($request);
-        }
+        // $user = Auth::user();
+        // if($user->role_id === $role){
+        //     return $next($request);
+        // }
         return redirect()->route('login');
     }
 }

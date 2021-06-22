@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg @if(!Request::is('beranda')) navbar-dark bg-dark @endif fixed-top" style="width: 100vw; @if(Request::is('beranda')) background: #16c9f6 @endif">
     
     <div class="container">
         <span>Lahan Penjualan</span>
@@ -9,28 +9,23 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item @if(Request::is('penjual/beranda')) active font-weight-bold @endif">
-                        <a href="/penjual/beranda" class="" style="color: white">
+                    <li class="nav-item @if(Request::is('beranda')) active font-weight-bold @endif">
+                        <a href="/beranda" class="" style="color: white">
                             Beranda
                         </a>
                     </li>
-                    <li class="nav-item @if(Request::is('penjual/datasaya')) active font-weight-bold @endif">
-                        <a href="/penjual/datasaya" class="" style="color: white">
-                            Data Saya
+                    <li class="nav-item @if(Request::is('peta')) active font-weight-bold @endif">
+                        <a href="{{ url('/peta') }}" class="" style="color: white">
+                            Peta
                         </a>
                     </li>
-                    <li class="nav-item @if(Request::is('penjual/survei')) active font-weight-bold @endif">
-                        <a href="/penjual/survei" class="" style="color: white">
-                            Data Survei
-                        </a>
-                    </li>
-                    <li class="nav-item @if(Request::is('penjual/survei')) active font-weight-bold @endif">
+                    <li class="nav-item @if(Request::is('survei')) active font-weight-bold @endif">
                         <a href="{{ route('chat.list') }}" class="" style="color: white">
                             Chat
                         </a>
                     </li>
                     
-                    <li class="dropdown user_profile @if(Request::is('penjual/profile')) active font-weight-bold @endif">
+                    <li class="dropdown user_profile @if(Request::is('profile')) active font-weight-bold @endif">
                         <a href="#" style="color: white" onClick="return false;" class="dropdown-toggle"
                             data-toggle="dropdown" role="button">
                             {{Auth::user()->name}}
@@ -44,8 +39,13 @@
                             <li class="body">
                                 <ul class="user_dw_menu">
                                     <li>
-                                        <a href="/penjual/profile">
+                                        <a href="/profile">
                                             <i class="material-icons">person</i>Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/datasaya">
+                                            <i class="material-icons">landscape</i>Data Saya
                                         </a>
                                     </li>
                                     <li>
@@ -61,6 +61,11 @@
                                 </ul>
                             </li>
                         </ul>
+                    </li>
+                    <li class="nav-item @if(Request::is('survei')) active font-weight-bold @endif">
+                        <a href="datalahan/create" class="" style="color: white">
+                            + Jual Lahan
+                        </a>
                     </li>
                 </ul>
             </div>

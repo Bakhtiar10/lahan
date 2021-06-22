@@ -1,117 +1,152 @@
 @extends("templatepenjual.index")
 @section('title') Beranda Penjual @endsection
 @section('content')
+    <style>
+        .input-group {
+            display: table;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-    <div class="container">
+        .input-group>div {
+            display: table-cell;
+            border: 1px solid #ddd;
+            vertical-align: middle;
+        }
+
+        .input-group input {
+            border: 0;
+            display: block;
+            width: 100%;
+            padding: 20px;
+            color: #777
+        }
+
+        .input-group input[type="text"] {
+            padding-left: 20px;
+        }
+
+        .input-group input:placeholder {
+            padding-left: 20px;
+        }
+
+        .input-group button {
+            background: #eee;
+            color: #777;
+            padding: 0 12px;
+            height: 43px;
+        }
+
+        .input-group-btn {
+            background: #eee;
+            color: #777;
+            padding: 0 12px
+        }
+
+        .input-group-area {
+            width: 100%;
+        }
+
+        .table-pagination {
+            display: table;
+            margin: 0 auto;
+        }
+
+        ul#horizontal-list {
+            min-width: 100px;
+            list-style: none;
+        }
+
+        ul#horizontal-list li {
+            padding: 10px;
+            width: 200px;
+            display: inline;
+            border: 1px solid #16c9f6;
+            border-radius: 5px;
+        }
+
+        ul#horizontal-list li:hover {
+            background: #16c9f6;
+            cursor: pointer;
+        }
+
+        .active-pagination {
+            background: #16c9f6;
+            color: white
+        }
+
+    </style>
+    <div class="d-flex justify-content-center align-items-center" style="height: 400px; background: #16c9f6">
+        <div class="">
+            <img src="{{ asset('assets/landingpage/images/lahan.png') }}" class="img-full" alt=""
+                style="width: 200px; height: 200px;">
+            <h3 class="text-white text-center">MY-LAND</h3>
+        </div>
+
+    </div>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="card" style="padding: 10px">
+                <div class="input-group">
+                    <div class="input-group-area"><input type="text" id="cari" placeholder="Search..."></div>
+                    <button class="" id="cari-submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                        Cari
+                    </button>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 col-sm-4">
+                        <div class="card rounded">
+                            <div class="body">
+                                <div class="w-100">
+                                    <div class="form-group">
+                                        <select name="kecamatan" id="kecamatan" class="form-control kecamatan-select"
+                                            style="width: 100%"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <select name="jenis_lahan" id="jenis_lahan" class="form-control">
+                                            <option value="">Pilih Jenis Lahan</option>
+                                            <option value="Lahan Kavling">Lahan Kavling</option>
+                                            <option value="Lahan Pertanian">Lahan Pertanian</option>
+                                            <option value="Lahan Perkebunan">Lahan Perkebunan</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <select name="harga_lahan" id="harga_lahan" class="form-control">
+                                            <option value="">Pilih Harga</option>
+                                            <option value="Termurah">Termurah</option>
+                                            <option value="Termahal">Termahal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-10 col-sm-4 container-show-lahan" style="display: flex; gap: 5%; flex-wrap: wrap;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10" style="display: flex; justify-content: center; gap: 5%; flex-wrap: wrap;">
+                        <div class="table-pagination">
+                            <ul id="horizontal-list" class="container-pagination-lahan">
+    
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
         @if (Session::has('message'))
             <div class="alert alert-success" role="alert">
                 {{ Session::get('message') }}
             </div>
         @endif
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>
-                            Lahan <strong>Belum Terjual</strong>
-                        </h2>
-                    </div>
-                    <div class="body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable"
-                            role="grid" aria-describedby="tableExport_info">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Email</th>
-                                    <th>Judul</th>
-                                    <th>Luas</th>
-                                    <th>Jenis</th>
-                                    <th>Sertifikat</th>
-                                    <th>Foto</th>
-                                    <th>Harga</th>
-                                    <th>No Hp</th>
-                                </tr>
-                            </thead>
 
-                            <tbody>
-                                @php $no = 1; @endphp
-                                @foreach($data_lahan_belum_terjual as $lahan_belum_terjual)
-                                <tr>
-                                    <td>{{ $no++ }}</td>
-                                    <td>{{ $lahan_belum_terjual->user->email }}</td>
-                                    <td>{{ $lahan_belum_terjual->judul_lahan }}</td>
-                                    <td>{{ $lahan_belum_terjual->luas_lahan }} M2</td>
-                                    <td>{{ $lahan_belum_terjual->jenis_lahan }}</td>
-                                    <td>{{ $lahan_belum_terjual->sertifikat }}</td>
-                                    <td>
-                                        @foreach($lahan_belum_terjual->images as $di)
-                                        <img src="{{ asset($di->foto) }}" alt="" width="50">
-                                        @break
-                                        @endforeach
-                                    </td>
-                                    <td>{{ $lahan_belum_terjual->harga_lahan }}</td>
-                                    <td>{{ $lahan_belum_terjual->no_hp }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>
-                            Lahan <strong>Terjual</strong>
-                        </h2>
-                    </div>
-                    <div class="body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Penjual</th>
-                                        <th>Judul Lahan</th>
-                                        <th>Foto Lahan</th>
-                                        <th>Harga Lahan</th>
-                                        <th>Di Beli oleh</th>
-                                        <th>Pada Tanggal</th>
-                                        <th>Foto KTP</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($data_lahan_terjual as $lahan_terjual)
-                                    <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $lahan_terjual->lahan->user->name }}</td>
-                                        <td>{{ $lahan_terjual->lahan->judul_lahan }}</td>
-                                        <td>
-                                        @foreach($lahan_terjual->lahan->images as $di)
-                                        <img src="{{ asset($di->foto) }}" alt="" width="50">
-                                        @break
-                                        @endforeach
-                                        </td>
-                                        <td>{{ $lahan_terjual->lahan->harga_lahan }}</td>
-                                        <td>{{ $lahan_terjual->user->name }}</td>
-                                        <td>{{ $lahan_terjual->lahan->updated_at }}</td>
-                                        <td><img src="{{ asset($lahan_terjual->foto_ktp) }}" width="50" alt=""></td>
-                                        <td>Sold Out</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row clearfix">
+
+        <div class="container">
             <div class="card-body">
                 <form action="{{ route('penjual_koment') }}" method="POST">
                     @csrf
@@ -127,5 +162,138 @@
             </div>
         </div>
     </div>
+    </div>
+    <script>
+        const kecamatanArray = ["Adiwerna", "Balapulang", "Bojong", "Bumijawa", "Dukuhturi", "Dukuhwaru", "Jatinegara",
+            "Kedungbanteng", "Kramat", "Lebaksiu", "Margasari", "Pagerbarang", "Pangkah", "Slawi", "Suradadi",
+            "Talang", "Tarub", "Warureja", "Tegal Timur", "Tegal Barat", "Tegal Selatan", "Margadana"
+        ];
+
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (monthNames[d.getMonth() + 1]),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2)
+                month = '0' + month;
+            if (day.length < 2)
+                day = '0' + day;
+
+            return [day, month, year].join(' ');
+        }
+
+        function loadData(kecamatan, jenis_lahan, harga_lahan, cari, page = 1) {
+            $.ajax({
+                type: 'GET',
+                url: '/lahan-json?page='+ page,
+                dataType: 'json',
+                data: {
+                    kecamatan: kecamatan !== '' ? kecamatan : undefined,
+                    jenis_lahan: jenis_lahan !== '' ? jenis_lahan : undefined,
+                    harga_lahan: harga_lahan !== '' ? harga_lahan : undefined,
+                    cari: cari !== '' ? cari : undefined,
+                },
+                success: function(data) {
+                    var html = '';
+                    if (data.data.data.length > 0) {
+                        $.each(data.data.data, function(key, data) {
+                            html += `
+                                <div class="panel single-blog text-center" style="width: 30%; border : 1px solid #e9e9e9">
+                                    <img src="${data.images.length > 0 ? data.images[0].foto : 'no-image-found.png'}"
+                                        class="img-full" alt="" style="width: 250px; height: 100px; Margin-top: 20px;">
+                                    <div class="padding-20">
+                                        <ul class="list-unstyled list-inline">
+                                            <li><span class="ti-user"></span> By: ${data.user.name}</li>
+                                            <li><span class="ti-calendar"></span>
+                                                ${formatDate(data.created_at)}
+                                            </li>
+                                        </ul>
+                                        <div class="space-5"></div>
+                                        <ul class="list-unstyled list-inline">
+                                            <li><span class=""></span>${data.jenis_lahan}</li>
+                                            <li><span class=""></span> ${data.luas_lahan} M2</li>
+                                            <li><span class=""></span> Rp. ${new Intl.NumberFormat('id-ID',{style: 'currency',
+                                                currency: 'IDR'}).format(data.harga_lahan)}
+                                            </li>
+                                            <li><span class=""></span>${data.judul_lahan}</li>
+                                            <div class="space-20"></div>
+                                            <div style="display:flex; justify-content: space-between; gap:2%">
+                                                <a href="/detail_lahan/${data.id}" class="button-card">Detail Lahan</a>
+                                            </div>
+                                            <div class="space-20"></div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            `
+                        });
+                    } else {
+                        html += `
+                            <div class="text-center" style="width: 100%; height: 100px; margin-top: 50px">
+                                Tidak ada data
+                            </div>
+                        `
+                    }
+
+                    $('.container-show-lahan').html(html);
+
+                    var htmlPagination = ''
+                    if (data.data.data.length > 0) {
+                        for (var totalPage = 1; totalPage <= data.data.last_page; totalPage++) {
+                            if (data.data.current_page === totalPage) {
+                                htmlPagination +=
+                                    `<li style="margin: 2px" id="page" data-id="${totalPage}" class="active-pagination">${totalPage}</li>`
+                            } else {
+                                htmlPagination +=
+                                    `<li style="margin: 2px" id="page" data-id="${totalPage}" >${totalPage}</li>`
+                            }
+
+                        }
+                    }
+                    $('.container-pagination-lahan').html(htmlPagination);
+                }
+            })
+        }
+
+
+        let htmlKecamatan = '<option value="">Pilih Kecamatan</option>';
+        $.each(kecamatanArray, function(key, item) {
+            htmlKecamatan += `<option value="${item}">${item}</option>`
+        })
+        $('.kecamatan-select').html(htmlKecamatan);
+        $(document).ready(function() {
+
+            $('.container-pagination-lahan').on('click', '#page', function() {
+                loadData($('#kecamatan').val(), $('#jenis_lahan').val(), $('#harga_lahan').val(), $('#cari')
+                    .val(), $(this).data('id'));
+            })
+
+            loadData($('#kecamatan').val(), $('#jenis_lahan').val(), $('#harga_lahan').val(), $('#cari').val());
+            $('#kecamatan').on('change', function() {
+                console.log($(this).val())
+                loadData($(this).val(), $('#jenis_lahan').val(), $('#harga_lahan').val(), $('#cari')
+                    .val());
+            });
+
+            $('#harga_lahan').on('change', function() {
+                loadData($('#kecamatan').val(), $('#jenis_lahan').val(), $(this).val(), $('#cari')
+                    .val());
+            });
+
+            $('#jenis_lahan').on('change', function() {
+                loadData($('#kecamatan').val(), $(this).val(), $('#harga_lahan').val(), $('#cari')
+                    .val());
+            });
+
+            $('#cari-submit').on('click', function() {
+                loadData($('#kecamatan').val(), $('#jenis_lahan').val(), $('#harga_lahan').val(), $(
+                    '#cari').val());
+            })
+        })
+    </script>
 
 @endsection
