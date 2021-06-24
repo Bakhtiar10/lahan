@@ -1,5 +1,5 @@
 @extends("templatepenjual.index")
-@section('title') Profile Penjual @endsection
+@section('title') Profile @endsection
 @section("content")
 
 <div class="col-lg-4 col-md-12">

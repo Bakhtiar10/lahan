@@ -10,7 +10,6 @@
 
 <div class="container">
     <div class="card">
-        asdadsa
         <div class="header">
             <h2><strong>Detail Lahan</strong></h2>
         </div>

@@ -160,7 +160,7 @@
                     ${image}
                     <div class="text-center">
                         <a>${ item.judul_lahan }</a>
-                        <div class="text-dark">Rp. ${new Intl.NumberFormat('id-ID',{style: 'currency', currency: 'IDR'}).format(item.harga_lahan)}</div>
+                        <div class="text-dark"> ${new Intl.NumberFormat('id-ID',{style: 'currency', currency: 'IDR'}).format(item.harga_lahan)}</div>
                         <div class="text-dark">${item.jenis_lahan}</div>
                         <a href="/detail_lahan/${item.id}"><i>Detail Lahan</i></a>
                     </div>
