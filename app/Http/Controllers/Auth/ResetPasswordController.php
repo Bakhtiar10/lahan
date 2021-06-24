@@ -61,6 +61,6 @@ class ResetPasswordController extends Controller
     }
 
     public function redirectTo(){
-        return redirect()->route('login')->with('status', 'Password has been changed');
+        return redirect()->route('login')->with('status', 'Password berhasil diubah');
     }
 }

@@ -47,20 +47,7 @@
 						Registration
 					</span>
 					<div class="row">
-                        <div class="col-lg-12 p-t-20">
-							<div class="wrap-input100 validate-input">
-								<select class="form-control select-role" name="role_id" id="">
-                                    <option value="">Pilih Salah satu</option>
-                                    @foreach ($roles as $role)
-                                        <option @if(old('role_id') == $role->id) selected @endif value="{{ $role->id }}">{{ $role->role }}</option>
-                                    @endforeach
-                                </select>
-								<i class="material-icons focus-input1001">person</i>
-                                @error('role_id')
-                                    <span class="text-danger mt-2" >{{ $message }}</span>
-                                @enderror
-							</div>
-						</div>
+                        <input type="hidden" name="role_id" value="2">
                         <div class="col-lg-12 p-t-20">
 							<div class="wrap-input100">
 								<input class="input100" type="text" name="name" placeholder="Nama Lengkap" value="{{ old('name') }}">

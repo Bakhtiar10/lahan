@@ -37,10 +37,10 @@ class ForgotPasswordController extends Controller
         $user_check = User::where('email', $request->email)->first();
 
         if($user_check === null){
-            return back()->with('warning', 'Account with this email is not available');
+            return back()->with('warning', 'Akun dengan username atau email ini tidak terdaftar');
         }else{
             if (!$user_check->verified) {
-                return back()->with('warning', 'Your account is not activated. Please activate it first.');
+                return back()->with('warning', 'Akun belum terverifikasi. Verifikasi terlebih dahulu');
             } else {
                 $response = $this->broker()->sendResetLink(
                     $request->only('email')
