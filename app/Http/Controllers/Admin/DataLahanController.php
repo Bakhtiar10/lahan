@@ -74,7 +74,8 @@ class DataLahanController extends Controller
 
     public function soldoutPDF()
     {
-    	$sold_out = Lahan::where('status_jual', 1)->get();
+        $sold_out = SoldOut::with(['lahan', 'lahan.user'])->get();
+        // dd($sold_out);
     	$pdf = PDF::loadview('admin.datalahan.soldout_pdf',['sold_out'=>$sold_out]);
     	return $pdf->stream('data_soldout_pdf');
     }

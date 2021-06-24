@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card">
         <div class="header">
-            <h2><strong>Detail Penjual</strong></h2>
+            <h2><strong>Detail User</strong></h2>
         </div>
         <div class="card-body">
             <div class="product-store">

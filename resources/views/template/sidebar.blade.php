@@ -55,10 +55,7 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="/admin/penjual">Report Penjual</a>
-                        </li>
-                        <li>
-                            <a href="/admin/pembeli">Report Pembeli</a>
+                            <a href="/admin/penjual">Report user</a>
                         </li>
                     </ul>
                 </li>

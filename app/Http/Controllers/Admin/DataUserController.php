@@ -50,12 +50,12 @@ class DataUserController extends Controller
     	$penjual = User::where('role_id', 2)->get();
  
     	$pdf = PDF::loadview('admin.datauser.penjual_pdf',['penjual'=>$penjual]);
-    	return $pdf->stream('data_penjual_pdf');
+    	return $pdf->stream('data_user.pdf');
     }
 
     public function penjualExcel()
 	{
-		return Excel::download(new penjualExport, 'data_penjual.xlsx');
+		return Excel::download(new penjualExport, 'data_user.xlsx');
     }
     
     public function pembeliExcel()

@@ -35,7 +35,7 @@ class KomentarWebsiteController extends Controller
     	$penjual = KomentarPenjual::all();
  
     	$pdf = PDF::loadview('admin.komentarwebsite.penjual_pdf',['penjual'=>$penjual]);
-    	return $pdf->stream('data_penjual_pdf');
+    	return $pdf->stream('komentar_user.pdf');
     }
 
     public function pembeliPDF()
@@ -48,7 +48,7 @@ class KomentarWebsiteController extends Controller
 
     public function penjualExcel()
 	{
-        return Excel::download(new komentpenjualExport, 'koment_penjual.xlsx');
+        return Excel::download(new komentpenjualExport, 'koment_user.xlsx');
         // $test = new komentpenjualExport;
         // dd($test);
     }

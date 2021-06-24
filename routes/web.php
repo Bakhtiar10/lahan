@@ -64,14 +64,14 @@ Route::prefix('admin')->group(function() {
     Route::get('/pembeli', 'Admin\KomentarWebsiteController@pembeli')->name('pembeli');
 
     Route::get('/pembeli_pdf', 'Admin\DataUserController@pembeliPDF')->name('export_pdf.pembeli');
-    Route::get('/penjual_pdf', 'Admin\DataUserController@penjualPDF')->name('export_pdf.penjual');
+    Route::get('/user_pdf', 'Admin\DataUserController@penjualPDF')->name('export_pdf.user_pdf');
 
     Route::get('/lahanmasuk_pdf', 'Admin\DataLahanController@lahanmasukPDF')->name('export_pdf.lahanmasuk');
     Route::get('/lahanjual_pdf', 'Admin\DataLahanController@lahanjualPDF')->name('export_pdf.lahanjual');
     Route::get('/soldout_pdf', 'Admin\DataLahanController@soldoutPDF')->name('export_pdf.soldout');
 
     Route::get('/komenpembeli_pdf', 'Admin\KomentarWebsiteController@pembeliPDF')->name('export_pdf.komentpembeli');
-    Route::get('/komenpenjual_pdf', 'Admin\KomentarWebsiteController@penjualPDF')->name('export_pdf.komentpenjual');
+    Route::get('/komenuser_pdf', 'Admin\KomentarWebsiteController@penjualPDF')->name('export_pdf.komenuser_pdf');
 
     Route::get('/penjual_excel', 'Admin\DataUserController@penjualExcel');
     Route::get('/pembeli_excel', 'Admin\DataUserController@pembeliExcel');

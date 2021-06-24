@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Exports;
-use App\Lahan;
+use App\SoldOut;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\Exporttable;
@@ -18,7 +18,7 @@ class soldoutExport implements FromView, ShouldAutoSize
     public function view():View
     {
         return view('admin.datalahan.soldout_excel', [
-            'sold_out' => Lahan::where('status_jual', 1)->get()
+            'sold_out' => SoldOut::with(['lahan', 'lahan.user'])->get()
         ]);
     }
 }

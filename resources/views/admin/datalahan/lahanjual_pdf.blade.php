@@ -17,7 +17,7 @@
         @foreach($lahan_jual as $jual)
         <tr>
             <td>{{ $no++ }}</td>
-            <td>{{ $jual->penjual->email }}</td>
+            <td>{{ $jual->user->email }}</td>
             <td>{{ $jual->judul_lahan }}</td>
             <td>{{ $jual->luas_lahan }}</td>
             <td>{{ $jual->jenis_lahan }}</td>

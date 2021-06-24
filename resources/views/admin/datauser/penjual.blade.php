@@ -5,7 +5,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="header">
-                <h2><strong>Data Penjual</strong></h2>
+                <h2><strong>Data User</strong></h2>
             </div>
 
             <div class="body">
@@ -13,7 +13,7 @@
                     <div class="dt-buttons">
                         <a href="/admin/penjual_excel" class="btn btn-outline-success btn-border-radius">Export to
                             Excell</a>
-                        <a href="{{ route('export_pdf.penjual') }}" target="_blank" class="btn btn-outline-danger btn-border-radius">Export to PDF</a>
+                        <a href="{{ route('export_pdf.user_pdf') }}" target="_blank" class="btn btn-outline-danger btn-border-radius">Export to PDF</a>
                     </div>
                     <div id="tableExport_wrapper" class="dataTables_wrapper dt-bootstrap4">
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable"
