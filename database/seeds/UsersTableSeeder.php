@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'admin',
             'username' => 'admin',
             'email' => 'admin@gmail.com',
-            'no_hp' => '087730261606',
+            'no_hp' => '087724276427',
             'password' => Hash::make('password'),
             'role_id' => 1,
             'verified' => true,
@@ -40,10 +40,10 @@ class UsersTableSeeder extends Seeder
         ]);
      
         DB::table('users')->insert([
-            'name' => 'User1',
-            'username' => 'user1',
-            'email' => 'user1@gmail.com',
-            'no_hp' => '083841005309',
+            'name' => 'Anto',
+            'username' => 'anto',
+            'email' => 'anto@gmail.com',
+            'no_hp' => '085742005389',
             'password' => Hash::make('password'),
             'role_id' => 2,
             'verified' => true,
@@ -53,16 +53,42 @@ class UsersTableSeeder extends Seeder
         ]);
      
         DB::table('users')->insert([
-            'name' => 'User2',
-            'username' => 'user2',
-            'email' => 'user2@gmail.com',
-            'no_hp' => '087730261606',
+            'name' => 'Faisal',
+            'username' => 'faisal',
+            'email' => 'faisal@gmail.com',
+            'no_hp' => '085213276703',
             'password' => Hash::make('password'),
             'role_id' => 2,
             'verified' => true,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
             
-        ]);  
+        ]); 
+        
+        DB::table('users')->insert([
+            'name' => 'Antum',
+            'username' => 'antum',
+            'email' => 'antum@gmail.com',
+            'no_hp' => '085226591596',
+            'password' => Hash::make('password'),
+            'role_id' => 2,
+            'verified' => true,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+            
+        ]); 
+
+        DB::table('users')->insert([
+            'name' => 'Sepul',
+            'username' => 'sepul',
+            'email' => 'sepul@gmail.com',
+            'no_hp' => '081904040700',
+            'password' => Hash::make('password'),
+            'role_id' => 2,
+            'verified' => true,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+            
+        ]); 
     }
 }

@@ -162,7 +162,7 @@
                         <a>${ item.judul_lahan }</a>
                         <div class="text-dark">Rp. ${new Intl.NumberFormat('id-ID',{style: 'currency', currency: 'IDR'}).format(item.harga_lahan)}</div>
                         <div class="text-dark">${item.jenis_lahan}</div>
-                        <a href="/pembeli/detail_lahan/${item.id}"><i>Detail Lahan</i></a>
+                        <a href="/detail_lahan/${item.id}"><i>Detail Lahan</i></a>
                     </div>
                 `);
 

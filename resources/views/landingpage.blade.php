@@ -244,10 +244,6 @@
     <script src="{{ asset('assets/landingpagejs/maps.js') }}" type="e763a39d6fa7d0f8e02806d7-text/javascript">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    {{-- <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"
-        data-cf-settings="e763a39d6fa7d0f8e02806d7-|49" defer=""></script> --}}
-    {{-- <script src="{{ asset('assets/landingpagejs/owl.carousel.min.js') }}"
-        type="e763a39d6fa7d0f8e02806d7-text/javascript"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"
         integrity="sha512-9CWGXFSJ+/X0LWzSRCZFsOPhSfm6jbnL+Mpqo0o8Ke2SYr8rCTqb4/wGm+9n13HtDE1NQpAEOrMecDZw4FXQGg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -312,12 +308,7 @@
                                     <li><span class=""></span>${data.judul_lahan}</li>
                                     <div class="space-20"></div>
                                     <div style="display:flex; justify-content: center; gap:2%">
-                                        <form action="{{ route('chat.create') }}">
-                                            <input type="hidden" name="receive" value="${data.user.id}">
-                                            <input type="hidden" name="lahan" value="${data.id}">
-                                            <a href="/detaillahan/${data.id}" class="button-card">Detail Lahan</a>
-                                            <button type="submit" class="button-card">Chat</button>
-                                        </form>
+                                        <a href="/detaillahan/${data.id}" class="button-card">Detail Lahan</a>
                                     </div>
                                     <div class="space-20"></div>
                                 </ul>

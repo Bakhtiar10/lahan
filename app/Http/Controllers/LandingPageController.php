@@ -32,7 +32,7 @@ class LandingPageController extends Controller
         // ->get();
         
         if($request->harga_lahan){
-            $lahan = Lahan::with('images','user')->where('status_lahan', 6)->where('status_jual', 0)
+            $lahan = Lahan::with('images','user')->where('status_lahan', 1)->where('status_jual', 0)
             ->where(function($query) use($request){
                 return $request->cari ? 
                     $query->from('cari')->where('judul_lahan', 'LIKE', '%'.$request->cari.'%') : '';

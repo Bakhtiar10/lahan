@@ -10,7 +10,7 @@ class DetailLahanController extends Controller
 {
     public function index($datalahan)
     {
-        $lahan = Lahan::with('images')->where('id', $datalahan)->first();
+        $lahan = Lahan::with(['comments', 'comments.child','images'])->where('id', $datalahan)->first();
         // dd($lahan);
         return view('detaillahan', compact('lahan'));
     }

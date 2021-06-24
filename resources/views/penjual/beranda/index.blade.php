@@ -2,6 +2,26 @@
 @section('title') Beranda Penjual @endsection
 @section('content')
     <style>
+        .button-card {
+            margin-top: 10px;
+            width: 150px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid cyan;
+            font-size: 12px;
+            border-radius: 25px;
+            color: cyan;
+            text-decoration: none
+        }
+
+        .button-card:hover {
+            text-decoration: none;
+            color: blue;
+            border: 1px solid blue;
+        }
+
         .input-group {
             display: table;
             border-collapse: collapse;
@@ -55,6 +75,7 @@
         ul#horizontal-list {
             min-width: 100px;
             list-style: none;
+            margin-top : 20px;
         }
 
         ul#horizontal-list li {
@@ -75,16 +96,39 @@
             color: white
         }
 
+        .carousel-flex {
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+
     </style>
-    <div class="d-flex justify-content-center align-items-center" style="height: 400px; background: #16c9f6">
-        <div class="">
-            <img src="{{ asset('assets/landingpage/images/lahan.png') }}" class="img-full" alt=""
-                style="width: 200px; height: 200px;">
-            <h3 class="text-white text-center">MY-LAND</h3>
+    <div class="d-flex justify-content-center align-items-center" style="height: 400px;">
+        <div class="container">
+            <div class="owl-carousel owl-theme" style="width : 100%; padding-top: 20px">
+                @foreach ($lahans as $lahan)
+                    <div class="d-flex justify-content-center align-items-center">
+                        @if (count($lahan->images) > 0)
+                            <img src="{{ asset($lahan->images[0]->foto) }}" alt=""
+                        style="display: block; margin-left: auto; margin-right: auto; width: 70%; height: 300px">    
+                        @else
+                            <img src="{{ asset('no-image-found.png') }}" alt=""
+                        style="display: block; margin-left: auto; margin-right: auto; width: 70%; height: 300px">
+                        @endif
+                        
+                    </div>
+                @endforeach
+            </div>
+            <div class="space-20"></div>
+            <h1 class="text-center" style="font-weight: bold; text-align: center; margin-top: 20px">Sistem Informasi
+                Penjualan Lahan Di Tegal Berbasis
+                Website</h1>
         </div>
 
     </div>
+
     <div class="container-fluid">
+
         <div class="container">
             <div class="card" style="padding: 10px">
                 <div class="input-group">
@@ -130,38 +174,38 @@
                     <div class="col-md-10" style="display: flex; justify-content: center; gap: 5%; flex-wrap: wrap;">
                         <div class="table-pagination">
                             <ul id="horizontal-list" class="container-pagination-lahan">
-    
+
                             </ul>
                         </div>
                     </div>
                 </div>
+                </>
+
+
             </div>
+            @if (Session::has('message'))
+                <div class="alert alert-success" role="alert">
+                    {{ Session::get('message') }}
+                </div>
+            @endif
 
 
+            <div class="container">
+                <div class="card-body">
+                    <form action="{{ route('penjual_koment') }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label>Komentar</label>
+                            @error('content') <span style="color:red">{{ $message }}</span> @enderror
+                            <input type="hidden" value="{{ Auth::user()->id }}" name="id_penjual">
+                            <textarea class="form-control @error('content') is-invalid @enderror" name="content"
+                                placeholder="Beri Komentar Untuk Website" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Kirim</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        @if (Session::has('message'))
-            <div class="alert alert-success" role="alert">
-                {{ Session::get('message') }}
-            </div>
-        @endif
-
-
-        <div class="container">
-            <div class="card-body">
-                <form action="{{ route('penjual_koment') }}" method="POST">
-                    @csrf
-                    <div class="form-group">
-                        <label>Komentar</label>
-                        @error('content') <span style="color:red">{{ $message }}</span> @enderror
-                        <input type="hidden" value="{{ Auth::user()->id }}" name="id_penjual">
-                        <textarea class="form-control @error('content') is-invalid @enderror" name="content"
-                            placeholder="Beri Komentar Untuk Website" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-success">Kirim</button>
-                </form>
-            </div>
-        </div>
-    </div>
     </div>
     <script>
         const kecamatanArray = ["Adiwerna", "Balapulang", "Bojong", "Bumijawa", "Dukuhturi", "Dukuhwaru", "Jatinegara",
@@ -190,7 +234,7 @@
         function loadData(kecamatan, jenis_lahan, harga_lahan, cari, page = 1) {
             $.ajax({
                 type: 'GET',
-                url: '/lahan-json?page='+ page,
+                url: '/lahan-json?page=' + page,
                 dataType: 'json',
                 data: {
                     kecamatan: kecamatan !== '' ? kecamatan : undefined,
@@ -203,7 +247,7 @@
                     if (data.data.data.length > 0) {
                         $.each(data.data.data, function(key, data) {
                             html += `
-                                <div class="panel single-blog text-center" style="width: 30%; border : 1px solid #e9e9e9">
+                                <div class="panel single-blog text-center" style="width: 30%; border : 1px solid #e9e9e9; margin-bottom: 20px">
                                     <img src="${data.images.length > 0 ? data.images[0].foto : 'no-image-found.png'}"
                                         class="img-full" alt="" style="width: 250px; height: 100px; Margin-top: 20px;">
                                     <div class="padding-20">
@@ -222,7 +266,7 @@
                                             </li>
                                             <li><span class=""></span>${data.judul_lahan}</li>
                                             <div class="space-20"></div>
-                                            <div style="display:flex; justify-content: space-between; gap:2%">
+                                            <div style="display:flex; justify-content: center;">
                                                 <a href="/detail_lahan/${data.id}" class="button-card">Detail Lahan</a>
                                             </div>
                                             <div class="space-20"></div>
@@ -292,8 +336,21 @@
             $('#cari-submit').on('click', function() {
                 loadData($('#kecamatan').val(), $('#jenis_lahan').val(), $('#harga_lahan').val(), $(
                     '#cari').val());
-            })
+            });
         })
     </script>
 
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $(".owl-carousel").owlCarousel({
+                margin: 10,
+                loop: true,
+                autoWidth: true,
+                items: 1,
+                autoPlay: true
+            });
+        })
+    </script>
 @endsection

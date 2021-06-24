@@ -117,14 +117,17 @@
                                             <dt class="col-sm-3">Alamat</dt>
                                             <dd class="col-sm-9">{{ $lahan->alamat }}</dd>
 
-                                            <dt class="col-sm-3">No Penjual</dt>
-                                            <dd class="col-sm-9">{{ $lahan->no_hp }}</dd>
-
-
                                             <dt class="col-sm-3">Deskripsi</dt>
                                             <dd class="col-sm-9">{{ $lahan->deskripsi }}</dd>
                                         </dl>
                                         <br>
+                                        <form action="{{ route('chat.create') }}">
+                                            <input type="hidden" name="receive" value="{{ $lahan->user->id }}">
+                                            <input type="hidden" name="lahan" value="{{ $lahan->id }}">
+                                            {{-- <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#exampleModal">Survei Lahan</button> --}}
+                                            <button type="submit" class="btn btn-warning">Tanya Penjual</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -134,6 +137,7 @@
             </div>
         </div>
     </div>
+    
 
 
     <!-- Plugins Js -->
@@ -185,6 +189,12 @@
             }
             netbro_cache_analytics(requestCfs, function() {});
         };
+
+        function balasKomentar(id, title) {
+            $('#formReplyComment').show();
+            $('#parent_id').val(id)
+            $('#replyComment').val(title)
+        }
 
     </script>
 

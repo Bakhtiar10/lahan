@@ -64,10 +64,6 @@
                                     <dt class="col-sm-3">Alamat</dt>
                                     <dd class="col-sm-9">{{ $peta->alamat }}</dd>
 
-                                    <dt class="col-sm-3">No Penjual</dt>
-                                    <dd class="col-sm-9">{{ $peta->no_hp }}</dd>
-
-
                                     <dt class="col-sm-3">Deskripsi</dt>
                                     <dd class="col-sm-9">{{ $peta->deskripsi }}</dd>
                                 </dl>

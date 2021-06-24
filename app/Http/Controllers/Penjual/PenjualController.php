@@ -22,14 +22,10 @@ class PenjualController extends Controller
 
     public function index()
     {
-        $data_lahan_terjual = SoldOut::with(['lahan', 'lahan.user'])->whereHas('lahan', function($query){
-            return $query->where('id_penjual', Auth::user()->id);
-        })->get();
+        $lahans = Lahan::with('images','user')->where('status_lahan', 1)->where('status_jual', 0)->get();
+        // dd($lahans);
 
-        // dd($data_lahan_terjual);
-        $data_lahan_belum_terjual = Lahan::where('status_lahan', 1)->where('status_jual',0)->where('id_penjual', Auth::user()->id)->get();
-
-        return view('penjual.beranda.index');
+        return view('penjual.beranda.index', compact('lahans'));
     }
 
 
