@@ -21,9 +21,10 @@ class DataSayaController extends Controller
 
     public function index()
     {
-        $lahan = Lahan::where('id_penjual', Auth::user()->id)->where('status_jual',0)->get();
+        $lahan = Lahan::where('id_penjual', Auth::user()->id)->where('status_jual',0)->where('status_lahan', 1)->get();
+        $lahan_belum_terkonfirmasi = Lahan::where('id_penjual', Auth::user()->id)->where('status_jual',0)->where('status_lahan', 0)->get();
         
-        return view('penjual.datasaya.datasaya', compact('lahan'));
+        return view('penjual.datasaya.datasaya', compact('lahan', 'lahan_belum_terkonfirmasi'));
     }
 
     public function detail($lahan)

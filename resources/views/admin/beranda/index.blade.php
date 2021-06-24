@@ -16,12 +16,12 @@
             </div>
         </div>
         <div class="col-lg-4 col-sm-4">
-
-            <div class="counter-box text-center white">
-                <div class="text font-17 m-b-5">Jumlah User</div>
-                <div id="" style="height: 135px">
-                    <h5 style="text-align: center; margin-top: 90px"> Penjual : {{ count($penjual) }}</h5>
-                    <h5 style="text-align: center;">Pembeli : {{ count($pembeli) }}</h5>
+            <div class="counter-box text-center white d-flex justify-content-center align-items-center
+                " style="height: 270px">
+                <div class="">
+                    <i class="material-icons" style="font-size : 96px; color : #8C9DD1">person_outline</i>
+                    <label for="">TOTAL USER</label>
+                    <p>{{ count($penjual) }}</p>
                 </div>
             </div>
         </div>
@@ -102,6 +102,5 @@
                 })
             })
         });
-
     </script>
 @endsection
