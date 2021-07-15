@@ -11,7 +11,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" action="{{ url('penjual/datalahan/simpan') }}" method="POST"
+                <form role="form" action="{{ url('datalahan/simpan') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
@@ -180,7 +180,7 @@
                             <div class="col-md-12">
                                 <div id="map" style="width: 1020px; height: 400px; margin-bottom: 10px"></div>
                                 <div class="form-group">
-                                    <a href="{{ url('/penjual/datasaya') }}" class="btn btn-md btn-danger"
+                                    <a href="{{ url('/datasaya') }}" class="btn btn-md btn-danger"
                                         type="button">Batal</a>
                                     <button type="submit" class="btn btn-md btn-primary">Simpan</button>
                                 </div>

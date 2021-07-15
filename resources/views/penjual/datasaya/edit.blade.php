@@ -11,7 +11,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" action="{{ url('penjual/datalahan/update', $data->id) }}" method="POST"
+                <form role="form" action="{{ url('datalahan/update', $data->id) }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
