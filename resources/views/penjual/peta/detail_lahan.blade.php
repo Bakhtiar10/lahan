@@ -68,8 +68,8 @@
                                     <dd class="col-sm-9">{{ $peta->deskripsi }}</dd>
                                 </dl>
                                 <br>
-                                
-                                <form action="{{ route('chat.create') }}">
+
+                                <form action="{{ route('chat.create', $peta) }}">
                                     <input type="hidden" name="receive" value="{{ $peta->user->id }}">
                                     <input type="hidden" name="sender" value="{{ Auth::user()->id }}">
                                     <input type="hidden" name="lahan" value="{{ $peta->id }}">

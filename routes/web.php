@@ -60,7 +60,7 @@ Route::prefix('admin')->group(function() {
     // Route::get('/chart','Admin\DashboardController@chart');
 
     Route::get('/penjual', 'Admin\KomentarWebsiteController@penjual')->name('penjual');
-    
+
     Route::get('/pembeli', 'Admin\KomentarWebsiteController@pembeli')->name('pembeli');
 
     Route::get('/pembeli_pdf', 'Admin\DataUserController@pembeliPDF')->name('export_pdf.pembeli');
@@ -101,7 +101,7 @@ Route::prefix('admin')->group(function() {
 
 Route::prefix('')->group(function() {
     Route::get('beranda', 'Penjual\PenjualController@index')->name('penjual.beranda');
-   
+
     Route::get('/datasaya', 'Penjual\DataSayaController@index')->name('datasaya');
     Route::get('datalahan/create','Penjual\DataSayaController@create')->name('create');
     Route::post('datalahan/simpan','Penjual\DataSayaController@store')->name('simpan');
@@ -171,8 +171,8 @@ Route::prefix('pembeli')->group(function() {
 
 Route::get('chart-jenis-lahan', 'ChartController@chartJenisLahan')->name('chartJenisLahanTerjual');
 Route::get('chart-jenis-lahan-belum-terjual', 'ChartController@chartJenisLahanBelumTerjual')->name('chartJenisLahanBelumTerjual');
-    
-Route::get('/chat', 'ChatController@createChat')->name('chat.create');
+
+Route::get('/chat/{lahan}', 'ChatController@createChat')->name('chat.create');
 Route::post('/chat/store', 'ChatController@storeMessage')->name('chat.store');
 Route::get('/chat-list', 'ChatController@chatList')->name('chat.list');
 Route::get('/chat-list-pembeli', 'ChatController@chatListPembeli')->name('chat.list-pembeli');

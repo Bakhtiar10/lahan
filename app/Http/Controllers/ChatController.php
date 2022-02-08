@@ -22,19 +22,21 @@ class ChatController extends Controller
         $lahan = Lahan::findOrFail($request->lahan);
 
         session()->put('tanya_penjual', 'pertama');
-        
-        if($request->session()->has('tanya_penjual')){
-           Chat::create([
-                'room_id' => $room_id,
-                'sender_id' => Auth::user()->id,
-                'receive_id' => $receive_id,
-                'message' => 'Tentang '.$lahan->judul_lahan
-            ]);
 
-            session()->forget('tanya_penjual');
-        }
+        // if($request->session()->has('tanya_penjual')){
+        //    Chat::create([
+        //         'room_id' => $room_id,
+        //         'sender_id' => Auth::user()->id,
+        //         'receive_id' => $receive_id,
+        //         // 'message' => ''
+        //     ]);
+        //
+        //     session()->forget('tanya_penjual');
+        // }
 
-        return view('chat.chat_message', compact('room_id', 'chat', 'receive_id'));
+        // dd($lahan);
+
+        return view('chat.chat_message', compact('room_id', 'chat', 'receive_id', 'lahan'));
     }
 
     public function storeMessage(Request $request) {
