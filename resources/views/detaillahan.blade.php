@@ -121,7 +121,7 @@
                                             <dd class="col-sm-9">{{ $lahan->deskripsi }}</dd>
                                         </dl>
                                         <br>
-                                        <form action="{{ route('chat.create') }}">
+                                        <form action="{{ route('chat.create', $lahan) }}">
                                             <input type="hidden" name="receive" value="{{ $lahan->user->id }}">
                                             <input type="hidden" name="lahan" value="{{ $lahan->id }}">
                                             {{-- <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -137,7 +137,7 @@
             </div>
         </div>
     </div>
-    
+
 
 
     <!-- Plugins Js -->
