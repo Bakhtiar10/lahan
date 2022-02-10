@@ -32,7 +32,7 @@ class ChatController extends Controller
                   'sender_id' => Auth::user()->id,
                   'receive_id' => $receive_id,
                   'id_lahan' => $lahan->id,
-                  'message' => 'Tentang '.$lahan->judul_lahan
+                  'message' => 'Tentang <a class="text-white" href="/detail_lahan/'.$lahan->id.'">'.$lahan->judul_lahan.'</a>'
               ]);
 
               session()->forget('tanya_penjual');
