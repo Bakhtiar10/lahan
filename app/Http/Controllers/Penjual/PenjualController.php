@@ -22,14 +22,15 @@ class PenjualController extends Controller
 
     public function index()
     {
-        $lahans = Lahan::with('images','user')->where('status_lahan', 1)->where('status_jual', 0)->get();
+
+        $lahans = Lahan::with('images','user')->where('status_lahan', 1)->where('status_jual', 0)->where('id_penjual', '<>', Auth::user()->id)->get();
         // dd($lahans);
 
         return view('penjual.beranda.index', compact('lahans'));
     }
 
 
-    public function store(Request $request) { 
+    public function store(Request $request) {
         $rule = [
             'content' => 'required'
         ];
@@ -60,12 +61,12 @@ class PenjualController extends Controller
                 'no_hp' => 'required',
                 'password' => 'required|same:konfirmasi_password',
             ];
-    
+
             $message = [
                 'required' => 'Bidang :attribute tidak boleh kosong!',
                 'same' => 'Konfirmasi password tidak sama'
             ];
-    
+
             $this->validate($request, $rule, $message);
 
             $penjual->update([
@@ -78,11 +79,11 @@ class PenjualController extends Controller
                 'name' => 'required',
                 'no_hp' => 'required',
             ];
-    
+
             $message = [
                 'required' => 'Form :attribute tidak boleh kosong!',
             ];
-    
+
             $this->validate($request, $rule, $message);
 
             $penjual->update([

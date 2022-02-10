@@ -13,4 +13,8 @@ class Chat extends Model
     public function sender(){
         return $this->belongsTo(User::class,'sender_id');
     }
+
+    public function receive(){
+        return $this->belongsTo(User::class,'receive_id');
+    }
 }

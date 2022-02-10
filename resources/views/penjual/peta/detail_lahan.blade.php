@@ -68,7 +68,7 @@
                                     <dd class="col-sm-9">{{ $peta->deskripsi }}</dd>
                                 </dl>
                                 <br>
-
+                                @if($peta->id_penjual != Auth::user()->id)
                                 <form action="{{ route('chat.create', $peta) }}">
                                     <input type="hidden" name="receive" value="{{ $peta->user->id }}">
                                     <input type="hidden" name="sender" value="{{ Auth::user()->id }}">
@@ -77,6 +77,7 @@
                                     data-target="#exampleModal">Survei Lahan</button> --}}
                                     <button type="submit" class="btn btn-warning">Tanya Penjual</button>
                                 </form>
+                                @endif
                             </div>
                         </div>
                     </div>

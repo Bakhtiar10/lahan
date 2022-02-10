@@ -23,18 +23,21 @@ class ChatController extends Controller
 
         session()->put('tanya_penjual', 'pertama');
 
-        // if($request->session()->has('tanya_penjual')){
-        //    Chat::create([
-        //         'room_id' => $room_id,
-        //         'sender_id' => Auth::user()->id,
-        //         'receive_id' => $receive_id,
-        //         // 'message' => ''
-        //     ]);
-        //
-        //     session()->forget('tanya_penjual');
-        // }
+        $checkMessage = Chat::where('room_id', $room_id)->where('id_lahan', $lahan->id)->first();
 
-        // dd($lahan);
+        if (!$checkMessage) {
+          if($request->session()->has('tanya_penjual')){
+             Chat::create([
+                  'room_id' => $room_id,
+                  'sender_id' => Auth::user()->id,
+                  'receive_id' => $receive_id,
+                  'id_lahan' => $lahan->id,
+                  'message' => 'Tentang '.$lahan->judul_lahan
+              ]);
+
+              session()->forget('tanya_penjual');
+          }
+        }
 
         return view('chat.chat_message', compact('room_id', 'chat', 'receive_id', 'lahan'));
     }
@@ -45,6 +48,7 @@ class ChatController extends Controller
             'room_id' => $request->room_id,
             'sender_id' => $request->sender,
             'receive_id' => $request->receive,
+            // 'id_lahan' => $lahan->id,
             'message' => $request->message
         ]);
 
@@ -54,7 +58,21 @@ class ChatController extends Controller
     }
 
     public function chatList(Request $request) {
-        $chat_list = Chat::with('sender')->select('room_id', 'sender_id')->where('receive_id', Auth::user()->id)->groupBy('room_id', 'sender_id')->get();
+        $chat_list = null;
+        $owner = Chat::where('sender_id', Auth::user()->id)->first();
+        if ($owner) {
+          $chat_list = Chat::with('sender','receive')
+          ->select('room_id','receive_id','sender_id')
+          ->where('sender_id', $owner->sender_id)
+          ->groupBy('room_id', 'sender_id','receive_id')->get();
+        }
+        else {
+          $owner = Chat::where('receive_id', Auth::user()->id)->first();
+          $chat_list = Chat::with('sender','receive')
+          ->select('room_id', 'receive_id','sender_id')
+          ->where('receive_id', $owner->receive_id)
+          ->groupBy('room_id','sender_id','receive_id')->get();
+        }
 
         return view('chat.chat_list', compact('chat_list'));
     }

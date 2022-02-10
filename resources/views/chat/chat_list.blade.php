@@ -6,7 +6,7 @@
                 <div class="card" id="list-contact">
                     @forelse ($chat_list as $list)
                         <a href="javascript: void(0)" id="click-chat" data-id="{{ $list->room_id }}"
-                            data-receive={{ $list->sender->id }}>
+                            data-receive={{ $list->sender_id == Auth::user()->id ? $list->receive_id : $list->sender_id }} >
                             <div class="rounded border d-flex align-items-center" style="width : 100%">
                                 <div class="border rounded-circle m-2"
                                     style="width: 60px; height: 60px; background: #e9e9e9">
@@ -18,7 +18,11 @@
                                             src="{{ asset('assets/images/user_default.png') }}" alt="User">
                                     @endif
                                 </div>
+                                @if($list->receive_id == Auth::user()->id)
                                 <div class="font-weight-bold text-uppercase">{{ $list->sender->name }}</div>
+                                @else
+                                <div class="font-weight-bold text-uppercase">{{ $list->receive->name }}</div>
+                                @endif
                             </div>
                         </a>
                     @empty
@@ -42,7 +46,7 @@
 @section('script')
     <script>
         // $(document).ready(function() {
-            function showForm(room_id, receive_id) {
+            function showForm(room_id, receive_id, sender_id) {
                 let html = ''
                 html += `
                 <div class="d-flex justify-content-center align-items-center m-5 gap-2">
@@ -97,6 +101,7 @@
             $('#list-contact').on('click', '#click-chat', function() {
                 var receive_id = $(this).data('receive');
                 var room_id = $(this).data('id');
+
                 loadMessage(room_id, receive_id);
                 // var settime = setInterval(function(){
                 //     loadMessage(room_id, receive_id)
@@ -115,10 +120,12 @@
                         "room_id": $('#room_id').val(),
                         "sender": $('#sender').val(),
                         "receive": $('#receive').val(),
+                        "id_lahan" : $('#id_lahan').val(),
                         "message": $('#message').val(),
                     },
                     success: function() {
                         loadMessage($('#room_id').val(), $('#receive').val())
+                        $('#message').val("")
                     },
                     error: function(error) {
                         console.log(error.responseText)
