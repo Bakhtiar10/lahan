@@ -58,7 +58,7 @@ class ChatController extends Controller
     }
 
     public function chatList(Request $request) {
-        $chat_list = null;
+        $chat_list = [];
         $owner = Chat::where('sender_id', Auth::user()->id)->first();
         if ($owner) {
           $chat_list = Chat::with('sender','receive')
@@ -68,10 +68,13 @@ class ChatController extends Controller
         }
         else {
           $owner = Chat::where('receive_id', Auth::user()->id)->first();
-          $chat_list = Chat::with('sender','receive')
-          ->select('room_id', 'receive_id','sender_id')
-          ->where('receive_id', $owner->receive_id)
-          ->groupBy('room_id','sender_id','receive_id')->get();
+          if ($owner) {
+            $chat_list = Chat::with('sender','receive')
+            ->select('room_id', 'receive_id','sender_id')
+            ->where('receive_id', $owner->receive_id)
+            ->groupBy('room_id','sender_id','receive_id')->get();
+          }
+
         }
 
         return view('chat.chat_list', compact('chat_list'));
